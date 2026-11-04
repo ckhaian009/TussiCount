@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# TussiCount: dữ liệu và âm thanh không bao giờ đưa lên GitHub
+data/
+*.wav
+*.webm
+.DS_Store
