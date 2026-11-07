@@ -39,7 +39,7 @@
 | Thuật ngữ | Định nghĩa |
 | --- | --- |
 | Cửa sổ | Đoạn âm thanh 1 giây, trượt 0,5 giây, lấy mẫu 16 kHz một kênh |
-| Sự kiện ho | Chuỗi cửa sổ liền kề có điểm ≥ ngưỡng, gộp thành một sự kiện; một tràng ho liên tiếp tính là một sự kiện |
+| Sự kiện ho | Chuỗi cửa sổ liền kề có điểm ≥ ngưỡng, gộp thành một sự kiện rồi qua bộ lọc sau phân loại (mục 8); một tràng ho liên tiếp tính là một sự kiện. Thời điểm sự kiện là tâm của cửa sổ có điểm cao nhất |
 | Ghép | Mỗi tiếng ho chuẩn ghép với tối đa một sự kiện trong khoảng ±1 giây (ghép một–một, ưu tiên cặp gần nhau nhất) |
 | Tiếng ho chuẩn | Tiếng ho có thời điểm đã biết: do trình phát ghi (tầng kiểm định 1), do người quan sát bấm giờ (tầng kiểm định 2), do người gán nhãn đánh dấu (tầng kiểm định 3; các tiếng ho cách nhau dưới 1 giây thuộc cùng một tràng và tính là một tiếng ho chuẩn) |
 | Độ nhạy | Số tiếng ho chuẩn được ghép ÷ tổng số tiếng ho chuẩn |
@@ -60,7 +60,7 @@ Mỗi sự kiện, thiết bị ghi: thời điểm, độ dài, điểm tin c�
 - **Thiết kế:** 3 khoảng cách (1 m, 3 m, 5 m) × 2 vị trí nguồn (hành lang; trong phòng B2.103, cửa đóng) × 3 độ lớn (nhỏ, vừa, lớn) × 2 khung giờ (sinh hoạt ồn 20:30–21:00; yên tĩnh 21:00–21:45) = 36 ô, đo tại TC-01. Khoảng cách là đường thẳng từ loa tới micro; nếu không đặt được đúng mức, ghi khoảng cách thực đo và dùng giá trị đó trong phân tích.
 - **Cỡ mẫu và phân bổ:** 1.100 tệp được phân bổ ngẫu nhiên một lần (seed 2026), mỗi tệp cho đúng một mục đích: 1.050 tệp vào 36 ô, gồm hai ô chính *hành lang · vừa · yên tĩnh · 1 m* và *hành lang · vừa · yên tĩnh · 3 m* (n = 100 mỗi ô) và 34 ô còn lại (n = 25 mỗi ô, tối thiểu 20 tiếng ho hợp lệ sau loại trừ); 10 tệp cho kiểm tra đầu buổi; 40 tệp cho so sánh hai thiết bị (mục 7.6). Ô 3 m dùng cho tiêu chí độ nhạy ở mục 9; cả hai ô chính dùng cho H2. Mỗi tệp trong ô chỉ phát một lần.
 - **Độ lớn:** mức “vừa” bằng mức đỉnh dB(A) trung bình ở 1 m của 20 tiếng ho nhẹ theo hiệu lệnh của hai thành viên Nhóm (đúng cách thực hiện ở tầng kiểm định 2), đo trước buổi phát đầu tiên và ghi tại mục 12. Ba mức tạo bằng hệ số khuếch đại số của trình phát: lớn 0 dB, vừa −10 dB, nhỏ −20 dB. Âm lượng loa giữ cố định trong cả buổi; đầu buổi, chỉnh âm lượng bằng tệp hiệu chuẩn (tệp đầu tiên của nhóm kiểm tra đầu buổi) sao cho ở mức vừa, mức đỉnh tại 1 m đạt mức mục tiêu.
-- **Thực hiện:** 03 buổi tối (dự kiến 12, 13, 14/11/2026). Trong mỗi khung giờ, các khối vị trí – khoảng cách được phát theo thứ tự ngẫu nhiên (seed 2026); trong mỗi khối, ba mức độ lớn xen kẽ ngẫu nhiên theo từng tiếng ho. Các tiếng ho cách nhau 8 giây (lớn hơn độ dài sự kiện tối đa 2 giây cộng dung sai ghép ±1 giây ở hai phía). Trình phát ghi thời điểm phát theo giờ NTP và mở đầu mỗi buổi bằng 3 tiếng bíp đồng bộ.
+- **Thực hiện:** 03 buổi tối (dự kiến 12, 13, 14/11/2026). Trong mỗi khung giờ, các khối vị trí – khoảng cách được phát theo thứ tự ngẫu nhiên (seed 2026); trong mỗi khối, ba mức độ lớn xen kẽ ngẫu nhiên theo từng tiếng ho. Các tiếng ho cách nhau 8 giây, đủ để sự kiện của hai tiếng ho liền nhau không gộp vào nhau và không bị ghép nhầm trong dung sai ±1 giây. Trình phát ghi thời điểm phát theo giờ NTP và mở đầu mỗi buổi bằng 3 tiếng bíp đồng bộ.
 - **Đo tại chỗ:** đầu mỗi khối, phát tệp hiệu chuẩn 3 lần ở mức vừa và đo mức tiếng ho tại micro. Mức tiếng ho tại micro của từng tiếng ho phát lại = mức đo của tệp hiệu chuẩn trong khối + chênh lệch mức đỉnh trọng số A (tính trên tệp số) giữa tiếng ho đó và tệp hiệu chuẩn + chênh lệch hệ số khuếch đại. Đầu mỗi buổi, đo mức suy hao qua cửa bằng nhiễu hồng phát trong phòng B2.103 khi cửa mở và khi cửa đóng.
 - **Kiểm tra đầu buổi:** cùng 10 tệp cố định ở cả ba buổi, phát ở 1 m, hành lang, mức vừa; không tính vào các ô, dùng theo dõi độ ổn định của thiết bị giữa các buổi.
 
@@ -72,7 +72,7 @@ Mỗi sự kiện, thiết bị ghi: thời điểm, độ dài, điểm tin c�
 ### 7.3. Tầng kiểm định 3 – Tiếng ho tự nhiên và phát hiện sai
 
 - **Ghi âm kiểm định (TC-02):** tổng thời lượng không quá 08 giờ, kết thúc trước 00:00 ngày 13/11/2026; thông báo trước 24 giờ và có biển “Đang ghi âm”.
-  - **Phần để sửa:** 3 giờ, tối 11/11, 19:00–22:00; không dùng để chấm. Nửa đầu (19:00–20:30) cung cấp mẫu âm khó cho huấn luyện bổ sung; nửa sau (20:30–22:00) chỉ dùng để chọn ngưỡng.
+  - **Phần để sửa:** 3 giờ, tối 11/11, 19:00–22:00; không dùng để chấm. Chạy qua thư viện của mô hình nền trên máy tính để xác định loại âm thanh gây phát hiện sai, chọn bộ lọc sau phân loại và chọn ngưỡng (mục 8).
   - **Phần để chấm:** 4,5 giờ, tối 12/11, 17:55–20:25 và 21:50–23:50 (không trùng khung phát tiếng ho mẫu); chỉ chạy **một lần** qua thư viện của mô hình đã đóng băng trên máy tính, cùng mã xử lý với firmware (đã qua phép thử đồng nhất).
 - **Gán nhãn đầy đủ:** 2 giờ của phần để chấm, gồm bốn đoạn 30 phút chọn ngẫu nhiên (seed 2026). Người gán nhãn không xem kết quả của thiết bị. Hai người gán độc lập cùng 30 phút đầu tiên và tính F1 đồng thuận (dung sai ±0,5 giây); nếu F1 < 0,80, thống nhất lại quy ước và gán lại đoạn đó.
 - **Xác minh mù cho phần còn lại (2,5 giờ):** mỗi sự kiện thiết bị báo được cắt thành đoạn 3 giây; trộn với số đoạn 3 giây lấy ngẫu nhiên bằng như vậy; người gán nhãn đánh dấu từng đoạn là ho hay không mà không biết đoạn nào do thiết bị báo.
@@ -100,10 +100,12 @@ Trong giờ học các ngày thường (08:00–11:00 và 13:30–16:00), khi KT
 
 ## 8. Mô hình và đóng băng
 
-- **Dữ liệu huấn luyện:** COUGHVID 3.0 (3.000 bản ghi có `cough_detected` ≥ 0,8, chọn ngẫu nhiên, seed 2026; danh sách tại `results/coughvid_chon_3000.csv`); ESC-50 (bỏ lớp `coughing`); Common Voice tiếng Việt (1.000 đoạn từ 229 người); các đoạn gây phát hiện sai trong nửa đầu phần để sửa (mẫu âm khó). Không dùng Coswara, nửa sau phần để sửa và phần để chấm.
+- **Dữ liệu huấn luyện:** COUGHVID 3.0 (3.000 bản ghi có `cough_detected` ≥ 0,8, chọn ngẫu nhiên, seed 2026; danh sách tại `results/coughvid_chon_3000.csv`); ESC-50 (bỏ lớp `coughing`); Common Voice tiếng Việt (1.000 đoạn từ 229 người). Không dùng Coswara, phần để sửa và phần để chấm.
+- **Mẫu âm khó:** nếu phần để sửa cho thấy một loại âm thanh gây nhiều phát hiện sai, mô hình được huấn luyện lại với thêm mẫu cùng loại lấy từ dữ liệu mở (ESC-50, Common Voice). Âm thanh ghi tại KTX không được tải lên Edge Impulse hay bất kỳ dịch vụ trực tuyến nào.
 - **Mô hình:** Edge Impulse, khối MFE và mạng nơ-ron phân loại hai nhãn `cough` / `noise`, lượng tử hoá int8, chạy trên ESP32-S3.
-- **Chọn ngưỡng:** với mỗi ngưỡng, tính phát hiện sai mỗi giờ trên nửa sau phần để sửa (nghe xác minh từng sự kiện thiết bị báo) và độ nhạy trên tập kiểm tra của dữ liệu mở; chọn ngưỡng có độ nhạy cao nhất trong các ngưỡng có phát hiện sai ≤ 4 sự kiện mỗi giờ; lưu toàn bộ đường cong ngưỡng. Nếu không có phần để sửa, thay bằng số liệu đối chứng âm (mục 7.4) và ghi tại mục 16.
-- **Đóng băng:** firmware, mô hình và ngưỡng được đóng băng trước khi chạy bất kỳ dữ liệu nào của phần để chấm, tầng kiểm định 1 hoặc 2 (dự kiến sáng 12/11/2026); phiên bản và SHA-256 được ghi tại mục 12 bằng một commit riêng. Sau đó không chỉnh sửa cho đến khi chấm xong.
+- **Bộ lọc sau phân loại:** số cửa sổ liền kề tối thiểu của một sự kiện (1 hoặc 2) và khoảng nghỉ tối thiểu giữa hai sự kiện (0; 0,5 hoặc 1 giây), chọn trên phần để sửa cùng với ngưỡng.
+- **Chọn ngưỡng:** với mỗi tổ hợp ngưỡng và bộ lọc, tính phát hiện sai mỗi giờ trên phần để sửa (nghe xác minh từng sự kiện thiết bị báo) và độ nhạy trên tập kiểm tra của dữ liệu mở; chọn tổ hợp có độ nhạy cao nhất trong các tổ hợp có phát hiện sai ≤ 4 sự kiện mỗi giờ; lưu toàn bộ đường cong ngưỡng. Nếu không có phần để sửa, thay bằng số liệu đối chứng âm (mục 7.4) và ghi tại mục 16.
+- **Đóng băng:** firmware, mô hình, bộ lọc và ngưỡng được đóng băng trước khi chạy bất kỳ dữ liệu nào của phần để chấm, tầng kiểm định 1 hoặc 2 (dự kiến sáng 12/11/2026); phiên bản và SHA-256 được ghi tại mục 12 bằng một commit riêng. Sau đó không chỉnh sửa cho đến khi chấm xong.
 
 ## 9. Tiêu chí chính
 
@@ -144,7 +146,7 @@ Mọi kết quả, kể cả không đạt tiêu chí hoặc bác bỏ giả thu
 | Ngày, giờ đóng băng | |
 | Firmware bản vận hành (tên tệp, SHA-256) | |
 | Mô hình (phiên bản Edge Impulse) | |
-| Ngưỡng | |
+| Ngưỡng · bộ lọc sau phân loại | |
 | Commit ghi nhận | |
 
 ## 13. Dữ liệu thiếu và loại trừ
@@ -158,7 +160,7 @@ Mọi kết quả, kể cả không đạt tiêu chí hoặc bác bỏ giả thu
 ## 14. Đạo đức và bảo vệ dữ liệu
 
 - Thiết bị vận hành không lưu âm thanh; mã nguồn bản vận hành được công khai trên GitHub.
-- Tệp ghi âm kiểm định: chỉ ba người được tiếp cận (Cao Khải An, Nguyễn Phúc Gia Bảo, cô Trương Minh Phương); lưu trên thẻ nhớ riêng có mật khẩu; không lưu trên điện thoại, không tải lên mạng; xoá chậm nhất 14/11/2026, có biên bản.
+- Tệp ghi âm kiểm định: chỉ ba người được tiếp cận (Cao Khải An, Nguyễn Phúc Gia Bảo, cô Trương Minh Phương); lưu trên thẻ nhớ riêng có mật khẩu; chỉ xử lý trên máy tính của Nhóm; không lưu trên điện thoại, không tải lên mạng hay dịch vụ trực tuyến nào (kể cả Edge Impulse); xoá chậm nhất 14/11/2026, có biên bản.
 - Khảo sát ẩn danh: không thu họ tên, lớp, phòng, khu vực hay email; bảng trả lời gốc xoá chậm nhất 17/11/2026.
 - Không sử dụng số liệu để quản lý giờ giấc, nề nếp hoặc xử lý kỷ luật. Không tệp âm thanh nào được đẩy lên GitHub.
 
@@ -172,7 +174,7 @@ Các ngày từ 10/11 giả định được phê duyệt ngày 10/11/2026; nế
 | 08–09/11 | Đo mức đỉnh tiếng ho thật của hai thành viên (mức vừa); huấn luyện mô hình nền; kiểm tra thiết bị trước khi lắp |
 | 10/11 | Phê duyệt; phát phiếu đồng thuận; lắp TC-01, TC-02; bắt đầu khảo sát hằng ngày |
 | 11/11 | Hiệu chuẩn mức âm; bắt đầu đối chứng âm; tối: phần để sửa (19:00–22:00) |
-| 12/11 | Sáng: huấn luyện bổ sung mẫu âm khó, chọn ngưỡng, đóng băng; tối: phát lại buổi 1; phần để chấm (17:55–20:25, 21:50–23:50) |
+| 12/11 | Sáng: bổ sung mẫu âm khó từ dữ liệu mở (nếu cần), chọn bộ lọc và ngưỡng, đóng băng; tối: phát lại buổi 1; phần để chấm (17:55–20:25, 21:50–23:50) |
 | 13/11 | Gán nhãn, xác minh mù; chấm phần để chấm một lần; tối: phát lại buổi 2, tầng kiểm định 2 |
 | 14/11 | Xoá toàn bộ tệp ghi âm (có biên bản); tối: phát lại buổi 3 |
 | 15/11 | Phân tích chính và phân tích phụ |
