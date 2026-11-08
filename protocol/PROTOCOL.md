@@ -183,6 +183,83 @@ Các ngày từ 10/11 giả định được phê duyệt ngày 10/11/2026; nế
 
 ## 16. Thay đổi sau đăng ký
 
-| Ngày | Thay đổi | Lý do |
-| --- | --- | --- |
-| | | |
+Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi thu bất kỳ dữ liệu nào (chưa có phê duyệt, chưa lắp thiết bị). Chúng chỉ bổ sung phép đo, quy trình và phân tích phụ; câu hỏi nghiên cứu, giả thuyết và tiêu chí chính ở mục 9 giữ nguyên.
+
+| # | Ngày | Thay đổi | Lý do |
+| --- | --- | --- | --- |
+| 16.1 | 08/11/2026 | Thêm sai số số đếm và F1 | Thiết bị dùng để đếm; bỏ sót và phát hiện sai có thể bù trừ nhau, nên cần đánh giá trực tiếp sai số của số đếm |
+| 16.2 | 08/11/2026 | Thêm độ đặc hiệu theo đoạn 3 giây | Chỉ số quen thuộc khi đánh giá thiết bị y sinh; phát hiện sai mỗi giờ vẫn là tiêu chí chính |
+| 16.3 | 08/11/2026 | Thêm đường cong phát hiện trên phần để chấm (mô tả) | Cho thấy đánh đổi độ nhạy – phát hiện sai quanh ngưỡng đã đóng băng; không dùng để chọn lại ngưỡng |
+| 16.4 | 08/11/2026 | Thêm quy tắc cảnh báo định trước và mô phỏng | Trả lời câu hỏi 2 ở mức vận hành: tần suất cảnh báo sai và tốc độ phát hiện mức tăng |
+| 16.5 | 08/11/2026 | Mở rộng nhật ký vận hành, quy trình thay nguồn, phép thử tải | Định lượng độ bền vận hành bằng số liệu thay cho nhận định |
+| 16.6 | 08/11/2026 | Bù độ trễ hệ thống trước khi ghép | Dung sai ghép ±1 giây chỉ có nghĩa khi không có độ lệch hệ thống |
+| 16.7 | 08/11/2026 | Tăng cường dữ liệu bằng vang tổng hợp | Giảm khác biệt giữa dữ liệu huấn luyện (thu gần, ít vang) và hành lang |
+| 16.8 | 08/11/2026 | Cân bằng khuếch đại giữa hai thiết bị | Hai micro có sai số sản xuất; đầu vào của mô hình phải tương đương giữa TC-01 và TC-02 |
+| 16.9 | 08/11/2026 | Đo phổ suy hao qua cửa và thời gian vang (khám phá) | Kiểm chứng trực tiếp cơ chế của cánh cửa (mục 10.2) và mô tả môi trường để đánh giá tính khái quát |
+| 16.10 | 08/11/2026 | Thêm tổng thời lượng ho mỗi đêm (khám phá) | Một tràng ho dài và một tiếng ho ngắn cùng được tính là một sự kiện |
+| 16.11 | 08/11/2026 | Thêm đối chiếu thời tiết và số lượt khám hô hấp (mô tả) | Bối cảnh để diễn giải chuỗi đếm theo ngày |
+| 16.12 | 08/11/2026 | Quy tắc bảo vệ riêng tư khi gán nhãn | Người gán nhãn có thể nghe thấy hội thoại riêng tư |
+
+### 16.1. Sai số số đếm và F1
+
+Trên 2 giờ gán nhãn đầy đủ của phần để chấm, chia thành 24 khoảng 5 phút; mỗi khoảng có số sự kiện thiết bị báo (D) và số tiếng ho chuẩn (R). Báo cáo: sai lệch trung bình (D − R); sai số tuyệt đối trung bình MAE = trung bình |D − R|; sai số tương đối của tổng số đếm (ΣD − ΣR) ÷ ΣR, kèm khoảng tin cậy bootstrap 95% (10.000 lần, lấy mẫu lại theo khoảng 5 phút); F1 = 2 × độ nhạy × giá trị dự báo dương ÷ (độ nhạy + giá trị dự báo dương).
+
+### 16.2. Độ đặc hiệu theo đoạn 3 giây
+
+Trong xác minh mù (mục 7.3), các đoạn 3 giây chọn ngẫu nhiên được người gán nhãn đánh dấu là không có tiếng ho tạo thành mẫu âm. Độ đặc hiệu = số đoạn trong mẫu âm không trùng sự kiện nào của thiết bị ÷ tổng số đoạn trong mẫu âm, kèm khoảng tin cậy Wilson 95%.
+
+### 16.3. Đường cong phát hiện trên phần để chấm
+
+Lần chạy duy nhất qua thư viện của mô hình đã đóng băng (mục 7.3) lưu điểm của mọi cửa sổ. Trên 2 giờ gán nhãn đầy đủ, vẽ độ nhạy theo phát hiện sai mỗi giờ khi thay ngưỡng (giữ nguyên bộ lọc đã đóng băng) và đánh dấu điểm của ngưỡng đã đóng băng. Đường cong chỉ để mô tả; ngưỡng không được chọn lại.
+
+### 16.4. Quy tắc cảnh báo
+
+Quy tắc định trước: đêm D phát cảnh báo khi số sự kiện của đêm D lớn hơn phân vị 99% của phân phối Poisson có trung bình bằng số sự kiện trung bình của 3 đêm hợp lệ liền trước, quy đổi theo sĩ số có mặt (trung bình = tỉ lệ sự kiện trên mỗi học sinh của 3 đêm đó × sĩ số đêm D). Quy tắc được đánh giá bằng mô phỏng (10.000 chuỗi mỗi kịch bản), dùng độ nhạy và phát hiện sai mỗi giờ đo được, với số tiếng ho thật nền 20, 50, 100 mỗi đêm: (a) số cảnh báo sai kỳ vọng trong 30 đêm không có thay đổi; (b) xác suất cảnh báo và số đêm trễ trung bình khi số tiếng ho thật tăng bền vững 50%, 100%, 200%. Quy tắc được áp dụng lên chuỗi đếm thật chỉ để mô tả, không suy luận.
+
+### 16.5. Nhật ký vận hành, thay nguồn, phép thử tải
+
+- **Nhật ký mỗi phút** của firmware vận hành ghi thêm: nhiệt độ chip, bộ nhớ trống nhỏ nhất (heap, PSRAM), thời gian suy luận lớn nhất trong phút, số khung âm thanh bị mất (tràn bộ đệm I2S), thời điểm đồng bộ NTP thành công gần nhất và độ lệch đo được khi đồng bộ. Đồng bộ NTP mỗi 30 phút. Firmware kiểm định ghi số khung bị mất của mỗi buổi; khoảng có mất khung được xử lý như mục 13.
+- **Báo cáo:** số lần gián đoạn và thời gian trung bình giữa hai lần gián đoạn (MTBF = tổng giờ-thiết bị ÷ số lần gián đoạn); khi không có gián đoạn, báo cáo cận dưới 95% của MTBF là T/3 (T = tổng giờ-thiết bị, giả định phân phối mũ); tỉ lệ gói tổng hợp 10 phút nhận được trên Google Sheets (số liệu chính lấy từ thẻ nhớ, không phụ thuộc mạng); phân bố thời gian suy luận lớn nhất mỗi phút; tổng số khung bị mất; khoảng nhiệt độ chip.
+- **Thay nguồn:** đổi sạc dự phòng đã sạc đầy mỗi ngày lúc 17:00. Thời gian thay được tính là thời gian không hoạt động, không loại khỏi mẫu số của tỉ lệ thời gian hoạt động.
+- **Phép thử tải** (bổ sung mục 7.6, trước khi lắp): trong 24 giờ chạy thử có 1 giờ phát liên tục nhạc và tiếng nói từ dữ liệu mở, khoảng 75 dB(A) tại 1 m. Đạt khi thời gian suy luận lớn nhất dưới 500 ms, không mất khung, không khởi động lại.
+
+### 16.6. Bù độ trễ hệ thống
+
+Ở mỗi buổi phát lại, tính trung vị của (thời điểm sự kiện − thời điểm phát) trên 10 tiếng ho kiểm tra đầu buổi (không thuộc các ô). Nếu trung vị lệch quá 0,3 giây, trừ giá trị đó khỏi thời điểm sự kiện của buổi trước khi ghép; tầng kiểm định 2 dùng giá trị của buổi phát lại cùng tối. Tầng kiểm định 3 không bù vì thời điểm lấy trực tiếp trên tệp WAV. Độ trễ đo được được báo cáo.
+
+### 16.7. Tăng cường dữ liệu bằng vang tổng hợp
+
+Tiếng ho COUGHVID được tích chập với đáp ứng xung phòng tổng hợp (phòng hình hộp, thời gian vang 0,3–1,2 giây, khoảng cách nguồn 1–5 m, tạo trên máy tính bằng pyroomacoustics) rồi trộn nhiễu từ dữ liệu mở ở SNR 0–20 dB. Không dùng âm thanh ghi tại KTX. Mô hình có và không có tăng cường được so sánh trước khi đóng băng: chọn phiên bản có độ nhạy cao hơn trên tập kiểm tra của dữ liệu mở đã qua cùng phép vang và trộn nhiễu, trong điều kiện phát hiện sai trên phần để sửa ≤ 4 sự kiện mỗi giờ. Phiên bản được chọn ghi tại 16.13.
+
+### 16.8. Cân bằng khuếch đại giữa hai thiết bị
+
+Sau hiệu chuẩn (mục 7.5), đặt hệ số khuếch đại số cho từng thiết bị sao cho cùng một mức nhiễu hồng cho mức dBFS chênh nhau không quá 1 dB giữa TC-01 và TC-02; tín hiệu sau khuếch đại được chặn trong giới hạn 16 bit. Hệ số đóng băng cùng firmware, ghi tại 16.13; phương trình hiệu chuẩn được hiệu chỉnh tương ứng (cộng 20·log10 của hệ số).
+
+### 16.9. Phổ suy hao qua cửa và thời gian vang (khám phá)
+
+Một buổi đo ngày 11/11/2026, dự kiến 16:00–16:15, khi KTX vắng và ngoài khung đối chứng âm. TC-02 chạy firmware kiểm định, đặt tạm sát cạnh TC-01.
+
+- **Phổ suy hao qua cửa:** nhiễu hồng phát từ vị trí loa cố định trong phòng B2.103, 30 giây khi cửa mở và 30 giây khi cửa đóng. Suy hao theo từng dải 1/3 octave từ 125 Hz đến 8 kHz = mức khi cửa mở − mức khi cửa đóng.
+- **Thời gian vang:** 3 tiếng nổ bóng bay tại hành lang tầng 1 (cách thiết bị 3 m) và 3 tiếng trong phòng B2.103; tính T20 bằng tích phân ngược Schroeder, báo cáo trung vị theo dải octave 500 Hz–4 kHz.
+
+Buổi đo được thông báo và có biển “Đang ghi âm” như buổi ghi âm kiểm định; thời lượng ghi tối đa 15 phút, tính vào giới hạn 08 giờ (tổng 7,75 giờ). Tệp được xử lý và xoá như tệp ghi âm kiểm định.
+
+### 16.10. Tổng thời lượng ho mỗi đêm (khám phá)
+
+Mỗi đêm, tính tổng độ dài các sự kiện (giây) trên 100 học sinh-đêm; báo cáo cùng số sự kiện và hệ số Spearman giữa hai chuỗi. Độ phân giải của độ dài sự kiện là 0,5 giây.
+
+### 16.11. Đối chiếu thời tiết và số lượt khám hô hấp (mô tả)
+
+Nhiệt độ trung bình và độ ẩm tương đối theo ngày tại Cần Thơ, lấy từ nguồn công khai (Open-Meteo). Nếu phòng y tế đồng ý, số lượt học sinh Dorm B2 đến phòng y tế vì triệu chứng hô hấp mỗi ngày (chỉ con số tổng, không danh tính). Hai chuỗi này được trình bày cùng chuỗi đếm theo ngày, không kiểm định thống kê vì chỉ có tối đa 7 ngày.
+
+### 16.12. Bảo vệ riêng tư khi gán nhãn
+
+Người gán nhãn chỉ quyết định có hay không có tiếng ho và đánh dấu thời điểm. Không chép lại, ghi chú, trao đổi hoặc trích dẫn nội dung lời nói; đoạn có hội thoại riêng tư chỉ được nghe đủ để quyết định có tiếng ho hay không. Không giữ, chia sẻ hoặc dùng bất kỳ đoạn âm thanh nào trong báo cáo hay slide. Các đoạn 3 giây dùng cho xác minh mù được xoá cùng tệp gốc chậm nhất ngày 14/11/2026.
+
+### 16.13. Giá trị bổ sung khi đóng băng (điền trước khi chấm)
+
+| Mục | Giá trị |
+| --- | --- |
+| Hệ số khuếch đại số TC-01 · TC-02 | |
+| Phiên bản mô hình (có / không tăng cường vang) | |
+| Tham số tăng cường (thời gian vang, khoảng SNR) | |
