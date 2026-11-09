@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="841.889764pt" height="595.275591pt" viewBox="0 0 841.889764 595.275591" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:c2pa="http://c2pa.org/manifest">
+ <metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpmYzgwMzEyOC0zNTA2LTRiNjItYjk1MC0zOTdmYmM3NjVmMjQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaBRsiSreJAJAQ+fpbRNoRvYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo3MzIwZjMxNy04ZjQ2LTRiYmMtYTE1Ny1hOTA3MGFmMzZmOWJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoCCXqUdBBSwBg45T3wI2MgQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggwaFsQJcUmSaUBpgkIw2hh4CJKd5LvF23HXBki3kvzaGkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaPqJFN3kxvd5cf2xJJYu57IAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIPytLnkFZtWFJuLyQEDy3aaXeQuNATY+bJWwPTEoW5bRZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GQGNZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmZjODAzMTI4LTM1MDYtNGI2Mi1iOTUwLTM5N2ZiYzc2NWYyNC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjhlZTU1YTFjLTRkMDQtNGFmNy04YTMyLTI3ZTc1NmUxZmQwYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDBoWxAlxSZJpQGmCQjDaGHgIkp3ku8XbcdcGSLeS/NoaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgglnM8W7e4/3D41qiY6vWSco26zLGWtE2cUqWPRiVfAKuiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggnwveaHLUSCVDm46t7339A/qsNqi6OuCI+W9Vro3z3Lp0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLbQ/Mph4fQBq1jdprIQ8LIFbPCRcmshPPGLHPf4jBn1XSHvEe289AskdYNwXj/9JKhmyQnmRUCBGASeytxp8a8=</c2pa:manifest>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-09T18:32:18.249856</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 595.275591 
+L 841.889764 595.275591 
+L 841.889764 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 22.677165 572.598425 
+L 819.212598 572.598425 
+L 819.212598 22.677165 
+L 22.677165 22.677165 
+L 22.677165 572.598425 
+z
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 49.889764 306.141732 
+L 154.204724 306.141732 
+Q 158.740157 306.141732 158.740157 301.606299 
+L 158.740157 225.637795 
+Q 158.740157 221.102362 154.204724 221.102362 
+L 49.889764 221.102362 
+Q 45.354331 221.102362 45.354331 225.637795 
+L 45.354331 301.606299 
+Q 45.354331 306.141732 49.889764 306.141732 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 265.322835 487.559055 
+L 420.661417 487.559055 
+Q 425.19685 487.559055 425.19685 483.023622 
+L 425.19685 134.929134 
+Q 425.19685 130.393701 420.661417 130.393701 
+L 265.322835 130.393701 
+Q 260.787402 130.393701 260.787402 134.929134 
+L 260.787402 483.023622 
+Q 260.787402 487.559055 265.322835 487.559055 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 254.267717 273.543307 
+L 267.307087 273.543307 
+Q 270.708661 273.543307 270.708661 270.141732 
+L 270.708661 257.102362 
+Q 270.708661 253.700787 267.307087 253.700787 
+L 254.267717 253.700787 
+Q 250.866142 253.700787 250.866142 257.102362 
+L 250.866142 270.141732 
+Q 250.866142 273.543307 254.267717 273.543307 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 295.370079 110.551181 
+L 305.574803 110.551181 
+L 300.472441 103.748031 
+z
+" clip-path="url(#p22055639c6)" style="fill: #b42318; stroke: #b42318; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 340.724409 110.551181 
+L 350.929134 110.551181 
+L 345.826772 103.748031 
+z
+" clip-path="url(#p22055639c6)" style="fill: #b42318; stroke: #b42318; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 588.472441 232.440945 
+L 704.125984 232.440945 
+Q 708.661417 232.440945 708.661417 227.905512 
+L 708.661417 129.259843 
+Q 708.661417 124.724409 704.125984 124.724409 
+L 588.472441 124.724409 
+Q 583.937008 124.724409 583.937008 129.259843 
+L 583.937008 227.905512 
+Q 583.937008 232.440945 588.472441 232.440945 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 663.874016 104.88189 
+L 674.07874 104.88189 
+L 668.976378 98.07874 
+z
+" clip-path="url(#p22055639c6)" style="fill: #b42318; stroke: #b42318; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 588.472441 419.527559 
+L 704.125984 419.527559 
+Q 708.661417 419.527559 708.661417 414.992126 
+L 708.661417 293.669291 
+Q 708.661417 289.133858 704.125984 289.133858 
+L 588.472441 289.133858 
+Q 583.937008 289.133858 583.937008 293.669291 
+L 583.937008 414.992126 
+Q 583.937008 419.527559 588.472441 419.527559 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 663.874016 269.291339 
+L 674.07874 269.291339 
+L 668.976378 262.488189 
+z
+" clip-path="url(#p22055639c6)" style="fill: #b42318; stroke: #b42318; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 484.724409 451.84252 
+L 507.401575 451.84252 
+L 507.401575 443.905512 
+L 484.724409 443.905512 
+L 484.724409 451.84252 
+z
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 544.251969 454.110236 
+L 544.251969 441.637795 
+L 555.590551 447.874016 
+z
+" clip-path="url(#p22055639c6)" style="fill: #ffffff; stroke: #121513; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 527.244094 572.598425 
+L 819.212598 572.598425 
+L 819.212598 515.905512 
+L 527.244094 515.905512 
+L 527.244094 572.598425 
+z
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 158.740157 263.622047 
+L 250.866142 263.622047 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 2.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 158.740157 263.622047 
+L 250.866142 263.622047 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #ffffff; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 300.472441 130.393701 
+L 300.472441 119.055118 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 300.472441 119.055118 
+L 300.472441 110.551181 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #b42318; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 345.826772 130.393701 
+L 345.826772 119.055118 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 345.826772 119.055118 
+L 345.826772 110.551181 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #b42318; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 342.992126 487.559055 
+L 342.992126 498.897638 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 342.992126 498.897638 
+L 342.992126 507.401575 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 337.322835 507.401575 
+L 348.661417 507.401575 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 339.307087 510.519685 
+L 346.677165 510.519685 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 341.291339 513.637795 
+L 344.692913 513.637795 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 425.19685 167.244094 
+L 442.204724 167.244094 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 442.204724 167.244094 
+L 566.929134 167.244094 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 425.19685 184.251969 
+L 442.204724 184.251969 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 442.204724 184.251969 
+L 566.929134 184.251969 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 425.19685 201.259843 
+L 442.204724 201.259843 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 442.204724 201.259843 
+L 566.929134 201.259843 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 425.19685 325.984252 
+L 442.204724 325.984252 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 442.204724 325.984252 
+L 566.929134 325.984252 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 425.19685 342.992126 
+L 442.204724 342.992126 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 442.204724 342.992126 
+L 566.929134 342.992126 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 425.19685 360 
+L 442.204724 360 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 442.204724 360 
+L 566.929134 360 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 425.19685 377.007874 
+L 442.204724 377.007874 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_25">
+    <path d="M 442.204724 377.007874 
+L 566.929134 377.007874 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 425.19685 447.874016 
+L 442.204724 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 442.204724 447.874016 
+L 464.88189 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 566.929134 167.244094 
+L 583.937008 167.244094 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_29">
+    <path d="M 566.929134 184.251969 
+L 583.937008 184.251969 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_30">
+    <path d="M 566.929134 201.259843 
+L 583.937008 201.259843 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_31">
+    <path d="M 566.929134 218.267717 
+L 583.937008 218.267717 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_32">
+    <path d="M 566.929134 218.267717 
+L 549.92126 218.267717 
+L 549.92126 226.771654 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_33">
+    <path d="M 549.92126 226.771654 
+L 549.92126 235.275591 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_34">
+    <path d="M 544.251969 235.275591 
+L 555.590551 235.275591 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_35">
+    <path d="M 546.23622 238.393701 
+L 553.606299 238.393701 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_36">
+    <path d="M 548.220472 241.511811 
+L 551.622047 241.511811 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_37">
+    <path d="M 668.976378 124.724409 
+L 668.976378 113.385827 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_38">
+    <path d="M 668.976378 113.385827 
+L 668.976378 104.88189 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #b42318; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_39">
+    <path d="M 708.661417 218.267717 
+L 725.669291 218.267717 
+L 725.669291 226.771654 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_40">
+    <path d="M 725.669291 226.771654 
+L 725.669291 235.275591 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_41">
+    <path d="M 720 235.275591 
+L 731.338583 235.275591 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_42">
+    <path d="M 721.984252 238.393701 
+L 729.354331 238.393701 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_43">
+    <path d="M 723.968504 241.511811 
+L 727.370079 241.511811 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_44">
+    <path d="M 566.929134 325.984252 
+L 583.937008 325.984252 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_45">
+    <path d="M 566.929134 342.992126 
+L 583.937008 342.992126 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_46">
+    <path d="M 566.929134 360 
+L 583.937008 360 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_47">
+    <path d="M 566.929134 377.007874 
+L 583.937008 377.007874 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_48">
+    <path d="M 668.976378 289.133858 
+L 668.976378 277.795276 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_49">
+    <path d="M 668.976378 277.795276 
+L 668.976378 269.291339 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #b42318; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_50">
+    <path d="M 708.661417 394.015748 
+L 725.669291 394.015748 
+L 725.669291 402.519685 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_51">
+    <path d="M 725.669291 402.519685 
+L 725.669291 411.023622 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_52">
+    <path d="M 720 411.023622 
+L 731.338583 411.023622 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_53">
+    <path d="M 721.984252 414.141732 
+L 729.354331 414.141732 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_54">
+    <path d="M 723.968504 417.259843 
+L 727.370079 417.259843 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_55">
+    <path d="M 464.88189 447.874016 
+L 484.724409 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_56">
+    <path d="M 507.401575 447.874016 
+L 527.244094 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_57">
+    <path d="M 527.244094 447.874016 
+L 544.251969 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_58">
+    <path d="M 555.590551 447.874016 
+L 572.598425 447.874016 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_59">
+    <path d="M 555.590551 454.677165 
+L 555.590551 441.070866 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_60">
+    <path d="M 572.598425 447.874016 
+L 589.606299 447.874016 
+L 589.606299 459.212598 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_61">
+    <path d="M 589.606299 459.212598 
+L 589.606299 467.716535 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_62">
+    <path d="M 583.937008 467.716535 
+L 595.275591 467.716535 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_63">
+    <path d="M 585.92126 470.834646 
+L 593.291339 470.834646 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_64">
+    <path d="M 587.905512 473.952756 
+L 591.307087 473.952756 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #121513; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_65">
+    <path d="M 527.244094 530.07874 
+L 819.212598 530.07874 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #c9cfcb; stroke-width: 0.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_66">
+    <path d="M 527.244094 543.685039 
+L 819.212598 543.685039 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #c9cfcb; stroke-width: 0.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_67">
+    <path d="M 527.244094 557.291339 
+L 819.212598 557.291339 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #c9cfcb; stroke-width: 0.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_68">
+    <path d="M 575.433071 572.598425 
+L 575.433071 515.905512 
+" clip-path="url(#p22055639c6)" style="fill: none; stroke: #c9cfcb; stroke-width: 0.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #0f766e" x="39.685039" y="34.488602" transform="rotate(-0 39.685039 34.488602)">TussiCount</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="39.685039" y="55.043799" transform="rotate(-0 39.685039 55.043799)">SƠ ĐỒ MẠCH ĐIỆN – MỘT BỘ THIẾT BỊ</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #5a635e" x="39.685039" y="69.113173" transform="rotate(-0 39.685039 69.113173)">ESP32-S3 N16R8 đọc micro INMP441 qua I2S, ghi thẻ microSD qua SPI, báo trạng thái bằng LED; nguồn 5 V từ sạc dự phòng qua cáp USB-C.</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="102.047244" y="235.947874" transform="rotate(-0 102.047244 235.947874)">Sạc dự phòng</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="102.047244" y="246.404457" transform="rotate(-0 102.047244 246.404457)">CUKTECH PB100P · 10.000 mAh</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="102.047244" y="279.926776" transform="rotate(-0 102.047244 279.926776)">Cổng USB-C ra 5 V</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="102.047244" y="292.388681" transform="rotate(-0 102.047244 292.388681)">bật chế độ dòng thấp: bấm nút 2 lần</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="342.992126" y="145.239213" transform="rotate(-0 342.992126 145.239213)">ESP32-S3-DevKitC-1</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="342.992126" y="155.695795" transform="rotate(-0 342.992126 155.695795)">N16R8 · flash 16 MB · PSRAM 8 MB</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="342.992126" y="166.813878" transform="rotate(-0 342.992126 166.813878)">ổn áp trên bo: 5 V → 3,3 V</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="274.96063" y="266.022047" transform="rotate(-0 274.96063 266.022047)">USB-C</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 6.2px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="209.76378" y="253.995035" transform="rotate(-0 209.76378 253.995035)">cáp USB-C ↔ USB-C</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="209.76378" y="277.585559" transform="rotate(-0 209.76378 277.585559)">VBUS 5 V, GND</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: middle; fill: #b42318" x="300.472441" y="101.270669" transform="rotate(-0 300.472441 101.270669)">3V3</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: middle; fill: #b42318" x="345.826772" y="101.270669" transform="rotate(-0 345.826772 101.270669)">5V</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: middle; fill: #121513" x="342.992126" y="481.455118" transform="rotate(-0 342.992126 481.455118)">GND</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="169.644094" transform="rotate(-0 420.944882 169.644094)">GPIO4</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="163.808268" transform="rotate(-0 450.708661 163.808268)">I2S_SCK</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="186.651969" transform="rotate(-0 420.944882 186.651969)">GPIO5</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="180.816142" transform="rotate(-0 450.708661 180.816142)">I2S_WS</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="203.659843" transform="rotate(-0 420.944882 203.659843)">GPIO6</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="197.824016" transform="rotate(-0 450.708661 197.824016)">I2S_SD</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="328.384252" transform="rotate(-0 420.944882 328.384252)">GPIO12</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="322.548425" transform="rotate(-0 450.708661 322.548425)">SPI_SCK</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="345.392126" transform="rotate(-0 420.944882 345.392126)">GPIO11</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="339.556299" transform="rotate(-0 450.708661 339.556299)">SPI_MOSI</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="362.4" transform="rotate(-0 420.944882 362.4)">GPIO13</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="356.564173" transform="rotate(-0 450.708661 356.564173)">SPI_MISO</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="379.407874" transform="rotate(-0 420.944882 379.407874)">GPIO10</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="373.572047" transform="rotate(-0 450.708661 373.572047)">SD_CS</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="420.944882" y="450.274016" transform="rotate(-0 420.944882 450.274016)">GPIO7</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 5.2px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #0f766e" x="450.708661" y="444.438189" transform="rotate(-0 450.708661 444.438189)">LED</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="646.299213" y="139.569921" transform="rotate(-0 646.299213 139.569921)">Micro INMP441</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="646.299213" y="150.026504" transform="rotate(-0 646.299213 150.026504)">MEMS số, giao tiếp I2S</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="169.644094" transform="rotate(-0 588.188976 169.644094)">SCK</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="186.651969" transform="rotate(-0 588.188976 186.651969)">WS</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="203.659843" transform="rotate(-0 588.188976 203.659843)">SD</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="220.667717" transform="rotate(-0 588.188976 220.667717)">L/R</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: end; fill: #5a635e" x="545.669291" y="211.60128" transform="rotate(-0 545.669291 211.60128)">kênh trái</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 5px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #5a635e" x="672.377953" y="120.363189" transform="rotate(-0 672.377953 120.363189)">VDD</text>
+   </g>
+   <g id="text_41">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: middle; fill: #b42318" x="668.976378" y="95.601378" transform="rotate(-0 668.976378 95.601378)">3V3</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="704.409449" y="220.667717" transform="rotate(-0 704.409449 220.667717)">GND</text>
+   </g>
+   <g id="text_43">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="646.299213" y="303.97937" transform="rotate(-0 646.299213 303.97937)">Module thẻ microSD</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="646.299213" y="314.435953" transform="rotate(-0 646.299213 314.435953)">SPI · ổn áp 3,3 V + đệm mức</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="328.384252" transform="rotate(-0 588.188976 328.384252)">SCK</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="345.392126" transform="rotate(-0 588.188976 345.392126)">MOSI</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="362.4" transform="rotate(-0 588.188976 362.4)">MISO</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #121513" x="588.188976" y="379.407874" transform="rotate(-0 588.188976 379.407874)">CS</text>
+   </g>
+   <g id="text_49">
+    <text style="font-size: 5px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: start; fill: #5a635e" x="672.377953" y="284.772638" transform="rotate(-0 672.377953 284.772638)">VCC</text>
+   </g>
+   <g id="text_50">
+    <text style="font-weight: 700; font-size: 7px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: middle; fill: #b42318" x="668.976378" y="260.010827" transform="rotate(-0 668.976378 260.010827)">5V</text>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 6.4px; font-family: 'IBM Plex Mono', 'DejaVu Sans Mono'; text-anchor: end; fill: #121513" x="704.409449" y="396.415748" transform="rotate(-0 704.409449 396.415748)">GND</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 5.2px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="634.96063" y="410.099976" transform="rotate(-0 634.96063 410.099976)">thẻ microSD 32 GB, FAT32</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 6.4px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="496.062992" y="440.021291" transform="rotate(-0 496.062992 440.021291)">R1 330 Ω</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 552.964628 438.460169 
+Q 554.455104 436.820645 555.494337 435.677489 
+" style="fill: none; stroke: #b42318; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 553.826108 436.323255 
+L 555.494337 435.677489 
+L 555.010013 437.399532 
+z
+" style="fill: #b42318; stroke: #b42318; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 558.066991 438.460169 
+Q 559.557466 436.820645 560.596699 435.677489 
+" style="fill: none; stroke: #b42318; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 558.928471 436.323255 
+L 560.596699 435.677489 
+L 560.112375 437.399532 
+z
+" style="fill: #b42318; stroke: #b42318; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 6.4px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="549.92126" y="464.399244" transform="rotate(-0 549.92126 464.399244)">LED1 đỏ 3 mm</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="535.748031" y="425.617028" transform="rotate(-0 535.748031 425.617028)">chân dài (+)</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 5px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #5a635e" x="578.267717" y="425.617028" transform="rotate(-0 578.267717 425.617028)">chân ngắn (−)</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 5.4px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #121513" x="527.244094" y="479.622295" transform="rotate(-0 527.244094 479.622295)">I ≈ (3,3 − 1,9) V / 330 Ω ≈ 4 mA</text>
+   </g>
+   <g id="text_58">
+    <text style="font-weight: 700; font-size: 6.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #0f766e" x="45.354331" y="336.916783" transform="rotate(-0 45.354331 336.916783)">GHI CHÚ</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="352.493705" transform="rotate(-0 45.354331 352.493705)">1. Các điểm cùng tên lưới (3V3, 5V) được nối với nhau;</text>
+   </g>
+   <g id="text_60">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="364.399217" transform="rotate(-0 45.354331 364.399217)">    ký hiệu đất là chân GND của bo.</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="376.304728" transform="rotate(-0 45.354331 376.304728)">2. INMP441 chỉ cấp 3,3 V. L/R nối GND</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="388.21024" transform="rotate(-0 45.354331 388.21024)">    để micro xuất ở kênh trái.</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="400.115752" transform="rotate(-0 45.354331 400.115752)">3. Module thẻ cấp 5 V vì có ổn áp 3,3 V</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="412.021264" transform="rotate(-0 45.354331 412.021264)">    riêng; tín hiệu ra là 3,3 V.</text>
+   </g>
+   <g id="text_65">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="423.926776" transform="rotate(-0 45.354331 423.926776)">4. Không dùng GPIO0, 3, 45, 46 (khởi động),</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="435.832287" transform="rotate(-0 45.354331 435.832287)">    GPIO19, 20 (USB), GPIO26–37 (flash, PSRAM).</text>
+   </g>
+   <g id="text_67">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="447.737799" transform="rotate(-0 45.354331 447.737799)">5. Bo không lỗ bắt vít; cố định trong vỏ v3.1</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="45.354331" y="459.643311" transform="rotate(-0 45.354331 459.643311)">    bằng băng keo xốp 1 mm.</text>
+   </g>
+   <g id="text_69">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #5a635e" x="532.913386" y="525.333591" transform="rotate(-0 532.913386 525.333591)">Đề tài</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="581.102362" y="525.407091" transform="rotate(-0 581.102362 525.407091)">TussiCount – đếm tiếng ho tự động tại ký túc xá</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #5a635e" x="532.913386" y="538.93989" transform="rotate(-0 532.913386 538.93989)">Nhóm</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="581.102362" y="539.045109" transform="rotate(-0 581.102362 539.045109)">LÒ VI SÓNG · 12T1 · THPT FPT Cần Thơ</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #5a635e" x="532.913386" y="552.546189" transform="rotate(-0 532.913386 552.546189)">Bản vẽ</text>
+   </g>
+   <g id="text_74">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="581.102362" y="552.619689" transform="rotate(-0 581.102362 552.619689)">Sơ đồ nguyên lý</text>
+   </g>
+   <g id="text_75">
+    <text style="font-size: 5.6px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #5a635e" x="532.913386" y="566.152488" transform="rotate(-0 532.913386 566.152488)">Phiên bản</text>
+   </g>
+   <g id="text_76">
+    <text style="font-size: 5.8px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: start; fill: #121513" x="581.102362" y="566.225988" transform="rotate(-0 581.102362 566.225988)">1.0 · 09/11/2026 · trang 1/2</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p22055639c6">
+   <rect x="0" y="0" width="841.889764" height="595.275591"/>
+  </clipPath>
+ </defs>
+</svg>
