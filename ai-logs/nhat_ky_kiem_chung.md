@@ -25,3 +25,14 @@ Mỗi lần nhờ trợ lý AI viết mã, nhóm ghi: công cụ, phép thử đ
 - **Phép thử đã chạy:** biên dịch cả 4 bài với Arduino-ESP32 3.3.12, cấu hình ESP32S3 Dev Module, 16 MB flash, OPI PSRAM: không lỗi.
 - **Lỗi của AI phát hiện khi biên dịch:** T1 thiếu `#include "esp_mac.h"`; đã sửa.
 - **Còn chờ:** chạy trên phần cứng thật và ghi số liệu từng bài (Flash, PSRAM, mức dBFS, tốc độ ghi thẻ, chất lượng tệp WAV).
+
+## 09/11/2026 · Dữ liệu và mô hình nền trên Edge Impulse (việc t17)
+
+- **Mã:** `tools/chuan_hoa_am_thanh/` (chuẩn bị dữ liệu 16 kHz, phép thử, công cụ tải lên) và `tools/mo_hinh_nen/` (khảo sát sàn nhiễu MFE, tập kiểm tra độ bền, ghi và phân tích điểm). Báo cáo: `results/mo_hinh_nen_v1.md`.
+- **Phép thử đã chạy:** `kiem_tra.py` trên 16.639 đoạn: đạt (định dạng, mức, không rò rỉ nhóm, nhãn, số tệp). Công cụ tải lên chạy thử với `curl` giả lập trước (chia lô, nhãn, chạy lại, kiểm tra không có key trong mọi tệp đã ghi), rồi chạy thật: số mẫu trên dự án khớp số tệp (13.174 / 3.465), 0 lỗi, 0 trùng. Metadata nhóm kiểm tra lại trên Edge Impulse: 0 nhóm nằm ở cả hai tập. `phan_tich_kiem_tra.py` chạy trên điểm giả lập trước khi có điểm thật. Điểm chép từ trình duyệt sang máy được đối chiếu với ma trận nhầm lẫn tính trong trình duyệt: khớp từng ô; thứ tự mẫu kiểm bằng SHA-256 danh sách tên.
+- **Lỗi và rủi ro phát hiện:**
+  - Ở sàn nhiễu mặc định −52 dB của MFE, đoạn ho nhỏ nhất gần như bị xoá; thử thêm −72 dB, chọn theo validation với quy tắc ghi trước.
+  - Dữ liệu COUGHVID có nền gần như im lặng, khác hẳn nền của đoạn không ho. Tập kiểm tra độ bền xác nhận mô hình nền học theo lối tắt này: độ nhạy 93,2% khi sạch, còn 75,8% / 51,0% / 26,8% ở SNR 20 / 10 / 0 dB.
+  - Thư mục Documents của An đồng bộ iCloud: không được để âm thanh KTX trong kho.
+- **Giới hạn của AI cần ghi:** trợ lý AI thao tác Edge Impulse qua trình duyệt đã đăng nhập của An; An tự dán API key vào hộp thoại, AI không lưu key. Edge Impulse không cho đặt seed nên số liệu huấn luyện lại có thể lệch nhẹ; mô hình đã dùng lưu ở Versioning v1 của dự án.
+- **Còn chờ:** mô hình có tăng cường dữ liệu (Protocol 16.7) so trên cùng tập kiểm tra và tập độ bền; nghe lại các đoạn ho bị bỏ sót có điểm gần 0 (nghi nhãn sai); đo thời gian MFE và mạng nơ-ron thật trên ESP32-S3.

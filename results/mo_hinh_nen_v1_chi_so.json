@@ -1,0 +1,326 @@
+{
+  "mo_hinh": "mo_hinh_nen_v1",
+  "so_mau": 3465,
+  "so_ho": 1595,
+  "so_khong_ho": 1870,
+  "mau_thieu_so_voi_danh_sach": 0,
+  "ROC_AUC": 0.9907,
+  "theo_nguong": [
+    {
+      "nguong": 0.5,
+      "TP": 1512,
+      "FN": 83,
+      "TN": 1812,
+      "FP": 58,
+      "do_nhay": 0.948,
+      "do_nhay_wilson95": [
+        0.9359,
+        0.9578
+      ],
+      "do_dac_hieu": 0.969,
+      "do_dac_hieu_wilson95": [
+        0.9601,
+        0.9759
+      ],
+      "do_chinh_xac_duong": 0.9631,
+      "F1": 0.9555,
+      "do_chinh_xac_tong": 0.9593,
+      "do_chinh_xac_can_bang": 0.9585,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 223.3
+    },
+    {
+      "nguong": 0.6,
+      "TP": 1489,
+      "FN": 106,
+      "TN": 1828,
+      "FP": 42,
+      "do_nhay": 0.9335,
+      "do_nhay_wilson95": [
+        0.9202,
+        0.9448
+      ],
+      "do_dac_hieu": 0.9775,
+      "do_dac_hieu_wilson95": [
+        0.9698,
+        0.9833
+      ],
+      "do_chinh_xac_duong": 0.9726,
+      "F1": 0.9527,
+      "do_chinh_xac_tong": 0.9573,
+      "do_chinh_xac_can_bang": 0.9555,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 161.7
+    },
+    {
+      "nguong": 0.7,
+      "TP": 1461,
+      "FN": 134,
+      "TN": 1836,
+      "FP": 34,
+      "do_nhay": 0.916,
+      "do_nhay_wilson95": [
+        0.9014,
+        0.9286
+      ],
+      "do_dac_hieu": 0.9818,
+      "do_dac_hieu_wilson95": [
+        0.9747,
+        0.987
+      ],
+      "do_chinh_xac_duong": 0.9773,
+      "F1": 0.9456,
+      "do_chinh_xac_tong": 0.9515,
+      "do_chinh_xac_can_bang": 0.9489,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 130.9
+    },
+    {
+      "nguong": 0.8,
+      "TP": 1406,
+      "FN": 189,
+      "TN": 1848,
+      "FP": 22,
+      "do_nhay": 0.8815,
+      "do_nhay_wilson95": [
+        0.8647,
+        0.8965
+      ],
+      "do_dac_hieu": 0.9882,
+      "do_dac_hieu_wilson95": [
+        0.9823,
+        0.9922
+      ],
+      "do_chinh_xac_duong": 0.9846,
+      "F1": 0.9302,
+      "do_chinh_xac_tong": 0.9391,
+      "do_chinh_xac_can_bang": 0.9349,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 84.7
+    },
+    {
+      "nguong": 0.9,
+      "TP": 1310,
+      "FN": 285,
+      "TN": 1857,
+      "FP": 13,
+      "do_nhay": 0.8213,
+      "do_nhay_wilson95": [
+        0.8018,
+        0.8393
+      ],
+      "do_dac_hieu": 0.993,
+      "do_dac_hieu_wilson95": [
+        0.9881,
+        0.9959
+      ],
+      "do_chinh_xac_duong": 0.9902,
+      "F1": 0.8979,
+      "do_chinh_xac_tong": 0.914,
+      "do_chinh_xac_can_bang": 0.9072,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 50.1
+    },
+    {
+      "nguong": 0.95,
+      "TP": 1213,
+      "FN": 382,
+      "TN": 1863,
+      "FP": 7,
+      "do_nhay": 0.7605,
+      "do_nhay_wilson95": [
+        0.7389,
+        0.7808
+      ],
+      "do_dac_hieu": 0.9963,
+      "do_dac_hieu_wilson95": [
+        0.9923,
+        0.9982
+      ],
+      "do_chinh_xac_duong": 0.9943,
+      "F1": 0.8618,
+      "do_chinh_xac_tong": 0.8877,
+      "do_chinh_xac_can_bang": 0.8784,
+      "bao_nham_moi_gio_uoc_luong_bi_quan": 27.0
+    }
+  ],
+  "bootstrap_nhom_95_nguong_0_5": {
+    "so_nhom_ho": 597,
+    "so_nhom_khong_ho": 347,
+    "do_nhay": [
+      0.936,
+      0.9594
+    ],
+    "do_dac_hieu": [
+      0.9567,
+      0.9792
+    ],
+    "F1": [
+      0.9454,
+      0.9642
+    ]
+  },
+  "do_nhay_theo_muc_dinh_dBFS": [
+    {
+      "muc": "-35..-29",
+      "n": 335,
+      "dung": 305,
+      "do_nhay": 0.9104,
+      "wilson95": [
+        0.875,
+        0.9366
+      ]
+    },
+    {
+      "muc": "-29..-19",
+      "n": 477,
+      "dung": 457,
+      "do_nhay": 0.9581,
+      "wilson95": [
+        0.9361,
+        0.9727
+      ]
+    },
+    {
+      "muc": "-19..-3",
+      "n": 783,
+      "dung": 750,
+      "do_nhay": 0.9579,
+      "wilson95": [
+        0.9414,
+        0.9698
+      ]
+    }
+  ],
+  "do_dac_hieu_theo_nguon": [
+    {
+      "nguon": "ESC-50",
+      "n": 1130,
+      "dung": 1102,
+      "do_dac_hieu": 0.9752,
+      "wilson95": [
+        0.9644,
+        0.9828
+      ]
+    },
+    {
+      "nguon": "CommonVoice-vi",
+      "n": 740,
+      "dung": 710,
+      "do_dac_hieu": 0.9595,
+      "wilson95": [
+        0.9427,
+        0.9715
+      ]
+    }
+  ],
+  "lop_ESC50_bao_nham_nhieu_nhat": [
+    {
+      "lop": "clock_tick",
+      "bao_nham": 7,
+      "tong": 24,
+      "ti_le": 0.292
+    },
+    {
+      "lop": "dog",
+      "bao_nham": 5,
+      "tong": 23,
+      "ti_le": 0.217
+    },
+    {
+      "lop": "sneezing",
+      "bao_nham": 4,
+      "tong": 20,
+      "ti_le": 0.2
+    },
+    {
+      "lop": "laughing",
+      "bao_nham": 4,
+      "tong": 24,
+      "ti_le": 0.167
+    },
+    {
+      "lop": "glass_breaking",
+      "bao_nham": 2,
+      "tong": 12,
+      "ti_le": 0.167
+    },
+    {
+      "lop": "pig",
+      "bao_nham": 1,
+      "tong": 17,
+      "ti_le": 0.059
+    },
+    {
+      "lop": "door_wood_knock",
+      "bao_nham": 1,
+      "tong": 21,
+      "ti_le": 0.048
+    },
+    {
+      "lop": "chirping_birds",
+      "bao_nham": 1,
+      "tong": 24,
+      "ti_le": 0.042
+    },
+    {
+      "lop": "hen",
+      "bao_nham": 1,
+      "tong": 24,
+      "ti_le": 0.042
+    },
+    {
+      "lop": "drinking_sipping",
+      "bao_nham": 1,
+      "tong": 23,
+      "ti_le": 0.043
+    }
+  ],
+  "ho_bi_bo_sot_thap_nhat": [
+    {
+      "file": "cough.cvd_97da4b5d-4811-403d-9ab5-9f45f256595e_e3.wav",
+      "p_cough": 0.0,
+      "peak_dbfs": "-23.7"
+    },
+    {
+      "file": "cough.cvd_97da4b5d-4811-403d-9ab5-9f45f256595e_e1.wav",
+      "p_cough": 0.008,
+      "peak_dbfs": "-29.26"
+    },
+    {
+      "file": "cough.cvd_e3e42e5d-89a7-4162-8827-7ac59144f759_e3.wav",
+      "p_cough": 0.008,
+      "peak_dbfs": "-19.62"
+    },
+    {
+      "file": "cough.cvd_8debc554-dee0-49c8-8a54-34c26de4190d_e3.wav",
+      "p_cough": 0.012,
+      "peak_dbfs": "-13.46"
+    },
+    {
+      "file": "cough.cvd_cd340ce2-ce7b-4e22-ba8c-27e12902c13c_e3.wav",
+      "p_cough": 0.02,
+      "peak_dbfs": "-5.41"
+    },
+    {
+      "file": "cough.cvd_0dbd034b-71d1-4927-8f33-c0645f42c47a_e2.wav",
+      "p_cough": 0.023,
+      "peak_dbfs": "-10.14"
+    },
+    {
+      "file": "cough.cvd_44e53d2e-bb10-4ef9-959a-57966d10bf59_e2.wav",
+      "p_cough": 0.027,
+      "peak_dbfs": "-21.91"
+    },
+    {
+      "file": "cough.cvd_90c9fcf9-bfa3-48dc-b12a-456d2e2f29ce_e2.wav",
+      "p_cough": 0.027,
+      "peak_dbfs": "-13.25"
+    },
+    {
+      "file": "cough.cvd_9b5e2509-569a-4619-9e32-1f05b2fa8627_e3.wav",
+      "p_cough": 0.039,
+      "peak_dbfs": "-12.51"
+    },
+    {
+      "file": "cough.cvd_c87e1979-9259-4876-a5e0-318d27423f82_e3.wav",
+      "p_cough": 0.039,
+      "peak_dbfs": "-32.48"
+    }
+  ]
+}

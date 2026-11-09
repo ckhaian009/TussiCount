@@ -1,0 +1,74 @@
+{
+  "mo_hinh": "mo_hinh_nen_v1",
+  "so_tieng_ho": 500,
+  "nguong": 0.5,
+  "theo_muc": [
+    {
+      "muc": "sach (khong tron)",
+      "n": 500,
+      "dung": 466,
+      "do_nhay": 0.932,
+      "wilson95": [
+        0.9065,
+        0.9509
+      ]
+    },
+    {
+      "muc": "SNR 20 dB",
+      "n": 500,
+      "dung": 379,
+      "do_nhay": 0.758,
+      "wilson95": [
+        0.7186,
+        0.7935
+      ],
+      "nen_ESC-50": {
+        "n": 253,
+        "do_nhay": 0.6996
+      },
+      "nen_CommonVoice-vi": {
+        "n": 247,
+        "do_nhay": 0.8178
+      },
+      "dung_khi_sach_sai_khi_tron": 93
+    },
+    {
+      "muc": "SNR 10 dB",
+      "n": 500,
+      "dung": 255,
+      "do_nhay": 0.51,
+      "wilson95": [
+        0.4663,
+        0.5536
+      ],
+      "nen_ESC-50": {
+        "n": 253,
+        "do_nhay": 0.3597
+      },
+      "nen_CommonVoice-vi": {
+        "n": 247,
+        "do_nhay": 0.664
+      },
+      "dung_khi_sach_sai_khi_tron": 214
+    },
+    {
+      "muc": "SNR 0 dB",
+      "n": 500,
+      "dung": 134,
+      "do_nhay": 0.268,
+      "wilson95": [
+        0.2311,
+        0.3085
+      ],
+      "nen_ESC-50": {
+        "n": 253,
+        "do_nhay": 0.166
+      },
+      "nen_CommonVoice-vi": {
+        "n": 247,
+        "do_nhay": 0.3725
+      },
+      "dung_khi_sach_sai_khi_tron": 334
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+Phan vi nang luong mel (dB) theo muc dinh cua doan (trung vi tren cac doan):
+  cough dinh -35..-29 dBFS (n=126): P99 -36.2 | P90 -47.7 | P50 -75.0 | P10 -100.5
+  cough dinh -29..-19 dBFS (n=155): P99 -29.0 | P90 -40.9 | P50 -67.7 | P10 -100.0
+  cough dinh -19..-2.9 dBFS (n=303): P99 -15.5 | P90 -27.5 | P50 -56.2 | P10 -93.2
+  noise dinh -35..-29 dBFS (n=125): P99 -39.9 | P90 -50.9 | P50 -66.7 | P10 -82.5
+  noise dinh -29..-19 dBFS (n=196): P99 -32.5 | P90 -43.1 | P50 -59.7 | P10 -74.1
+  noise dinh -19..-2.9 dBFS (n=295): P99 -18.4 | P90 -29.0 | P50 -45.2 | P10 -60.8
+Ti le o duoc giu lai (> san nhieu):
+  san -52 dB: cough 0.350 (doan nho 0.176); noise 0.467 (doan nho 0.194)
+  san -60 dB: cough 0.449 (doan nho 0.298); noise 0.617 (doan nho 0.375)
+  san -66 dB: cough 0.517 (doan nho 0.384); noise 0.713 (doan nho 0.506)
+  san -72 dB: cough 0.580 (doan nho 0.461); noise 0.789 (doan nho 0.617)
+  san -80 dB: cough 0.657 (doan nho 0.548); noise 0.864 (doan nho 0.744)
+  san -90 dB: cough 0.775 (doan nho 0.684); noise 0.933 (doan nho 0.874)
+processing-blocks commit 9b0ceb2b5d22658d3193a5b77dc773cfc8d4cab0 (Fri Nov 14 15:29:14 2025 -0800)

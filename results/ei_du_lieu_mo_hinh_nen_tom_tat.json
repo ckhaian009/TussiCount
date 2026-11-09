@@ -1,0 +1,29 @@
+{
+  "seed": 2026,
+  "sample_rate": 16000,
+  "segment_s": 1.0,
+  "level_range_dbfs": [
+    -35.0,
+    -3.0
+  ],
+  "segments": {
+    "testing|cough|COUGHVID": 1595,
+    "testing|noise|CommonVoice-vi": 740,
+    "testing|noise|ESC-50": 1130,
+    "training|cough|COUGHVID": 6362,
+    "training|noise|CommonVoice-vi": 2285,
+    "training|noise|ESC-50": 4527
+  },
+  "groups": {
+    "COUGHVID|testing": 597,
+    "COUGHVID|training": 2392,
+    "CommonVoice-vi|testing": 45,
+    "CommonVoice-vi|training": 183,
+    "ESC-50|testing": 1,
+    "ESC-50|training": 4
+  },
+  "skipped_or_notes": {
+    "khong_co_vung": 10,
+    "giai_ma_loi": 1
+  }
+}

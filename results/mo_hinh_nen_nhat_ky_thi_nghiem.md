@@ -1,0 +1,17 @@
+# Nhật ký thí nghiệm mô hình nền (Edge Impulse, dự án 1156522)
+
+Ghi theo thời gian thực, giờ Việt Nam (UTC+7).
+
+- 2026-11-09 22:17 – Tải xong 16.639 đoạn (training 13.174, testing 3.465), số mẫu trên dự án khớp số tệp trên máy, 0 lỗi, 0 trùng.
+- 2026-11-09 22:19 – Gắn metadata `nguon` (COUGHVID / ESC-50 / CommonVoice-vi) và `nhom` (bản ghi COUGHVID; đoạn gốc ESC-50 bỏ hậu tố A/B/C; người nói Common Voice) cho cả 16.639 mẫu; kiểm tra lại trên Edge Impulse: 0 nhóm nằm ở cả hai tập.
+- 2026-11-09 22:19 – Impulse #1: cửa sổ 1.000 ms, bước 500 ms, 16 kHz, zero-pad; MFE mặc định (khung 0,02 s, bước 0,01 s, 40 bộ lọc, FFT 256, tần số thấp 0, sàn nhiễu −52 dB); Classifier mặc định của Edge Impulse (Reshape 40 cột → Conv1D 8 lọc k3 + pool → Dropout 0,25 → Conv1D 16 lọc k3 + pool → Dropout 0,25 → Flatten → Dense 2), 100 epoch, tốc độ học 0,005, batch 32, validation 20% tách theo metadata `nhom`, không tăng cường dữ liệu, xuất int8. Thiết bị đích để ước lượng: Espressif ESP-EYE (ESP32 240 MHz).
+- 2026-11-09 22:27 – Impulse #2 "San nhieu -72 dB": giống hệt #1, chỉ đổi sàn nhiễu MFE thành −72 dB (lý do: results/mfe_khao_sat_san_nhieu.txt – ở −52 dB, đoạn ho nhỏ nhất chỉ còn 17,6% ô phổ).
+- 2026-11-09 22:44 – **Quy tắc chọn cấu hình, ghi trước khi biết kết quả #2 và trước khi chạy tập kiểm tra:** chọn impulse có độ chính xác validation (int8) cao hơn; nếu chênh lệch dưới 0,5 điểm phần trăm thì giữ cấu hình mặc định (#1) vì đơn giản hơn. Tập testing chỉ dùng để báo cáo, không dùng để chọn.
+- 2026-11-09 22:44 – Kết quả validation Impulse #1 (n = 2.687, int8): độ chính xác 93,04%; ho đúng 91,36% (1.184/1.296); không ho đúng 94,61% (1.316/1.391). Float32: 93,15%. Ước lượng trên ESP32 240 MHz: MFE 350 ms, 20 KB RAM; mạng nơ-ron 11 ms, 14,7 KB RAM, 40,4 KB flash (EON, int8).
+- 2026-11-09 22:55 – Kết quả validation Impulse #2 (cùng tập validation, n = 2.687, int8): độ chính xác 95,20%; ho đúng 93,36% (1.210/1.296); không ho đúng 96,91% (1.348/1.391). Float32: 95,16%.
+- 2026-11-09 22:55 – Áp dụng quy tắc đã ghi: #2 hơn #1 2,16 điểm phần trăm (> 0,5) → **chọn Impulse #2 (sàn nhiễu −72 dB) làm mô hình nền v1**. Chạy tập testing cho cả hai impulse để báo cáo; kết quả testing không làm thay đổi lựa chọn.
+- 2026-11-09 22:58 – Tập testing (3.465 đoạn), Impulse #2 = mô hình nền v1, ngưỡng 0,5: int8 TP 1.512, FN 83, TN 1.812, FP 58 (độ nhạy 94,80%, độ đặc hiệu 96,90%); float32 TP 1.507, FN 88, TN 1.819, FP 51. Điểm từng mẫu: results/mo_hinh_nen_v1_diem_tung_mau.csv (int8), results/mo_hinh_nen_v1_float32_diem_tung_mau.csv; SHA-256 danh sách tên khớp bảng kê.
+- 2026-11-09 23:05 – Tập testing, Impulse #1 (đối chiếu), int8, ngưỡng 0,5: TP 1.476, FN 119, TN 1.796, FP 74 (độ nhạy 92,54%, độ đặc hiệu 96,04%). Thứ tự hai cấu hình trên tập testing giống trên validation.
+- 2026-11-09 23:03 – Tải tập kiểm tra độ bền (1.500 đoạn ho trộn nền, nhãn cough, tập testing; tools/mo_hinh_nen/tao_tap_kiem_tra_ben.py) lên dự án; đối chiếu: testing 4.965 mẫu = 3.465 + 1.500. Gắn metadata `nguon` = tron_SNR20/10/0, `nhom` = bản ghi COUGHVID gốc.
+- 2026-11-09 23:15 – Model testing Impulse #2 (int8) trên tập testing mới: 3.465 đoạn cũ cho đúng lại ma trận TP 1.512 / FN 83 / TN 1.812 / FP 58 (kết quả phân loại tất định). Tập độ bền, ngưỡng 0,5: SNR 20 dB 379/500 (75,8%), SNR 10 dB 255/500 (51,0%), SNR 0 dB 134/500 (26,8%); cùng 500 tiếng ho khi sạch: 466/500 (93,2%).
+- 2026-11-09 23:20 – Lưu phiên bản dự án Edge Impulse v1 (Versioning, riêng tư, không công bố).

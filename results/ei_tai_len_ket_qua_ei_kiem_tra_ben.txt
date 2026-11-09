@@ -1,0 +1,7 @@
+Tải data/ei_kiem_tra_ben lên Edge Impulse – dự án 1156522
+Thời điểm kết thúc: 2026-11-09 23:02:49 +0700
+Cách tải: Ingestion API /api/<training|testing>/files, 100 tệp mỗi yêu cầu, nhãn theo thư mục, chặn tệp trùng.
+Lô hoàn tất: 15/15
+Trên máy (mọi thư mục đã tải): training 13174 tệp, testing 4965 tệp
+Trên dự án:  training 13174 mẫu, testing 4965 mẫu
+Nhật ký chi tiết: data/ei_kiem_tra_ben/nhat_ky_tai_len.txt (không chứa API key)
