@@ -224,3 +224,6 @@ data/
 *.wav
 *.webm
 .DS_Store
+
+# Tệp do ứng dụng Claude lưu vào thư mục kho, không đưa lên GitHub
+Claude outputs/
