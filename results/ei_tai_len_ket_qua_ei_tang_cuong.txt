@@ -1,0 +1,7 @@
+Tải data/ei_tang_cuong lên Edge Impulse – dự án 1156522
+Thời điểm kết thúc: 2026-11-10 20:12:19 +0700
+Cách tải: Ingestion API /api/<training|testing>/files, 100 tệp mỗi yêu cầu, nhãn theo thư mục, chặn tệp trùng.
+Lô hoàn tất: 128/128
+Trên máy (mọi thư mục đã tải): training 25898 tệp, testing 4965 tệp
+Trên dự án:  training 25898 mẫu, testing 4965 mẫu
+Nhật ký chi tiết: data/ei_tang_cuong/nhat_ky_tai_len.txt (không chứa API key)

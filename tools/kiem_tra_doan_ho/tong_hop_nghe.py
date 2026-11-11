@@ -23,8 +23,16 @@ def wilson(k, n, z=1.96):
     return (c - m) / d, (c + m) / d
 
 
+def doc_phieu(path):
+    """Đọc phiếu kể cả khi Excel lưu kèm BOM hoặc dùng dấu chấm phẩy làm dấu phân cách."""
+    text = open(path, encoding="utf-8-sig").read()
+    delim = ";" if text.splitlines()[0].count(";") > text.splitlines()[0].count(",") else ","
+    rows = list(csv.DictReader(text.splitlines(), delimiter=delim))
+    return [{k.strip(): (v or "").strip() for k, v in r.items() if k} for r in rows]
+
+
 def main():
-    ph = list(csv.DictReader(open("results/nghe_thu_50_phieu.csv", encoding="utf-8")))
+    ph = doc_phieu("results/nghe_thu_50_phieu.csv")
     trong = [p["stt"] for p in ph if p["ket_qua"].strip().upper() not in MA]
     if trong:
         print("Con", len(trong), "dong chua dien hoac sai ma:", ", ".join(trong))

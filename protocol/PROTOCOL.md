@@ -237,7 +237,7 @@ Sau hiệu chuẩn (mục 7.5), đặt hệ số khuếch đại số cho từng
 
 ### 16.9. Phổ suy hao qua cửa và thời gian vang (khám phá)
 
-Một buổi đo ngày 11/11/2026, dự kiến 16:00–16:15, khi KTX vắng và ngoài khung đối chứng âm. TC-02 chạy firmware kiểm định, đặt tạm sát cạnh TC-01.
+Một buổi đo ngày 11/11/2026, 18:15–18:30 (dời từ 16:00–16:15 ngày 11/11, trước khi đo), ngoài khung đối chứng âm và trước phần để sửa (19:00). Giờ này KTX có người nên nhắc học sinh tránh hành lang tầng 1 trong lúc nổ bóng bay; tiếng ồn lẫn vào được ghi trong nhật ký đo. TC-02 chạy firmware kiểm định, đặt tạm sát cạnh TC-01.
 
 - **Phổ suy hao qua cửa:** nhiễu hồng phát từ vị trí loa cố định trong phòng B2.103, 30 giây khi cửa mở và 30 giây khi cửa đóng. Suy hao theo từng dải 1/3 octave từ 125 Hz đến 8 kHz = mức khi cửa mở − mức khi cửa đóng.
 - **Thời gian vang:** 3 tiếng nổ bóng bay tại hành lang tầng 1 (cách thiết bị 3 m) và 3 tiếng trong phòng B2.103; tính T20 bằng tích phân ngược Schroeder, báo cáo trung vị theo dải octave 500 Hz–4 kHz.

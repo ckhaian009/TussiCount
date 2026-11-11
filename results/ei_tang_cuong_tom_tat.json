@@ -1,0 +1,38 @@
+{
+  "seed": 2026,
+  "level_range_dbfs": [
+    -35.0,
+    -3.0
+  ],
+  "snr_range_db": [
+    0.0,
+    20.0
+  ],
+  "noise_mix_frac": 0.5,
+  "so_tep": {
+    "training|cough": 6362,
+    "training|noise": 6362,
+    "testing|cough": 1595,
+    "testing|noise": 1870
+  },
+  "so_tep_theo_nguon": {
+    "training|cough|COUGHVID": 6362,
+    "training|noise|CommonVoice-vi": 2149,
+    "training|noise|ESC-50": 4213,
+    "testing|cough|COUGHVID": 1595,
+    "testing|noise|CommonVoice-vi": 740,
+    "testing|noise|ESC-50": 1130
+  },
+  "nen_theo_nguon": {
+    "training|cough|CommonVoice-vi": 3203,
+    "training|cough|ESC-50": 3159,
+    "training|noise|ESC-50": 1605,
+    "training|noise|khong_tron": 3179,
+    "training|noise|CommonVoice-vi": 1578,
+    "testing|cough|CommonVoice-vi": 790,
+    "testing|cough|ESC-50": 805,
+    "testing|noise|CommonVoice-vi": 482,
+    "testing|noise|khong_tron": 927,
+    "testing|noise|ESC-50": 461
+  }
+}

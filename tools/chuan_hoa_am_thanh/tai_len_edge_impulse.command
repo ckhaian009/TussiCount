@@ -12,6 +12,7 @@
 # (x-disallow-duplicates), nên không sinh mẫu trùng.
 # Cách chạy: nhấp đúp tệp này trong Finder (macOS mở bằng Terminal).
 # Thư mục dữ liệu khác: đặt biến EI_DATA (xem tools/mo_hinh_nen/tai_len_kiem_tra_ben.command).
+# Chỉ tải một phần: đặt EI_TAP="training" hoặc "testing" (xem tools/tang_cuong/tai_len_tang_cuong.command).
 
 set -u
 PROJECT_ID=1156522
@@ -20,6 +21,7 @@ PAR=3            # số yêu cầu chạy song song
 
 cd "$(dirname "$0")/../.." || exit 1
 export DATA="${EI_DATA:-data/ei_upload}"
+TAP="${EI_TAP:-training testing}"
 TEN=$(basename "$DATA")
 export STATE="$DATA/.tai_len"
 export LOG="$DATA/nhat_ky_tai_len.txt"
@@ -57,7 +59,7 @@ ghi "BAT DAU. Truoc khi tai: training=$(dem training) testing=$(dem testing) mau
 
 # 3. Chia lô (một lần, thứ tự cố định để chạy lại vẫn khớp)
 if [ ! -f "$STATE/lo/.da_tao" ]; then
-  for sp in training testing; do for lb in cough noise; do
+  for sp in $TAP; do for lb in cough noise; do
     [ -d "$DATA/$sp/$lb" ] || continue
     ls "$DATA/$sp/$lb" | grep '\.wav$' | LC_ALL=C sort | split -a 3 -l "$BATCH" - "$STATE/lo/${sp}__${lb}__"
   done; done
@@ -101,10 +103,11 @@ sleep 5
 TR=$(dem training); TE=$(dem testing)
 # Số mẫu mong đợi trên dự án = tổng các thư mục dữ liệu đã từng tải (có .tai_len/lo/.da_tao)
 KTR=0; KTE=0
-for d in data/ei_upload data/ei_kiem_tra_ben; do
+# (chỉ tính phần đã chia lô, vì có thư mục chỉ tải training)
+for d in data/ei_upload data/ei_kiem_tra_ben data/ei_tang_cuong; do
   [ -f "$d/.tai_len/lo/.da_tao" ] || continue
-  KTR=$(( KTR + $(find "$d/training" -name '*.wav' 2>/dev/null | wc -l) ))
-  KTE=$(( KTE + $(find "$d/testing" -name '*.wav' 2>/dev/null | wc -l) ))
+  if ls "$d/.tai_len/lo"/training__* >/dev/null 2>&1; then KTR=$(( KTR + $(find "$d/training" -name '*.wav' 2>/dev/null | wc -l) )); fi
+  if ls "$d/.tai_len/lo"/testing__* >/dev/null 2>&1; then KTE=$(( KTE + $(find "$d/testing" -name '*.wav' 2>/dev/null | wc -l) )); fi
 done
 ghi "KET THUC. Lo xong $XONG/$TONG. Tren du an: training=$TR (may: $KTR), testing=$TE (may: $KTE)."
 {

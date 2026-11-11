@@ -1,0 +1,271 @@
+[
+ {
+  "ten": "mot_cua_so",
+  "p": [
+   0.1,
+   0.9,
+   0.1,
+   0.1
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 1.0,
+    "t_dau": 0.5,
+    "t_cuoi": 1.5,
+    "so_cua_so": 1,
+    "p_max": 0.9,
+    "i_max": 1
+   }
+  ]
+ },
+ {
+  "ten": "mot_cua_so_k2_bi_loai",
+  "p": [
+   0.1,
+   0.9,
+   0.1,
+   0.1
+  ],
+  "nguong": 0.5,
+  "k": 2,
+  "g": 0.0,
+  "su_kien": []
+ },
+ {
+  "ten": "chuoi_hai_cua_so_k2",
+  "p": [
+   0.1,
+   0.7,
+   0.95,
+   0.2
+  ],
+  "nguong": 0.5,
+  "k": 2,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 1.5,
+    "t_dau": 0.5,
+    "t_cuoi": 2.0,
+    "so_cua_so": 2,
+    "p_max": 0.95,
+    "i_max": 2
+   }
+  ]
+ },
+ {
+  "ten": "bang_nguong_tinh_la_vuot",
+  "p": [
+   0.5,
+   0.49,
+   0.5
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 0.5,
+    "t_dau": 0.0,
+    "t_cuoi": 1.0,
+    "so_cua_so": 1,
+    "p_max": 0.5,
+    "i_max": 0
+   },
+   {
+    "t_su_kien": 1.5,
+    "t_dau": 1.0,
+    "t_cuoi": 2.0,
+    "so_cua_so": 1,
+    "p_max": 0.5,
+    "i_max": 2
+   }
+  ]
+ },
+ {
+  "ten": "hai_chuoi_cach_1_g0",
+  "p": [
+   0.9,
+   0.1,
+   0.9
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 0.5,
+    "t_dau": 0.0,
+    "t_cuoi": 1.0,
+    "so_cua_so": 1,
+    "p_max": 0.9,
+    "i_max": 0
+   },
+   {
+    "t_su_kien": 1.5,
+    "t_dau": 1.0,
+    "t_cuoi": 2.0,
+    "so_cua_so": 1,
+    "p_max": 0.9,
+    "i_max": 2
+   }
+  ]
+ },
+ {
+  "ten": "hai_chuoi_cach_1_g05_gop",
+  "p": [
+   0.9,
+   0.1,
+   0.8
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.5,
+  "su_kien": [
+   {
+    "t_su_kien": 0.5,
+    "t_dau": 0.0,
+    "t_cuoi": 2.0,
+    "so_cua_so": 2,
+    "p_max": 0.9,
+    "i_max": 0
+   }
+  ]
+ },
+ {
+  "ten": "hai_chuoi_cach_2_g05_khong_gop",
+  "p": [
+   0.9,
+   0.1,
+   0.1,
+   0.8
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.5,
+  "su_kien": [
+   {
+    "t_su_kien": 0.5,
+    "t_dau": 0.0,
+    "t_cuoi": 1.0,
+    "so_cua_so": 1,
+    "p_max": 0.9,
+    "i_max": 0
+   },
+   {
+    "t_su_kien": 2.0,
+    "t_dau": 1.5,
+    "t_cuoi": 2.5,
+    "so_cua_so": 1,
+    "p_max": 0.8,
+    "i_max": 3
+   }
+  ]
+ },
+ {
+  "ten": "hai_chuoi_cach_2_g1_gop",
+  "p": [
+   0.8,
+   0.1,
+   0.1,
+   0.9
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 1.0,
+  "su_kien": [
+   {
+    "t_su_kien": 2.0,
+    "t_dau": 0.0,
+    "t_cuoi": 2.5,
+    "so_cua_so": 2,
+    "p_max": 0.9,
+    "i_max": 3
+   }
+  ]
+ },
+ {
+  "ten": "gop_roi_moi_du_k2",
+  "p": [
+   0.9,
+   0.1,
+   0.9,
+   0.1,
+   0.1,
+   0.1,
+   0.9
+  ],
+  "nguong": 0.5,
+  "k": 2,
+  "g": 0.5,
+  "su_kien": [
+   {
+    "t_su_kien": 0.5,
+    "t_dau": 0.0,
+    "t_cuoi": 2.0,
+    "so_cua_so": 2,
+    "p_max": 0.9,
+    "i_max": 0
+   }
+  ]
+ },
+ {
+  "ten": "diem_bang_nhau_lay_som",
+  "p": [
+   0.2,
+   0.8,
+   0.8,
+   0.2
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 1.0,
+    "t_dau": 0.5,
+    "t_cuoi": 2.0,
+    "so_cua_so": 2,
+    "p_max": 0.8,
+    "i_max": 1
+   }
+  ]
+ },
+ {
+  "ten": "toan_duoi_nguong",
+  "p": [
+   0.3,
+   0.4,
+   0.2
+  ],
+  "nguong": 0.5,
+  "k": 1,
+  "g": 1.0,
+  "su_kien": []
+ },
+ {
+  "ten": "cuoi_chuoi_cham_cuoi_tep",
+  "p": [
+   0.1,
+   0.1,
+   0.9,
+   0.9
+  ],
+  "nguong": 0.5,
+  "k": 2,
+  "g": 0.0,
+  "su_kien": [
+   {
+    "t_su_kien": 1.5,
+    "t_dau": 1.0,
+    "t_cuoi": 2.5,
+    "so_cua_so": 2,
+    "p_max": 0.9,
+    "i_max": 2
+   }
+  ]
+ }
+]

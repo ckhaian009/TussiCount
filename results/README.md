@@ -16,4 +16,10 @@ Mô hình nền (Protocol mục 8, việc t17):
 - `ei_du_lieu_mo_hinh_nen.csv`, `ei_du_lieu_mo_hinh_nen_tom_tat.json`, `ei_kiem_tra_ben.csv`: bảng kê dữ liệu đã tải lên Edge Impulse;
 - `ei_tai_len_ket_qua*.txt`, `mfe_khao_sat_san_nhieu.txt`, `coughvid_chon_3000.csv`.
 
+Chuẩn bị kiểm định (10/11):
+
+- `tang_cuong_rir.csv`: thông số và T20 đo được của 600 RIR tổng hợp (16.7);
+- `lich_phat_lai.csv`: lịch phát 3 buổi của tầng kiểm định 1; `phat_lai_muc_so.csv`: mức số trọng số A của từng tệp phát;
+- `phat_lai_nhat_ky/`: nhật ký các buổi phát (tạo khi phát).
+
 **Không bao giờ đẩy file âm thanh lên GitHub.**
