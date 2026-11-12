@@ -1,7 +1,13 @@
 # Sơ đồ nguyên lý và bảng kết nối dạng chuẩn cho báo cáo khoa học (đơn sắc, có chú thích hình/bảng).
 import html, pathlib
 OUT = pathlib.Path(__file__).parent
-SERIF = "'Times New Roman','Liberation Serif',serif"
+SERIF = "'LMRoman','Latin Modern Roman',serif"
+import base64
+LM = '/usr/share/texmf/fonts/opentype/public/lm/'
+def _ff(f, w, st):
+    d = base64.b64encode(open(LM + f, 'rb').read()).decode()
+    return f"@font-face{{font-family:'LMRoman';src:url(data:font/otf;base64,{d}) format('opentype');font-weight:{w};font-style:{st}}}"
+FONT_CSS = _ff('lmroman10-regular.otf', 400, 'normal') + _ff('lmroman10-bold.otf', 700, 'normal') + _ff('lmroman10-italic.otf', 400, 'italic')
 K = "#000"
 e = html.escape
 
@@ -68,7 +74,7 @@ def hinh(cfg):
         s.append(L(680, y, 710, y) + gnd(710, y))
     w, h = 900, 590
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">'
-            f'<rect width="{w}" height="{h}" fill="#fff"/>{"".join(s)}</svg>')
+            f'<style>{FONT_CSS}</style><rect width="{w}" height="{h}" fill="#fff"/>{"".join(s)}</svg>')
 
 TC01 = dict(mcu="U1  ESP32-S3-DevKitC-1", mcu_phu="ESP32-S3 N16R8", v5=None, mic=("GPIO4", "GPIO5", "GPIO6"),
             sd=("GPIO15", "GPIO16", "GPIO17", "GPIO18"), the_vcc="+3,3 V", led=None)
@@ -82,12 +88,12 @@ BANG = [
     ("U3 – Module microSD", [("VCC", "Nguồn", "3V3", "V5"), ("GND", "Đất", "GND", "GND"), ("CS", "Chọn chip SPI", "GPIO15", "GPIO5"),
                             ("MOSI", "Dữ liệu SPI vào thẻ", "GPIO16", "GPIO23"), ("SCK", "Xung nhịp SPI", "GPIO17", "GPIO18"),
                             ("MISO", "Dữ liệu SPI ra từ thẻ", "GPIO18", "GPIO19")]),
-    ("D1 – LED báo ghi âm, R1 330 Ω", [("Anode (qua R1)", "Báo đang ghi âm", "—", "GPIO2"), ("Cathode", "Đất", "—", "GND")]),
+    ("D1 – LED (nối tiếp R1 330 Ω)", [("Anode", "Báo đang ghi âm", "—", "GPIO2"), ("Cathode", "Đất", "—", "GND")]),
     ("BT1 – Nguồn 5 V", [("USB", "Cấp nguồn cho bo", "USB-C", "USB")]),
 ]
 
 def bang_html():
-    h = ['<table class="bk"><thead><tr><th rowspan="2" style="width:27%">Linh kiện</th><th rowspan="2" style="width:21%">Chân linh kiện</th><th rowspan="2" style="width:24%">Chức năng</th>'
+    h = ['<table class="bk"><thead><tr><th rowspan="2" style="width:28%">Linh kiện</th><th rowspan="2" style="width:15%">Chân</th><th rowspan="2" style="width:29%">Chức năng</th>'
          '<th colspan="2" class="nhom">Chân nối trên bo</th></tr><tr><th style="width:14%">TC-01<br><span>ESP32-S3</span></th><th>TC-02<br><span>ESP32</span></th></tr></thead><tbody>']
     for lk, dong in BANG:
         for i, (c, cn, a, b) in enumerate(dong):
@@ -97,15 +103,15 @@ def bang_html():
     h.append("</tbody></table>")
     return "".join(h)
 
-CSS = f'''@page {{ size: A4; margin: 25mm 20mm 25mm 30mm }}
+CSS = FONT_CSS + f'''@page {{ size: A4; margin: 25mm 20mm 25mm 30mm }}
 body {{ font-family: {SERIF}; color: #000; font-size: 13pt; margin: 0 }}
 figure {{ margin: 0 0 10mm; text-align: center; page-break-inside: avoid }} figure svg {{ width: 100%; height: auto }}
 figcaption {{ font-size: 12pt; margin-top: 2mm }} figcaption b, .cap b {{ font-weight: 700 }}
 .cap {{ font-size: 12pt; text-align: center; margin: 0 0 2.5mm }}
-table.bk {{ border-collapse: collapse; width: 100%; font-size: 11.5pt; border-top: 1.5pt solid #000; border-bottom: 1.5pt solid #000 }}
-.bk th {{ font-weight: 700; padding: 1.6mm 2mm; text-align: left; vertical-align: bottom }} .bk th span {{ font-weight: 400; font-style: italic; font-size: 10.5pt }}
+table.bk {{ border-collapse: collapse; width: 100%; font-size: 11pt; border-top: 1.5pt solid #000; border-bottom: 1.5pt solid #000 }}
+.bk th {{ font-weight: 700; padding: 1.6mm 1.6mm; text-align: left; vertical-align: bottom }} .bk th span {{ font-weight: 400; font-style: italic; font-size: 10.5pt }}
 .bk thead tr:last-child th, .bk thead th[rowspan] {{ border-bottom: .8pt solid #000 }} .bk th.nhom {{ text-align: center; border-bottom: .5pt solid #000 }}
-.bk td {{ padding: 1.1mm 2mm; vertical-align: top }} .bk td.c, .bk thead tr:last-child th {{ text-align: center }}
+.bk td {{ padding: 1.1mm 1.6mm; vertical-align: top }} .bk td.c, .bk thead tr:last-child th {{ text-align: center }}
 .bk tr.dau td {{ border-top: .5pt solid #000 }} .bk td.lk {{ font-weight: 400 }}
 .tb {{ page-break-inside: avoid; margin-bottom: 10mm }}
 .trang {{ page-break-after: always }}
