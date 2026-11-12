@@ -1,0 +1,6 @@
+# Lịch ghi TC-02 (giờ Việt Nam). Chép thành /lich_ghi.txt trên thẻ CHỈ khi lịch phải đổi.
+# Mỗi dòng: YYYY-MM-DD HH:MM HH:MM nhan
+2026-11-13 18:15 18:30 am_hoc
+2026-11-13 19:00 22:00 de_sua
+2026-11-16 17:55 20:25 de_cham_1
+2026-11-16 21:50 23:50 de_cham_2
