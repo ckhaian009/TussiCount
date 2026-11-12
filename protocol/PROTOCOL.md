@@ -199,6 +199,12 @@ Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi
 | 16.10 | 08/11/2026 | Thêm tổng thời lượng ho mỗi đêm (khám phá) | Một tràng ho dài và một tiếng ho ngắn cùng được tính là một sự kiện |
 | 16.11 | 08/11/2026 | Thêm đối chiếu thời tiết và số lượt khám hô hấp (mô tả) | Bối cảnh để diễn giải chuỗi đếm theo ngày |
 | 16.12 | 08/11/2026 | Quy tắc bảo vệ riêng tư khi gán nhãn | Người gán nhãn có thể nghe thấy hội thoại riêng tư |
+| 16.14 | 12/11/2026 | Dời lịch thu dữ liệu | Mạch ESP32-S3 thứ nhất hỏng chip flash (11/11), module thẻ nhớ hỏng (12/11); chưa thu dữ liệu nào |
+| 16.15 | 12/11/2026 | Bốn đêm đếm 13–16/11; ghi điểm mọi cửa sổ của cả hai mô hình | Đêm 13 diễn ra trước khi chọn mô hình và đóng băng ngưỡng; số đếm mọi đêm tính bằng cùng một mô hình và ngưỡng đã đóng băng |
+| 16.16 | 12/11/2026 | Đồng bộ giờ bằng điện thoại qua Wi-Fi của mạch; hiệu chỉnh trôi giờ | Không có Wi-Fi Internet ổn định suốt đêm tại KTX |
+| 16.17 | 12/11/2026 | Thay phần cứng: TC-01 dùng mạch ESP32-S3 thay thế, thẻ nhớ ở chân 15–18; TC-02 dùng mạch ESP32 thường | Hỏng phần cứng (16.14) |
+| 16.18 | 12/11/2026 | Đối chứng âm còn 3 ngày học (13, 16, 17/11); chạy thử 24 giờ tại vị trí lắp | Mất ngày 11 và 12/11 do hỏng thiết bị; giữ được ngày 13/11 mà không cần ghi âm |
+| 16.19 | 12/11/2026 | Ngày xoá tệp ghi âm kiểm định dời đến chậm nhất 17/11/2026 | Phần để chấm ghi tối 16/11 |
 
 ### 16.1. Sai số số đếm và F1
 
@@ -263,3 +269,44 @@ Người gán nhãn chỉ quyết định có hay không có tiếng ho và đá
 | Hệ số khuếch đại số TC-01 · TC-02 | |
 | Phiên bản mô hình (có / không tăng cường vang) | |
 | Tham số tăng cường (thời gian vang, khoảng SNR) | |
+
+### 16.14. Lịch thu dữ liệu sau khi hỏng thiết bị
+
+Ngày 11/11, mạch ESP32-S3 thứ nhất kết nối được nhưng không đọc, ghi được chip nhớ flash, kể cả khi đã tháo hết dây; ngày 12/11, module thẻ nhớ của mạch thay thế không nhận thẻ (thẻ đọc tốt trên máy tính, đúng FAT32, đã thay dây và đổi chân). Đến thời điểm ghi mục này, chưa có dữ liệu nào được thu: chưa ghi âm, chưa đếm, chưa phát lại. Thứ tự bắt buộc ở mục 15 giữ nguyên; lịch mới:
+
+| Ngày | Nội dung |
+| --- | --- |
+| 12/11 tối | Nạp firmware vận hành vào TC-01; 1 giờ tải nhiễu khoảng 75 dB(A) trên bàn (16.5); gắn TC-01 tại vị trí lắp, dán biển 1 |
+| 12/11 tối → 13/11 tối | Chạy thử 24 giờ (mục 7.6) **tại vị trí lắp** (thiết bị vận hành không ghi âm). Đêm 12 không tính là đêm đếm |
+| 13/11 | Đối chứng âm 08:00–11:00, 13:30–16:00 bằng TC-01 đang chạy thử (không ghi âm; số đếm tính sau khi đóng băng từ tệp điểm); hiệu chuẩn mức âm, đo mức “vừa”; đo âm học 16.9 lúc 18:15–18:30; **phần để sửa 19:00–22:00**; **đêm đếm 13** nếu chạy thử đạt |
+| 14/11 | Chọn ngưỡng, bộ lọc và mô hình (mục 8, 16.7); **đóng băng 12:00**; tầng 1 buổi 1 (20:30–21:45); đêm đếm 14 |
+| 15/11 | Tầng 1 buổi 2; đêm đếm 15 |
+| 16/11 | Đối chứng âm; tầng 2 (17:00–17:45); **phần để chấm 17:55–20:25 và 21:50–23:50**; tầng 1 buổi 3 (20:30–21:45, nằm giữa hai phần để chấm như thiết kế ban đầu); đêm đếm 16 |
+| 17/11 | Gán nhãn, xác minh mù, chấm phần để chấm một lần; xoá toàn bộ tệp ghi âm (có biên bản); đối chứng âm; phân tích; tháo gỡ thiết bị sau 16:00 và kiểm tra hai thiết bị cạnh nhau |
+
+Thời lượng ghi âm giữ nguyên (3 giờ để sửa, 4,5 giờ để chấm, tối đa 15 phút đo âm học), kết thúc trước 00:00 ngày 17/11. Tầng 1 có hai buổi rơi vào cuối tuần; mức ồn nền đo được của từng ô vẫn là biến liên tục trong H1. Tầng 2 dời từ 21:00–21:30 ngày 13/11 sang 17:00–17:45 ngày 16/11, cùng vị trí và cách làm, bù độ trễ bằng giá trị của buổi phát lại cùng tối (16.6).
+
+### 16.15. Đêm đếm và cách tính số đếm
+
+Bốn đêm đếm: 13, 14, 15, 16/11 (Đêm D theo mục 6). Số đếm chỉ báo cáo cho hành lang tầng 1 (TC-01, 20 học sinh, đủ ngưỡng mục 4); TC-02 ở tầng 2 (18 học sinh) chỉ dùng cho ghi âm kiểm định, không báo cáo số đếm của tầng 2.
+
+Firmware vận hành chấm mọi cửa sổ bằng cả hai mô hình (v1 = Impulse #2, v2 = Impulse #3 có tăng cường vang) và ghi điểm của mọi cửa sổ ra thẻ (không ghi âm thanh). Số đếm chính của **mọi** đêm, kể cả đêm 13 diễn ra trước khi đóng băng, được tính lại sau khi đóng băng từ tệp điểm, bằng mô hình được chọn theo 16.7 cùng ngưỡng và bộ lọc đã đóng băng (`tools/chay_mo_hinh/tach_diem_thiet_bi.py` → `gop_su_kien.py`, cùng định nghĩa sự kiện với firmware; logic gộp của firmware khớp 12/12 tình huống thử). Sự kiện do thiết bị tự gộp trong đêm chỉ dùng theo dõi vận hành. Mọi sự kiện trong khung phát lại tầng 1 và tầng 2 bị loại khỏi số đếm đêm. Quy tắc cảnh báo (16.4) có đủ 3 đêm nền và 1 đêm áp dụng mô tả (đêm 16).
+
+### 16.16. Đồng bộ giờ bằng điện thoại và hiệu chỉnh trôi giờ
+
+Mạch tự phát Wi-Fi; điện thoại kết nối và đồng bộ giờ qua trang của mạch (8 lần đo khứ hồi, lấy lần có thời gian khứ hồi nhỏ nhất) khi bắt đầu chạy và mỗi ngày lúc thay sạc 17:00. Khi có Wi-Fi Internet, mạch đồng bộ thêm bằng NTP mỗi 30 phút như 16.5. Mỗi lần đồng bộ ghi nguồn, độ lệch đo được (phần trôi tích luỹ từ lần trước) và thời gian khứ hồi. Khi phân tích, thời điểm sự kiện được hiệu chỉnh bằng nội suy tuyến tính phần trôi giữa hai lần đồng bộ liền nhau (`tools/phan_tich/hieu_chinh_troi_gio.py`); quy tắc loại trừ lệch giờ quá 1 giây (mục 13) áp dụng sau hiệu chỉnh, và khoảng sau lần đồng bộ cuối không có lần đo kế tiếp được báo cáo riêng. Độ lệch đo được ở mỗi lần đồng bộ được báo cáo.
+
+### 16.17. Thay đổi phần cứng
+
+- **TC-01:** mạch ESP32-S3 N16R8 thay thế (đạt kiểm tra bo mạch 16 MB, PSRAM 8 MB và micro ngày 12/11); module thẻ nhớ mới, nối chân CS 15, MOSI 16, SCK 17, MISO 18 (thay cho 10–13). Không có LED báo; thiết bị vận hành không ghi âm thanh nên LED báo ghi âm chỉ cần cho TC-02 và được thay bằng biển “Đang ghi âm”.
+- **TC-02:** mạch ESP32 thường (ESP-WROOM-32, 4 MB flash, không có PSRAM), chỉ chạy firmware kiểm định ghi WAV 16 kHz, 16 bit; quy đổi mẫu giống TC-01 (16.8). Kiểm tra hai thiết bị cạnh nhau (mục 7.6) làm bằng tệp WAV của TC-02 chấm trên máy tính bằng cùng thư viện mô hình.
+- **Điện áp nguồn** trong nhật ký mỗi phút chỉ có khi lắp cầu chia điện trở; nếu không lắp, cột này để trống và việc mất nguồn được nhận biết qua thời gian chạy và khoảng trống của nhật ký.
+
+### 16.18. Đối chứng âm
+
+Đối chứng âm (mục 7.4) thực hiện trong 3 ngày học 13, 16, 17/11, mỗi ngày 08:00–11:00 và 13:30–16:00 (khoảng 16,5 giờ thay cho 22 giờ), đều bằng TC-01, không ghi âm. Ngày 13/11 TC-01 đang trong 24 giờ chạy thử tại vị trí lắp và chưa đóng băng; số phát hiện sai của ngày này được tính sau khi đóng băng từ tệp điểm, như 16.15.
+
+### 16.19. Ngày xoá tệp ghi âm
+
+Ngày xoá chậm nhất ở mục 7.3, 14 và 16.12 dời từ 14/11 sang 17/11/2026 vì phần để chấm ghi tối 16/11. Thay đổi này cần giáo viên hướng dẫn đồng ý trước buổi ghi âm đầu tiên; biển báo và thông báo gửi học sinh được sửa cho khớp. Nếu không được đồng ý, lịch ghi âm được sắp lại theo chỉ đạo của giáo viên hướng dẫn và ghi bổ sung tại đây.
+

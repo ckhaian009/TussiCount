@@ -227,3 +227,4 @@ data/
 
 # Tệp do ứng dụng Claude lưu vào thư mục kho, không đưa lên GitHub
 Claude outputs/
+.fuse_hidden*

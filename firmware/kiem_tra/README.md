@@ -8,6 +8,7 @@ Bốn chương trình ngắn để kiểm tra từng phần trước khi nạp f
 | T2_Micro_INMP441 | Micro qua I2S | Phòng yên tĩnh khoảng −85 đến −70 dBFS; nói ở 30 cm tăng lên khoảng −60 đến −40; vỗ tay gần micro trên −35; LED sáng khi có tiếng to |
 | T3_The_nho_SD | Module thẻ, ghi và đọc lại, tốc độ ghi | “KET QUA: DAT”, tốc độ ghi trên 300 KB/s; LED sáng liên tục |
 | T4_Ghi_WAV_10_giay | Cả chuỗi micro → ESP32 → thẻ | Tệp T4_000.wav nghe rõ, không rè, không ngắt quãng; báo “khong mat mau” |
+| T5_Kiem_tra_tong_hop | Gộp T1–T4, **không cần LED và điện trở**; báo kết quả chỉ qua Serial; menu b / m / s / g | Tóm tắt in “Bo mach: DAT \| Micro: DAT \| The nho: DAT”; tệp T5_xxx.wav nghe rõ |
 
 Chân nối nằm trong `chan_noi.h` của mỗi bài (giống nhau ở cả 4 bài) và khớp với sơ đồ mạch, bảng nối dây.
 
@@ -27,3 +28,11 @@ Nạp không được: giữ nút BOOT, bấm nút RST (hoặc EN), thả BOOT, 
 T4 ghi âm thật: chỉ dùng khi thử trên bàn với giọng của nhóm, nghe xong thì xoá tệp.
 
 Mã do trợ lý AI viết; đã biên dịch không lỗi với Arduino-ESP32 3.3.12 nhưng chưa chạy trên phần cứng. Nhóm ghi kết quả chạy thật vào nhật ký kiểm chứng.
+
+## Mạch dự phòng ESP32 thường (11/11)
+
+Mạch ESP32-S3 N16R8 (MAC 14:c1:9f:d0:05:f0) kết nối được nhưng không đọc/ghi được chip flash, kể cả khi tháo hết dây: coi là hỏng. T5 tự chọn chân theo board chọn trong Tools:
+
+- **ESP32-S3** (ESP32S3 Dev Module): micro SCK-4, WS-5, SD-6; thẻ CS-15, MOSI-16, SCK-17, MISO-18. Ngày 12/11 dời thẻ khỏi 10–13 vì trên mạch S3 thứ hai (MAC 1C:DB:D4:5C:B5:E8) thẻ không nhận ở 10–13 dù bo mạch và micro đạt; chẩn đoán: MISO bị giữ mức thấp, cả 10/4/1 MHz đều không nhận.
+- **ESP32 thường** (ESP32 Dev Module, ESP-WROOM-32, cổng /dev/cu.usbserial-…): micro SCK-G26, WS-G25, SD-G33; thẻ CS-G5, MOSI-G23, SCK-G18, MISO-G19; VCC thẻ vào chân V5. Không có PSRAM, flash 4 MB; giữ cài đặt mặc định của Tools.
+

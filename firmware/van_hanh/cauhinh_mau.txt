@@ -1,0 +1,12 @@
+# Chép tệp này ra thẻ nhớ của TC-01 với tên /cauhinh.txt rồi điền thông tin mạng.
+# Wi-Fi Internet là TUỲ CHỌN: có thì mạch thêm NTP mỗi 30 phút; không có thì đồng bộ giờ bằng điện thoại qua Wi-Fi
+# của chính mạch (ap_ten, mở http://192.168.4.1, bấm "Đồng bộ giờ") mỗi ngày lúc thay sạc 17:00.
+# Không đưa tệp đã điền mật khẩu lên GitHub.
+wifi_ssid=
+wifi_pass=
+ntp=pool.ntp.org
+# Địa chỉ Google Apps Script nhận gói 10 phút (để trống nếu không dùng; số liệu chính luôn lấy từ thẻ nhớ)
+sheets_url=
+# Wi-Fi do mạch tự phát (mật khẩu ≥ 8 ký tự; bỏ trống thì dùng mặc định trong firmware)
+ap_ten=TussiCount-TC-01
+ap_mat_khau=
