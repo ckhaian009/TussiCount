@@ -205,6 +205,7 @@ Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi
 | 16.17 | 12/11/2026 | Thay phần cứng: TC-01 dùng mạch ESP32-S3 thay thế, thẻ nhớ ở chân 15–18 (VCC 3V3); TC-02 dùng mạch ESP32 thường; Wi-Fi theo khung giờ; cấu hình thư viện mô hình để đạt phép thử đồng nhất | Hỏng phần cứng (16.14); phép thử 7.6 |
 | 16.18 | 12/11/2026 | Đối chứng âm còn 3 ngày học (13, 16, 17/11); chạy thử 24 giờ tại vị trí lắp | Mất ngày 11 và 12/11 do hỏng thiết bị; giữ được ngày 13/11 mà không cần ghi âm |
 | 16.19 | 12/11/2026 | Ngày xoá tệp ghi âm kiểm định dời đến chậm nhất 17/11/2026 | Phần để chấm ghi tối 16/11 |
+| 16.20 | 12/11/2026 | TC-02 không lắp LED báo ghi âm; trạng thái ghi báo bằng biển 2 | Đơn giản hoá phần cứng; biển 2 đã thông báo việc ghi âm |
 
 ### 16.1. Sai số số đếm và F1
 
@@ -313,3 +314,6 @@ Mạch tự phát Wi-Fi; điện thoại kết nối và đồng bộ giờ qua 
 
 Ngày xoá chậm nhất ở mục 7.3, 14 và 16.12 dời từ 14/11 sang 17/11/2026 vì phần để chấm ghi tối 16/11. Thay đổi này cần giáo viên hướng dẫn đồng ý trước buổi ghi âm đầu tiên; biển báo và thông báo gửi học sinh được sửa cho khớp. Nếu không được đồng ý, lịch ghi âm được sắp lại theo chỉ đạo của giáo viên hướng dẫn và ghi bổ sung tại đây.
 
+### 16.20. Bỏ LED báo ghi âm
+
+Mục 2 (thiết bị) ghi mỗi bộ có LED báo ghi âm; 16.17 đã bỏ LED ở TC-01. Từ 12/11, TC-02 cũng không lắp LED. Việc ghi âm được báo cho học sinh bằng biển 2 “Đang ghi âm” dán tại vị trí lắp trong suốt các khung ghi, cùng thông báo trước 24 giờ trong nhóm chat như mục 14. Firmware ghi âm kiểm định chỉ ghi trong các khung giờ đã thông báo (16.14) và chỉ sau khi đồng bộ giờ; trạng thái ghi được kiểm tra qua Serial và tệp `TC-02_ghi.csv`. Không có thay đổi nào khác về cách ghi hay dữ liệu.

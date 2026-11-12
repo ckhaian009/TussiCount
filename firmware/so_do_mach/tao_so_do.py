@@ -143,7 +143,7 @@ def so_do_tc01():
 # ============================================================== trang 3: sơ đồ TC-02
 def so_do_tc02():
     s = khung(3, "SƠ ĐỒ MẠCH ĐIỆN – TC-02 (THIẾT BỊ GHI ÂM KIỂM ĐỊNH)",
-              "ESP32 thường (ESP-WROOM-32) đọc INMP441 qua I2S, ghi WAV lên microSD qua SPI, LED sáng khi đang ghi; nguồn 5 V từ sạc dự phòng.",
+              "ESP32 thường (ESP-WROOM-32) đọc INMP441 qua I2S, ghi WAV lên microSD qua SPI; không lắp LED; nguồn 5 V từ sạc dự phòng.",
               "Sơ đồ nguyên lý TC-02")
     mx, my, mw, mh = 430, 190, 220, 470
     s += hop(mx, my, mw, mh, "ESP32 DevKit", "ESP-WROOM-32 · flash 4 MB", "không PSRAM · cầu USB CP2102")
@@ -164,15 +164,6 @@ def so_do_tc02():
                                (554, "vang", "SPI_SCK", "G18", "SCK"), (586, "xanh duong", "SPI_MISO", "G19", "MISO")]:
         s += day(mx + mw, hx, y, mau, luoi, a, b)
     s.append(T(hx + hw - 10, 609, "GND", 13, INK, "end", 500, MONO) + L(hx + hw, 604, hx + hw + 30, 604) + dat(hx + hw + 30, 604))
-    # LED báo ghi
-    y = 640
-    s.append(L(mx + mw, y, 740, y, WIRE["tim"], 3) + T(mx + mw + 18, y - 7, "LED", 11, WIRE["tim"], weight=500, font=MONO)
-             + T(mx + mw - 10, y + 5, "G2", 13, INK, "end", 500, MONO) + f'<circle cx="{mx+mw}" cy="{y}" r="3.5" fill="{INK}"/>')
-    s.append(R(740, y - 9, 56, 18, "#fff", INK, 2, 2) + T(768, y - 16, "R1 330 Ω", 12, INK, "middle", 500))
-    s.append(L(796, y, 840, y) + f'<path d="M840,{y-13} L840,{y+13} L866,{y} Z" fill="#fff" stroke="{INK}" stroke-width="2"/>' + L(866, y - 13, 866, y + 13))
-    s.append('<path d="M850,622 l8,-10 M858,612 l-5,1 M858,612 l-1,5 M860,626 l8,-10 M868,616 l-5,1 M868,616 l-1,5" stroke="%s" stroke-width="1.6" fill="none"/>' % RED)
-    s.append(L(866, y, 910, y) + dat(910, y))
-    s.append(T(853, y + 32, "LED đỏ 3 mm báo đang ghi", 11.5, INK, "middle") + T(853, y + 49, "I ≈ (3,3 − 1,9) V / 330 Ω ≈ 4 mA", 10.5, GRAY, "middle"))
     s.append(T(mx + mw / 2, my + mh - 14, "GND", 13, INK, "middle", 500, MONO) + L(mx + mw / 2, my + mh, mx + mw / 2, my + mh + 18) + dat(mx + mw / 2, my + mh + 18))
     s += hop(50, 330, 230, 130, "Sạc dự phòng", "10.000 mAh, cổng USB ra 5 V")
     s.append(T(165, 418, "cáp USB vừa cổng của bo", 12, INK, "middle"))
@@ -184,8 +175,7 @@ def so_do_tc02():
                                      "qua USB; T5 đạt thẻ nhớ ở cách nối này (11/11)."])
     s += ghi_chu(44, 520, [
         ["INMP441 chỉ cấp 3,3 V. L/R nối GND → kênh trái."],
-        ["LED báo ghi bắt buộc (Protocol 7). Nhiều bo có sẵn", "LED xanh ở G2; không có thì lắp R1 + LED ngoài."],
-        ["G2 là chân khởi động: LED + 330 Ω xuống GND", "không cản việc nạp firmware."],
+        ["Không lắp LED (Protocol 16.20): trạng thái ghi âm", "báo bằng biển 2 “Đang ghi âm”."],
         ["Không dùng G0, G12 (khởi động), G6–G11 (flash);", "G34–G39 chỉ đọc vào."],
         ["Firmware ghi_kiem_dinh chỉ ghi trong khung giờ đã", "thông báo, sau khi đồng bộ giờ bằng điện thoại."],
     ])
@@ -276,14 +266,12 @@ def trang_bang_tc02():
          ("Thẻ nhớ", "G23", "Module thẻ · MOSI", "SPI_MOSI", "cái–cái 20 cm", "xanh la", "", False),
          ("Thẻ nhớ", "G18", "Module thẻ · SCK", "SPI_SCK", "cái–cái 20 cm", "vang", "", False),
          ("Thẻ nhớ", "G19", "Module thẻ · MISO", "SPI_MISO", "cái–cái 20 cm", "xanh duong", "", False),
-         ("LED", "G2", "R1 330 Ω → chân dài (+) LED", "LED", "cái–cái 20 cm", "tim", "R1 hàn sẵn vào LED, bọc co nhiệt", False),
-         ("LED", "GND", "chân ngắn (−) LED", "đất", "cái–cái 20 cm", "den", "", False),
          ("Nguồn", "cổng USB", "sạc dự phòng", "5 V", "cáp USB vừa cổng bo", None, "", False)]
-    nhan = ["3V3", "V5", "GND", "G26", "G25", "G33", "G5", "G23", "G18", "G19", "G2"]
+    nhan = ["3V3", "V5", "GND", "G26", "G25", "G33", "G5", "G23", "G18", "G19"]
     chips = "".join(f'<div class="pin on"><b>{p}</b></div>' for p in nhan)
     ss = [("Mạch · board Arduino", "ESP32-S3 · ESP32S3 Dev Module", "ESP32 thường · ESP32 Dev Module"),
           ("Micro SCK · WS · SD", "4 · 5 · 6", "G26 · G25 · G33"), ("Thẻ CS · MOSI · SCK · MISO", "15 · 16 · 17 · 18", "G5 · G23 · G18 · G19"),
-          ("VCC module thẻ", "3V3", "V5"), ("LED", "không lắp", "G2, sáng khi ghi"), ("Firmware", "TC01_Van_hanh", "TC02_Ghi_kiem_dinh"),
+          ("VCC module thẻ", "3V3", "V5"), ("LED", "không lắp", "không lắp"), ("Firmware", "TC01_Van_hanh", "TC02_Ghi_kiem_dinh"),
           ("Nhiệm vụ · vị trí", "đếm, không ghi âm · tầng 1", "ghi âm kiểm định · tầng 2")]
     so = "".join(f"<tr><td>{e(a)}</td><td class='m'>{e(b)}</td><td class='m'>{e(c)}</td></tr>" for a, b, c in ss)
     than = f'''{bang(d)}
@@ -292,9 +280,9 @@ def trang_bang_tc02():
 <h3 style="margin-top:9px">HAI BỘ KHÁC NHAU Ở ĐÂU</h3>
 <table class="ss"><tr><th></th><th>TC-01</th><th>TC-02</th></tr>{so}</table></div>
 <div class="phai"><h3>KIỂM TRA TRƯỚC KHI CẤP ĐIỆN</h3><ul class="ck">
-<li>VCC module thẻ ở <b>V5</b></li><li>L/R của micro nối GND</li><li>LED: chân dài (+) về phía R1</li>
-<li>Thẻ riêng của TC-02, FAT32</li><li>Serial báo “Lich ghi … (4 khung)”</li><li>Đã đồng bộ giờ: LED thôi nháy</li></ul></div></div>'''
-    return trang_html(4, "BẢNG NỐI DÂY – TC-02 (ESP32 THƯỜNG)", "Cùng loại micro, module thẻ và màu dây như TC-01; khác ở số chân, nguồn module thẻ (V5) và LED báo ghi.", "Bảng nối dây TC-02", than)
+<li>VCC module thẻ ở <b>V5</b></li><li>L/R của micro nối GND</li><li>Đã dán biển 2 “Đang ghi âm”</li>
+<li>Thẻ riêng của TC-02, FAT32</li><li>Serial báo “Lich ghi … (4 khung)”</li><li>Đã đồng bộ giờ trên trang 192.168.4.1</li></ul></div></div>'''
+    return trang_html(4, "BẢNG NỐI DÂY – TC-02 (ESP32 THƯỜNG)", "Cùng loại micro, module thẻ và màu dây như TC-01; khác ở số chân và nguồn module thẻ (V5).", "Bảng nối dây TC-02", than)
 
 CSS = f'''
 @page {{ size: A4 landscape; margin: 0 }}

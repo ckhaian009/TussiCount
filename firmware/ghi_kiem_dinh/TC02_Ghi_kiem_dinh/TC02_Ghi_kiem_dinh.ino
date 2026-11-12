@@ -3,12 +3,13 @@
 //
 // Mạch CHỈ ghi trong các khung giờ đã thông báo (bảng LICH_MAC_DINH, hoặc tệp /lich_ghi.txt trên thẻ nếu có),
 // và chỉ sau khi đã đồng bộ giờ bằng điện thoại. Ngoài khung giờ: không ghi, Wi-Fi bật để đồng bộ giờ.
-// Trong lúc ghi: Wi-Fi tắt hẳn (tránh nhiễu nguồn vào micro và thẻ), LED sáng.
+// Trong lúc ghi: Wi-Fi tắt hẳn (tránh nhiễu nguồn vào micro và thẻ). Không lắp LED (Protocol 16.20).
 //
 // Nối dây (giống T5 trên mạch ESP32 thường):
 //   INMP441: VDD-3V3, GND-GND, SCK-G26, WS-G25, SD-G33, L/R-GND
 //   Module thẻ: VCC-V5, GND-GND, CS-G5, MOSI-G23, SCK-G18, MISO-G19
-//   LED báo ghi: LED xanh có sẵn trên mạch (G2). Có thể thêm LED ngoài: G2 → điện trở 330 Ω → LED → GND.
+//   Không lắp LED (Protocol 16.20). G2 vẫn được điều khiển: nếu bo có sẵn đèn ở G2 thì đèn này sáng khi ghi,
+//   chỉ để tiện kiểm tra trên bàn.
 //
 // Tệp trên thẻ (thư mục gốc):
 //   TC-02_YYYYMMDD_HHMMSS.wav  mỗi tệp tối đa 1 giờ; tên = giờ của mẫu đầu tiên (giờ Việt Nam)
@@ -344,7 +345,7 @@ static void khoiDongTrang() {
   may.on("/ghi_thu", []() {
     if (!coMoc) { may.send(400, "text/plain; charset=utf-8", "chưa đồng bộ giờ"); return; }
     if (cheDo != NGHI) { may.send(400, "text/plain; charset=utf-8", "đang ghi"); return; }
-    may.send(200, "text/plain; charset=utf-8", "Bắt đầu ghi thử 10 phút; Wi-Fi tắt sau 3 giây, LED sáng.");
+    may.send(200, "text/plain; charset=utf-8", "Bắt đầu ghi thử 10 phút; Wi-Fi tắt sau 3 giây.");
     delay(3000);
     ketThucThuMs = millis() + PHUT_GHI_THU * 60000UL; cheDo = GHI_THU;
   });

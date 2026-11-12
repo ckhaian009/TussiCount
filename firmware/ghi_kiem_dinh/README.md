@@ -1,6 +1,6 @@
 # TC-02 · Firmware ghi âm kiểm định
 
-Mạch ESP32 thường (ESP-WROOM-32) ghi WAV 16 kHz, 16 bit, 1 kênh cho phần để sửa, phần để chấm và buổi đo âm học (Protocol 7, 16.9, 16.14). Không chạy mô hình. Hệ số khuếch đại ×8 và cách quy đổi mẫu giống TC-01 (16.8), nên tệp WAV chấm trên máy tính cho cùng đầu vào như mô hình trên TC-01.
+Mạch ESP32 thường (ESP-WROOM-32), không lắp LED (Protocol 16.20), ghi WAV 16 kHz, 16 bit, 1 kênh cho phần để sửa, phần để chấm và buổi đo âm học (Protocol 7, 16.9, 16.14). Không chạy mô hình. Hệ số khuếch đại ×8 và cách quy đổi mẫu giống TC-01 (16.8), nên tệp WAV chấm trên máy tính cho cùng đầu vào như mô hình trên TC-01.
 
 ## Nguyên tắc an toàn dữ liệu
 
@@ -25,16 +25,10 @@ Lịch nằm trong firmware. Nếu lịch phải đổi, chép tệp `/lich_ghi.
 | | L/R | GND |
 | Module thẻ | VCC / GND | V5 / GND |
 | | CS / MOSI / SCK / MISO | G5 / G23 / G18 / G19 |
-| LED báo ghi | (có sẵn trên mạch) | G2; LED ngoài: G2 → 330 Ω → LED → GND |
 
-## Đèn LED
+## Trạng thái
 
-| LED | Ý nghĩa |
-| --- | --- |
-| Nháy chậm (1 giây) | Chưa có giờ: phải đồng bộ bằng điện thoại, chưa ghi được |
-| Tắt | Có giờ, đang chờ khung ghi |
-| Sáng liên tục | Đang ghi |
-| Nháy, Serial báo “the nho loi” | Trong khung ghi nhưng thẻ lỗi: KHÔNG ghi được |
+Không lắp LED. Trạng thái xem trên trang `192.168.4.1` (ngoài khung ghi) hoặc Serial Monitor: “Chua co gio” (chưa ghi được), “BAT DAU GHI”, “DUNG GHI”. Nếu bo có sẵn đèn ở G2, đèn nháy chậm khi chưa có giờ và sáng khi đang ghi; chỉ để tiện kiểm tra trên bàn.
 
 ## Tệp trên thẻ
 
