@@ -206,6 +206,7 @@ Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi
 | 16.18 | 12/11/2026 | Đối chứng âm còn 3 ngày học (13, 16, 17/11); chạy thử 24 giờ tại vị trí lắp | Mất ngày 11 và 12/11 do hỏng thiết bị; giữ được ngày 13/11 mà không cần ghi âm |
 | 16.19 | 12/11/2026 | Ngày xoá tệp ghi âm kiểm định dời đến chậm nhất 17/11/2026 | Phần để chấm ghi tối 16/11 |
 | 16.20 | 12/11/2026 | TC-02 không lắp LED báo ghi âm; trạng thái ghi báo bằng biển 2 | Đơn giản hoá phần cứng; biển 2 đã thông báo việc ghi âm |
+| 16.21 | 12/11/2026 | Tệp phát của phép thử tải: tiếng nói Common Voice trộn âm thanh môi trường ESC-50 thay cho “nhạc và tiếng nói” | Máy không có bộ nhạc dữ liệu mở |
 
 ### 16.1. Sai số số đếm và F1
 
@@ -317,3 +318,7 @@ Ngày xoá chậm nhất ở mục 7.3, 14 và 16.12 dời từ 14/11 sang 17/11
 ### 16.20. Bỏ LED báo ghi âm
 
 Mục 2 (thiết bị) ghi mỗi bộ có LED báo ghi âm; 16.17 đã bỏ LED ở TC-01. Từ 12/11, TC-02 cũng không lắp LED. Việc ghi âm được báo cho học sinh bằng biển 2 “Đang ghi âm” dán tại vị trí lắp trong suốt các khung ghi, cùng thông báo trước 24 giờ trong nhóm chat như mục 14. Firmware ghi âm kiểm định chỉ ghi trong các khung giờ đã thông báo (16.14) và chỉ sau khi đồng bộ giờ; trạng thái ghi được kiểm tra qua Serial và tệp `TC-02_ghi.csv`. Không có thay đổi nào khác về cách ghi hay dữ liệu.
+
+### 16.21. Tệp phát của phép thử tải
+
+Phép thử tải ở 16.5 dùng tệp 60 phút tạo bằng `tools/tai_nhieu/tao_tep_tai.py` (seed 7575): 814 đoạn tiếng nói Common Voice tiếng Việt nối liên tục, chuẩn hoá cùng mức, trộn với 720 đoạn ESC-50 thấp hơn 8 dB, bỏ các lớp giống tiếng người (ho, hắt hơi, thở, ngáy, cười, trẻ khóc); không có nhạc vì máy không có bộ nhạc dữ liệu mở. Mức phát, cách đo (75 dB(A) cách loa 1 m) và tiêu chí đạt giữ nguyên.
