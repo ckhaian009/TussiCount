@@ -4,7 +4,7 @@
 
 ## Thiết bị ghi gì
 
-Mỗi ngày một bộ tệp trong thư mục `/tc/` trên thẻ. Ngày = ngày của (giờ Việt Nam − 6 giờ), nên đêm D (18:00 D → 06:00 D+1) nằm trọn trong tệp ngày D.
+Mỗi ngày một bộ tệp ở thư mục gốc của thẻ. Ngày = ngày của (giờ Việt Nam − 6 giờ), nên đêm D (18:00 D → 06:00 D+1) nằm trọn trong tệp ngày D.
 
 | Tệp | Nội dung |
 | --- | --- |
@@ -37,9 +37,25 @@ Toàn bộ nằm trong `tham_so.h`: mô hình gộp sự kiện (`MO_HINH_DEM`),
 3. Tools: ESP32S3 Dev Module · USB CDC On Boot: Enabled · Flash 16MB · PSRAM: OPI PSRAM · Partition: 16M Flash (3MB APP/9.9MB FATFS). Nếu nạp lỗi ở bước đổi tốc độ, đặt Upload Speed 115200.
 4. Thẻ nhớ FAT32, có `/cauhinh.txt` (mẫu: `cauhinh_mau.txt`; bản đã điền Wi-Fi để ở thư mục Downloads, không đưa lên GitHub).
 
+## Cấu hình thư viện mô hình (bắt buộc, Protocol 16.17)
+
+Sửa trong `TussiCount_v1v2_inferencing` (và hai thư viện v1, v2 nếu còn giữ), thư mục `src/edge-impulse-sdk/`:
+
+| Tệp | Cờ | Giá trị | Lý do |
+| --- | --- | --- | --- |
+| `dsp/config.hpp` | `EIDSP_QUANTIZE_FILTERBANK` | 0 | Bộ lọc MFE số thực, giống bộ chạy trên máy tính |
+| `dsp/config.hpp` | `EIDSP_USE_ESP_DSP` | 1 | FFT của esp-dsp; với kissfft suy luận lên 915 ms |
+| `classifier/ei_classifier_config.h` | `EI_CLASSIFIER_TFLITE_ENABLE_ESP_NN` | 0 | Nhân ESP-NN cho điểm khác máy tính (v1 27,7%, v2 1,7% cửa sổ đạt) |
+
+Sau khi đổi phải xoá bộ đệm biên dịch (biên dịch lại toàn bộ thư viện, khoảng 5 phút). Kết quả 12/11: phép thử đồng nhất ĐẠT cả hai mô hình, suy luận lớn nhất 230 ms.
+
+## Wi-Fi theo khung giờ
+
+Wi-Fi phát liên tục làm lỗi ghi thẻ, nên Wi-Fi chỉ bật khi chưa có giờ, 15 phút đầu sau khởi động và 16:50–17:20 (giờ đồng bộ hằng ngày), công suất 2 dBm. Module thẻ lấy nguồn từ chân 3V3 (chân 5Vin của mạch không ra 5 V khi cấp qua USB).
+
 ## Phép thử đồng nhất (Protocol 7.6)
 
-Chép một tệp WAV (PCM 16 bit, 1 kênh, 16 kHz) ra thẻ với tên `/thu_dong_nhat.wav`, khởi động lại. Thiết bị chấm mọi cửa sổ và ghi `/tc/thu_dong_nhat_diem.csv` cùng định dạng với `chay_mo_hinh dai` trên máy tính; so từng cột với bộ chạy của mô hình tương ứng (v1, v2), mỗi cửa sổ lệch ≤ 1 bậc int8 là đạt. Chỉ dùng tệp dữ liệu mở, không dùng âm thanh ghi tại KTX.
+Chép một tệp WAV (PCM 16 bit, 1 kênh, 16 kHz) ra thẻ với tên `/thu_dong_nhat.wav`, khởi động lại. Thiết bị chấm mọi cửa sổ và ghi `/thu_dong_nhat_diem.csv` cùng định dạng với `chay_mo_hinh dai` trên máy tính; so từng cột với bộ chạy của mô hình tương ứng (v1, v2), mỗi cửa sổ lệch ≤ 1 bậc int8 là đạt. Thiết bị tự so với `tham_chieu_dong_nhat.h` (điểm bộ chạy trên máy tính cho 60 giây đầu của `data/luong_kiem_tra/sach.wav`) và in kết quả ra Serial; đạt khi cả hai mô hình có ≥ 95% cửa sổ khớp. Chỉ dùng tệp dữ liệu mở, không dùng âm thanh ghi tại KTX.
 
 ## Còn thiếu
 

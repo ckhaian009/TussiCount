@@ -1,10 +1,10 @@
 // TussiCount – firmware VẬN HÀNH cho TC-01 (ESP32-S3 N16R8, INMP441, microSD). Arduino-ESP32 3.x (ESP-IDF 5).
 //
 // Bản vận hành KHÔNG có hàm ghi tệp âm thanh (Protocol mục 5, 14). Chỉ ghi ra thẻ nhớ:
-//   /tc/<thiết bị>_<ngày>_su_kien.csv   mỗi sự kiện ho: thời điểm, độ dài, điểm tin cậy (mục 6)
-//   /tc/<thiết bị>_<ngày>_moi_phut.csv  mỗi phút: LAeq, LA90, điện áp, thời gian chạy, nhiệt độ chip, bộ nhớ trống
+//   /<thiết bị>_<ngày>_su_kien.csv   mỗi sự kiện ho: thời điểm, độ dài, điểm tin cậy (mục 6)
+//   /<thiết bị>_<ngày>_moi_phut.csv  mỗi phút: LAeq, LA90, điện áp, thời gian chạy, nhiệt độ chip, bộ nhớ trống
 //                                        nhỏ nhất, suy luận lớn nhất, khung bị mất, NTP (mục 6, 16.5)
-//   /tc/<thiết bị>_<ngày>_diem.csv      điểm p_cough của mọi cửa sổ theo CẢ HAI mô hình v1, v2 (để tính lại số
+//   /<thiết bị>_<ngày>_diem.csv      điểm p_cough của mọi cửa sổ theo CẢ HAI mô hình v1, v2 (để tính lại số
 //                                        đếm với mô hình và ngưỡng đã đóng băng: tools/chay_mo_hinh/tach_diem_thiet_bi.py)
 //   <ngày> = ngày của (giờ Việt Nam − 6 giờ): mỗi tệp chạy từ 06:00 ngày đó đến 06:00 hôm sau,
 //   nên đêm D (18:00 D → 06:00 D+1, mục 6) nằm trọn trong tệp ngày D.
@@ -39,6 +39,7 @@
 #include "esp_task_wdt.h"
 #include "driver/i2s_std.h"
 #include "tham_so.h"
+#include "tham_chieu_dong_nhat.h"
 
 #if !CONFIG_IDF_TARGET_ESP32S3
 #error "Firmware van hanh chi danh cho ESP32-S3 (Tools > Board: ESP32S3 Dev Module)"
@@ -60,7 +61,7 @@ static const uint32_t CUA_SO = 16000;          // 1 giây
 static const uint32_t BUOC = 8000;             // 0,5 giây
 static const uint32_t VONG = TAN_SO * 8;           // bộ đệm vòng 8 giây
 static const uint32_t KHOI_I2S = 512;          // 32 ms mỗi lần đọc
-static const char *THU_MUC = "/tc";
+static const char *THU_MUC = "";   // ghi ở thư mục gốc của thẻ (tạo tệp trong thư mục con lỗi trên thẻ thử 12/11)
 
 // ======================================================================== trạng thái dùng chung
 static portMUX_TYPE khoaMau = portMUX_INITIALIZER_UNLOCKED;   // bảo vệ tongMau và mốc thời gian
@@ -84,7 +85,8 @@ static volatile uint32_t suKienTrongPhut = 0;
 static volatile int ntpLechMs = 0;            // độ lệch đo được ở lần đồng bộ giờ gần nhất (NTP hoặc điện thoại)
 static volatile time_t ntpLanCuoi = 0;
 static volatile uint32_t soLanNtp = 0;
-static volatile char nguonDongBo = '-';       // 'N' = NTP qua Internet, 'D' = điện thoại qua Wi-Fi của mạch
+static volatile char nguonDongBo = '-';
+static volatile bool wifiDangBat = false;      // Wi-Fi chỉ bật trong khung đồng bộ giờ       // 'N' = NTP qua Internet, 'D' = điện thoại qua Wi-Fi của mạch
 
 // gói 10 phút
 static uint32_t suKien10p = 0;
@@ -126,7 +128,7 @@ static double bayGioMs() { struct timeval tv; gettimeofday(&tv, nullptr); return
 static void choGhi(uint32_t ngay, uint8_t loai, const String &s);
 
 // Neo đồng hồ mẫu vào một giờ chuẩn (thucMs, giờ epoch ms) tại thời điểm hiện tại: đo độ lệch giữa giờ chuẩn và giờ
-// đồng hồ mẫu dự đoán (= phần trôi tích luỹ từ lần neo trước), ghi vào /tc/..._dong_bo.csv, rồi neo lại.
+// đồng hồ mẫu dự đoán (= phần trôi tích luỹ từ lần neo trước), ghi vào /..._dong_bo.csv, rồi neo lại.
 // Độ lệch này dùng để hiệu chỉnh trôi giờ sau (tools/phan_tich/hieu_chinh_troi_gio.py).
 static void neoGio(double thucMs, char nguon, int rttMs) {
   portENTER_CRITICAL(&khoaMau);
@@ -158,16 +160,21 @@ static const char *DAU_COT[4] = {
   "t_bat_dau_epoch,p_cough_v1,p_cough_v2",
   "du_lieu,thiet_bi,phut_bat_dau_gio_vn,laeq_dbfs,la90_dbfs,laeq_dba,la90_dba,dien_ap_v,thoi_gian_chay_s,"
   "nhiet_do_chip_c,heap_trong_nho_nhat_b,psram_trong_nho_nhat_b,suy_luan_lon_nhat_ms,khung_bi_mat,cua_so_bo_qua,"
-  "so_su_kien_trong_phut,dong_bo_lan_cuoi_gio_vn,dong_bo_lech_ms,dong_bo_nguon,wifi_rssi,loi_the",
+  "so_su_kien_trong_phut,dong_bo_lan_cuoi_gio_vn,dong_bo_lech_ms,dong_bo_nguon,wifi_rssi,loi_the,wifi_bat",
   "du_lieu,thiet_bi,t_epoch,t_gio_vn,nguon,da_co_gio_truoc,lech_ms,rtt_ms"};
 
 static bool moThe() {
+  SD.end(); spiThe.end();
   spiThe.begin(PIN_SD_SCK, PIN_SD_MISO, PIN_SD_MOSI, PIN_SD_CS);
-  const uint32_t tan[] = {10000000, 4000000, 1000000};
+  const uint32_t tan[] = {4000000, 1000000};      // 4 MHz: ổn định hơn khi Wi-Fi làm sụt nguồn 3V3
   for (uint32_t f : tan) {
-    if (SD.begin(PIN_SD_CS, spiThe, f)) { if (!SD.exists(THU_MUC)) SD.mkdir(THU_MUC); return true; }
+    if (SD.begin(PIN_SD_CS, spiThe, f)) {
+      Serial.printf("THE: mo the o %lu MHz\n", (unsigned long)(f / 1000000));
+      return true;
+    }
     SD.end();
   }
+  Serial.println("THE: khong mo duoc the");
   return false;
 }
 static void xaHangCho() {
@@ -184,8 +191,8 @@ static void xaHangCho() {
     snprintf(ten, sizeof ten, "%s/%s_%04lu-%02lu-%02lu_%s.csv", THU_MUC, TEN_THIET_BI, (unsigned long)(ngay / 10000),
              (unsigned long)(ngay / 100 % 100), (unsigned long)(ngay % 100), DUOI[loai]);
     bool moi = !SD.exists(ten);
-    File f = SD.open(ten, FILE_APPEND);
-    if (!f) { loiThe++; theSanSang = false; SD.end(); break; }
+    File f = SD.open(ten, moi ? FILE_WRITE : FILE_APPEND);
+    if (!f) { Serial.printf("THE: khong mo duoc %s de ghi (moi=%d)\n", ten, moi); loiThe++; theSanSang = false; SD.end(); break; }
     if (moi) f.println(DAU_COT[loai]);
     while (i < lay.size() && lay[i].ngay == ngay && lay[i].loai == loai) { f.println(lay[i].noiDung); i++; }
     f.close();
@@ -339,6 +346,12 @@ static void tacVuSuyLuan(void *) {
     choGhi(ngayTep(tMs), 1, String(b));
     float p = (MO_HINH_DEM == 1) ? p1 : p2;
     if (p >= 0) nhanDiem(i, p, tMs);
+    {   // theo dõi qua Serial: điểm lớn nhất của mỗi mô hình trong 10 giây và mức đỉnh mẫu
+      static float m1 = 0, m2 = 0; static int dem = 0; static int16_t dinh = 0;
+      for (uint32_t k = 0; k < CUA_SO; k += 4) { int16_t a = abs((int)cuaSo[k]); if (a > dinh) dinh = a; }
+      if (p1 > m1) m1 = p1; if (p2 > m2) m2 = p2;
+      if (++dem >= 20) { Serial.printf("10 s: p_max v1 %.3f · v2 %.3f · dinh mau %d · suy luan %lu ms\n", m1, m2, dinh, (unsigned long)ms); m1 = m2 = 0; dem = 0; dinh = 0; }
+    }
     i++;
     esp_task_wdt_reset();
   }
@@ -391,7 +404,7 @@ static void tacVuNhatKy(void *) {
                  String(heap_caps_get_minimum_free_size(MALLOC_CAP_SPIRAM)) + "," + String(suyLuanMaxMs) + "," +
                  String(khungTranI2S) + "," + String(cuaSoBoQua) + "," + String(suKienTrongPhut) + "," + String(gn) + "," +
                  String(ntpLechMs) + "," + String(nguonDongBo == 'N' ? "ntp" : nguonDongBo == 'D' ? "dien_thoai" : "") + "," +
-                 String(WiFi.status() == WL_CONNECTED ? WiFi.RSSI() : 0) + "," + String(loiThe);
+                 String(WiFi.status() == WL_CONNECTED ? WiFi.RSSI() : 0) + "," + String(loiThe) + "," + String(wifiDangBat ? 1 : 0);
       choGhi(ngayTep(phutTruoc * 1000.0), 2, d);
       Serial.printf("[%s] LAeq %.1f LA90 %.1f dBFS | suy luan max %lu ms | su kien %lu | khung mat %lu | NTP lech %d ms | the %s\n",
                     gioVN(phutTruoc * 1000.0, false).c_str(), laeq, la90, (unsigned long)suyLuanMaxMs,
@@ -414,7 +427,7 @@ static void tacVuNhatKy(void *) {
 
 // ======================================================================== phép thử đồng nhất (Protocol 7.6)
 // Nếu thẻ có /thu_dong_nhat.wav (PCM 16 bit, 1 kênh, 16 kHz), chấm mọi cửa sổ 1 s trượt 0,5 s của tệp bằng đúng
-// mô hình trên chip và ghi /tc/thu_dong_nhat_diem.csv (cua_so,t_bat_dau_s,p_cough_v1,p_cough_v2,ms_xu_ly) — cùng định dạng với
+// mô hình trên chip và ghi /thu_dong_nhat_diem.csv (cua_so,t_bat_dau_s,p_cough_v1,p_cough_v2,ms_xu_ly) — cùng định dạng với
 // "chay_mo_hinh dai" trên máy tính để so sánh (một cột điểm cho mỗi mô hình). Chỉ ĐỌC tệp có sẵn; firmware không ghi âm thanh.
 static void thuDongNhat() {
   File w = SD.open("/thu_dong_nhat.wav");
@@ -434,19 +447,34 @@ static void thuDongNhat() {
   int16_t *m = (int16_t *)heap_caps_malloc((size_t)n * 2, MALLOC_CAP_SPIRAM);
   if (!m) { Serial.println("  tep qua lon"); w.close(); return; }
   w.seek(dataPos); w.read((uint8_t *)m, (size_t)n * 2); w.close();
-  if (!SD.exists(THU_MUC)) SD.mkdir(THU_MUC);
-  File o = SD.open("/tc/thu_dong_nhat_diem.csv", FILE_WRITE);
+  File o = SD.open("/thu_dong_nhat_diem.csv", FILE_WRITE);
   o.println("cua_so,t_bat_dau_s,p_cough_v1,p_cough_v2,ms_xu_ly");
   uint32_t so = 0, msMax = 0;
+  int dat[2] = {0, 0}; float lechMax[2] = {0, 0};      // so với bộ chạy trên máy tính (tham_chieu_dong_nhat.h)
   for (uint32_t bd = 0; bd + CUA_SO <= n; bd += BUOC, so++) {
     for (uint32_t k = 0; k < CUA_SO; k++) cuaSo[k] = (float)m[bd + k];
     uint32_t t0 = millis();
     float p1 = cham(0), p2 = cham(1);
     uint32_t ms = millis() - t0; if (ms > msMax) msMax = ms;
     o.printf("%lu,%.4f,%.6f,%.6f,%lu\n", (unsigned long)so, bd / (double)TAN_SO, p1, p2, (unsigned long)ms);
+    if ((int)so < THAM_CHIEU_SO) {
+      float d1 = fabsf(p1 - THAM_CHIEU_V1[so]), d2 = fabsf(p2 - THAM_CHIEU_V2[so]);
+      if (d1 <= 0.0040f) dat[0]++; if (d2 <= 0.0040f) dat[1]++;      // lệch ≤ 1 bậc int8 (1/256)
+      if (d1 > lechMax[0]) lechMax[0] = d1; if (d2 > lechMax[1]) lechMax[1] = d2;
+    }
+  }
+  if ((int)so == THAM_CHIEU_SO) {
+    for (int m = 0; m < 2; m++)
+      Serial.printf("  v%d: %d/%lu cua so lech <= 1 bac int8 (%.1f%%), lech lon nhat %.4f\n", m + 1, dat[m],
+                    (unsigned long)so, 100.0 * dat[m] / so, lechMax[m]);
+    bool dat_ = dat[0] * 100 >= 95 * (int)so && dat[1] * 100 >= 95 * (int)so;
+    Serial.println(dat_ ? "  -> PHEP THU DONG NHAT: DAT (>= 95% cua so lech <= 1 bac, nhu tieu chi tren may tinh)"
+                        : "  -> PHEP THU DONG NHAT: CHUA DAT");
+  } else {
+    Serial.printf("  tep co %lu cua so, khong phai tep tham chieu (%d) - chi ghi diem, khong so\n", (unsigned long)so, THAM_CHIEU_SO);
   }
   o.close(); free(m);
-  Serial.printf("  xong: %lu cua so, suy luan lon nhat %lu ms -> /tc/thu_dong_nhat_diem.csv\n", (unsigned long)so, (unsigned long)msMax);
+  Serial.printf("  xong: %lu cua so, suy luan lon nhat %lu ms -> /thu_dong_nhat_diem.csv\n", (unsigned long)so, (unsigned long)msMax);
 }
 
 // ======================================================================== đồng bộ giờ bằng điện thoại
@@ -474,8 +502,8 @@ $('sk').textContent=r.su_kien;$('th').textContent=r.the?'OK':'LỖI';$('sl').tex
 $('nut').onclick=async()=>{$('nut').disabled=true;$('kq').textContent='Đang đo…';let best=null;
 for(let i=0;i<8;i++){const t0=Date.now();const td=+(await(await fetch('/gio?'+i)).text());const t1=Date.now();
 const rtt=t1-t0;if(!best||rtt<best.rtt)best={rtt,lech:Math.round((t0+t1)/2-td)}}
-const r=await(await fetch('/dat_gio?lech='+best.lech+'&rtt='+best.rtt)).text();
-$('kq').textContent='Đã đồng bộ. '+r+' · khứ hồi '+best.rtt+' ms';$('nut').disabled=false;tt()};
+const q=await fetch('/dat_gio?lech='+best.lech+'&rtt='+best.rtt),r=await q.text();
+$('kq').textContent=(q.ok?'Đã đồng bộ. ':'LỖI: ')+r+' · khứ hồi '+best.rtt+' ms';$('nut').disabled=false;tt()};
 tt();setInterval(tt,2000);
 </script></html>)HTML";
 
@@ -483,7 +511,8 @@ static void khoiDongTrang() {
   may.on("/", []() { may.send_P(200, "text/html; charset=utf-8", TRANG); });
   may.on("/gio", []() { char b[24]; snprintf(b, sizeof b, "%.0f", gioThietBiMs()); may.send(200, "text/plain", b); });
   may.on("/dat_gio", []() {
-    long lech = may.arg("lech").toInt(); int rtt = may.arg("rtt").toInt();
+    // Lần đầu (chưa có giờ) độ lệch ≈ 1,8 × 10^12 ms, vượt kiểu long 32 bit → đọc bằng số thực.
+    double lech = strtod(may.arg("lech").c_str(), nullptr); int rtt = may.arg("rtt").toInt();
     double thuc = gioThietBiMs() + lech;
     if (thuc < 1.7e12 || rtt < 0 || rtt > 2000) { may.send(400, "text/plain", "gia tri khong hop le"); return; }
     struct timeval tv = {(time_t)(thuc / 1000.0), (suseconds_t)(fmod(thuc, 1000.0) * 1000)};
@@ -500,6 +529,38 @@ static void khoiDongTrang() {
     may.send(200, "application/json; charset=utf-8", b);
   });
   may.begin();
+}
+
+// ======================================================================== bật/tắt Wi-Fi theo khung giờ
+// Wi-Fi phát làm sụt nguồn 3V3 và gây nhiễu vào micro, thẻ nhớ (thử 12/11: mẫu chạm đỉnh, thẻ lỗi khi Wi-Fi bật).
+// Vì vậy Wi-Fi chỉ bật để đồng bộ giờ: 15 phút đầu sau khởi động (hoặc đến khi có giờ) và mỗi ngày 16:50–17:20
+// (giờ thay sạc). Ngoài các khung này Wi-Fi tắt hẳn. Trạng thái Wi-Fi ghi trong nhật ký mỗi phút (cột wifi_bat).
+static void batWifi() {
+  if (wifiDangBat) return;
+  WiFi.mode(wifiSsid.length() ? WIFI_AP_STA : WIFI_AP);
+  WiFi.softAP(apTen.c_str(), apMatKhau.c_str());
+  WiFi.setTxPower(WIFI_POWER_2dBm);            // công suất thấp nhất: đủ cho điện thoại đứng cạnh hộp
+  if (wifiSsid.length()) { WiFi.setAutoReconnect(true); WiFi.begin(wifiSsid.c_str(), wifiPass.c_str()); }
+  wifiDangBat = true;
+  Serial.printf("Wi-Fi BAT: \"%s\" · http://192.168.4.1\n", apTen.c_str());
+}
+static void tatWifi() {
+  if (!wifiDangBat) return;
+  WiFi.softAPdisconnect(true); WiFi.disconnect(true); WiFi.mode(WIFI_OFF);
+  wifiDangBat = false;
+  Serial.println("Wi-Fi TAT");
+}
+static void dieuKhienWifi() {
+  static uint32_t lan = 0;
+  if (millis() - lan < 5000) return;
+  lan = millis();
+  bool can = !coMoc || millis() < 15UL * 60UL * 1000UL;
+  if (coMoc) {
+    time_t t = time(nullptr); struct tm g; localtime_r(&t, &g);
+    int phut = g.tm_hour * 60 + g.tm_min;
+    if (phut >= 16 * 60 + 50 && phut < 17 * 60 + 20) can = true;
+  }
+  if (can) batWifi(); else tatWifi();
 }
 
 // ======================================================================== khởi động
@@ -550,14 +611,7 @@ void setup() {
   // Mỗi lần đồng bộ (từ nguồn nào) đều đo độ lệch và neo lại đồng hồ mẫu.
   sntp_set_time_sync_notification_cb(khiDongBoNtp);
   sntp_set_sync_interval(NTP_CHU_KY_MS);
-  WiFi.mode(wifiSsid.length() ? WIFI_AP_STA : WIFI_AP);
-  WiFi.softAP(apTen.c_str(), apMatKhau.c_str());
-  Serial.printf("Wi-Fi cua mach: \"%s\" · mo http://%s de dong bo gio\n", apTen.c_str(), WiFi.softAPIP().toString().c_str());
-  if (wifiSsid.length()) {
-    WiFi.setAutoReconnect(true);
-    WiFi.begin(wifiSsid.c_str(), wifiPass.c_str());
-    Serial.printf("Dang ket noi Wi-Fi \"%s\" de lay NTP...\n", wifiSsid.c_str());
-  }
+  batWifi();
   configTzTime(MUI_GIO, ntpMay.c_str());
   khoiDongTrang();
 
@@ -569,7 +623,8 @@ void setup() {
 
 void loop() {
   static uint32_t t = 0;
-  may.handleClient();
+  dieuKhienWifi();
+  if (wifiDangBat) may.handleClient();
   if (!coMoc && millis() - t > 10000) {
     t = millis();
     Serial.printf("Chua co gio: ket noi dien thoai vao Wi-Fi \"%s\", mo http://192.168.4.1, bam Dong bo gio\n", apTen.c_str());

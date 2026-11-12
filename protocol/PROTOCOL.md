@@ -202,7 +202,7 @@ Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi
 | 16.14 | 12/11/2026 | Dời lịch thu dữ liệu | Mạch ESP32-S3 thứ nhất hỏng chip flash (11/11), module thẻ nhớ hỏng (12/11); chưa thu dữ liệu nào |
 | 16.15 | 12/11/2026 | Bốn đêm đếm 13–16/11; ghi điểm mọi cửa sổ của cả hai mô hình | Đêm 13 diễn ra trước khi chọn mô hình và đóng băng ngưỡng; số đếm mọi đêm tính bằng cùng một mô hình và ngưỡng đã đóng băng |
 | 16.16 | 12/11/2026 | Đồng bộ giờ bằng điện thoại qua Wi-Fi của mạch; hiệu chỉnh trôi giờ | Không có Wi-Fi Internet ổn định suốt đêm tại KTX |
-| 16.17 | 12/11/2026 | Thay phần cứng: TC-01 dùng mạch ESP32-S3 thay thế, thẻ nhớ ở chân 15–18; TC-02 dùng mạch ESP32 thường | Hỏng phần cứng (16.14) |
+| 16.17 | 12/11/2026 | Thay phần cứng: TC-01 dùng mạch ESP32-S3 thay thế, thẻ nhớ ở chân 15–18 (VCC 3V3); TC-02 dùng mạch ESP32 thường; Wi-Fi theo khung giờ; cấu hình thư viện mô hình để đạt phép thử đồng nhất | Hỏng phần cứng (16.14); phép thử 7.6 |
 | 16.18 | 12/11/2026 | Đối chứng âm còn 3 ngày học (13, 16, 17/11); chạy thử 24 giờ tại vị trí lắp | Mất ngày 11 và 12/11 do hỏng thiết bị; giữ được ngày 13/11 mà không cần ghi âm |
 | 16.19 | 12/11/2026 | Ngày xoá tệp ghi âm kiểm định dời đến chậm nhất 17/11/2026 | Phần để chấm ghi tối 16/11 |
 
@@ -301,6 +301,9 @@ Mạch tự phát Wi-Fi; điện thoại kết nối và đồng bộ giờ qua 
 - **TC-01:** mạch ESP32-S3 N16R8 thay thế (đạt kiểm tra bo mạch 16 MB, PSRAM 8 MB và micro ngày 12/11); module thẻ nhớ mới, nối chân CS 15, MOSI 16, SCK 17, MISO 18 (thay cho 10–13). Không có LED báo; thiết bị vận hành không ghi âm thanh nên LED báo ghi âm chỉ cần cho TC-02 và được thay bằng biển “Đang ghi âm”.
 - **TC-02:** mạch ESP32 thường (ESP-WROOM-32, 4 MB flash, không có PSRAM), chỉ chạy firmware kiểm định ghi WAV 16 kHz, 16 bit; quy đổi mẫu giống TC-01 (16.8). Kiểm tra hai thiết bị cạnh nhau (mục 7.6) làm bằng tệp WAV của TC-02 chấm trên máy tính bằng cùng thư viện mô hình.
 - **Điện áp nguồn** trong nhật ký mỗi phút chỉ có khi lắp cầu chia điện trở; nếu không lắp, cột này để trống và việc mất nguồn được nhận biết qua thời gian chạy và khoảng trống của nhật ký.
+- **Nguồn module thẻ nhớ (12/11):** chân “5Vin” của mạch ESP32-S3 thay thế không ra 5 V khi cấp nguồn qua USB, nên module thẻ không chạy dù thẻ, dây và module đều tốt. VCC của module chuyển sang chân 3V3; T5 đạt thẻ nhớ.
+- **Ghi thẻ và Wi-Fi (12/11):** khi Wi-Fi phát liên tục, firmware vận hành gặp lỗi ghi thẻ. Tệp chuyển ra thư mục gốc của thẻ, SPI thẻ chạy 4 MHz (lùi về 1 MHz nếu không mở được); Wi-Fi chỉ bật khi chưa có giờ, trong 15 phút đầu sau khởi động và 16:50–17:20 mỗi ngày (giờ đồng bộ, 16.16), công suất phát 2 dBm. Cột `wifi_bat` và `loi_the` trong nhật ký mỗi phút ghi lại trạng thái này.
+- **Cấu hình thư viện mô hình trên mạch (12/11), để đạt phép thử đồng nhất 7.6:** `EIDSP_QUANTIZE_FILTERBANK 0` (bộ lọc MFE số thực như trên máy tính), `EIDSP_USE_ESP_DSP 1` (FFT của esp-dsp; với kissfft suy luận mất 915 ms), `EI_CLASSIFIER_TFLITE_ENABLE_ESP_NN 0` (tắt nhân tối ưu ESP-NN). Trước khi tắt ESP-NN, chỉ 27,7% (v1) và 1,7% (v2) cửa sổ lệch ≤ 1 bậc int8. Sau khi tắt: mạch báo ĐẠT cho cả hai mô hình (v2 119/119 cửa sổ, lệch lớn nhất 0,0000; v1 đạt ngưỡng ≥ 95%), suy luận hai mô hình lớn nhất 230 ms. Ba cờ này là một phần của bản đóng băng (mục 10) và được ghi cùng SHA-256 firmware.
 
 ### 16.18. Đối chứng âm
 
