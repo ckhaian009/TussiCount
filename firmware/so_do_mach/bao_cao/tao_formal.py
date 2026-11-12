@@ -79,7 +79,7 @@ def hinh(cfg):
 TC01 = dict(mcu="U1  ESP32-S3-DevKitC-1", mcu_phu="ESP32-S3 N16R8", v5=None, mic=("GPIO4", "GPIO5", "GPIO6"),
             sd=("GPIO15", "GPIO16", "GPIO17", "GPIO18"), the_vcc="+3,3 V", led=None)
 TC02 = dict(mcu="U1  ESP32 DevKit", mcu_phu="ESP-WROOM-32", v5="V5", mic=("GPIO26", "GPIO25", "GPIO33"),
-            sd=("GPIO5", "GPIO23", "GPIO18", "GPIO19"), the_vcc="+5 V", led="GPIO2")
+            sd=("GPIO5", "GPIO23", "GPIO18", "GPIO19"), the_vcc="+5 V", led=None)
 
 BANG = [
     ("U2 – Micro INMP441", [("VDD", "Nguồn 3,3 V", "3V3", "3V3"), ("GND", "Đất", "GND", "GND"), ("L/R", "Chọn kênh trái", "GND", "GND"),
@@ -88,7 +88,6 @@ BANG = [
     ("U3 – Module microSD", [("VCC", "Nguồn", "3V3", "V5"), ("GND", "Đất", "GND", "GND"), ("CS", "Chọn chip SPI", "GPIO15", "GPIO5"),
                             ("MOSI", "Dữ liệu SPI vào thẻ", "GPIO16", "GPIO23"), ("SCK", "Xung nhịp SPI", "GPIO17", "GPIO18"),
                             ("MISO", "Dữ liệu SPI ra từ thẻ", "GPIO18", "GPIO19")]),
-    ("D1 – LED (nối tiếp R1 330 Ω)", [("Anode", "Báo đang ghi âm", "—", "GPIO2"), ("Cathode", "Đất", "—", "GND")]),
     ("BT1 – Nguồn 5 V", [("USB", "Cấp nguồn cho bo", "USB-C", "USB")]),
 ]
 
