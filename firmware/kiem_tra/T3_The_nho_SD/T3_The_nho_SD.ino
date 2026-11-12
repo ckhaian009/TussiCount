@@ -13,8 +13,9 @@ bool kiemTra();
 
 bool kiemTra() {
   spiThe.begin(PIN_SD_SCK, PIN_SD_MISO, PIN_SD_MOSI, PIN_SD_CS);
-  if (!SD.begin(PIN_SD_CS, spiThe, 10000000)) {
-    Serial.println("LOI: khong nhan the. Kiem tra: the da cam; VCC module noi 5V; CS-10, MOSI-11, SCK-12, MISO-13; the FAT32.");
+  if (!SD.begin(PIN_SD_CS, spiThe, 4000000)) {     // 4 MHz như firmware vận hành
+    Serial.printf("LOI: khong nhan the. Kiem tra: the da cam; VCC module noi 3V3 (khong dung 5Vin); CS-%d, MOSI-%d, SCK-%d, MISO-%d; the FAT32.\n",
+                  PIN_SD_CS, PIN_SD_MOSI, PIN_SD_SCK, PIN_SD_MISO);
     return false;
   }
   const char *loai[] = {"khong co the", "MMC", "SDSC", "SDHC/SDXC", "khong ro"};

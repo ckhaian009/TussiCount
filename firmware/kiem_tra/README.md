@@ -33,6 +33,6 @@ Mã do trợ lý AI viết; đã biên dịch không lỗi với Arduino-ESP32 3
 
 Mạch ESP32-S3 N16R8 (MAC 14:c1:9f:d0:05:f0) kết nối được nhưng không đọc/ghi được chip flash, kể cả khi tháo hết dây: coi là hỏng. T5 tự chọn chân theo board chọn trong Tools:
 
-- **ESP32-S3** (ESP32S3 Dev Module): micro SCK-4, WS-5, SD-6; thẻ CS-15, MOSI-16, SCK-17, MISO-18. Ngày 12/11 dời thẻ khỏi 10–13 vì trên mạch S3 thứ hai (MAC 1C:DB:D4:5C:B5:E8) thẻ không nhận ở 10–13 dù bo mạch và micro đạt; chẩn đoán: MISO bị giữ mức thấp, cả 10/4/1 MHz đều không nhận.
+- **ESP32-S3** (ESP32S3 Dev Module): micro SCK-4, WS-5, SD-6; thẻ CS-15, MOSI-16, SCK-17, MISO-18. Ngày 12/11 dời thẻ khỏi 10–13 vì trên mạch S3 thứ hai (MAC 1C:DB:D4:5C:B5:E8) thẻ không nhận ở 10–13 dù bo mạch và micro đạt; chẩn đoán lúc đó: MISO bị giữ mức thấp, cả 10/4/1 MHz đều không nhận. Tối 12/11 tìm ra nguyên nhân chính: VCC module nối chân 5Vin, mà trên mạch này chân 5Vin không ra 5 V khi cấp qua USB (module không có điện thì MISO cũng thả nổi/thấp). Chuyển VCC sang 3V3 thì T5 đạt ở chân 15–18. T1–T4 (`chan_noi.h`) đã cập nhật chân 15–18 ngày 12/11; sơ đồ mạch bản 2.0 (4 trang: TC-01, TC-02) ở `so_do_mach/`.
 - **ESP32 thường** (ESP32 Dev Module, ESP-WROOM-32, cổng /dev/cu.usbserial-…): micro SCK-G26, WS-G25, SD-G33; thẻ CS-G5, MOSI-G23, SCK-G18, MISO-G19; VCC thẻ vào chân V5. Không có PSRAM, flash 4 MB; giữ cài đặt mặc định của Tools.
 

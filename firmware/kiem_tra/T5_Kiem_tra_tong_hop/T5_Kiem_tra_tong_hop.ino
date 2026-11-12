@@ -10,7 +10,7 @@
 // Nối dây (bỏ LED). Chương trình tự chọn chân theo loại mạch đang chọn trong Tools > Board:
 //   ESP32-S3 (ESP32S3 Dev Module, mạch chính N16R8):
 //     INMP441: VDD-3V3, GND-GND, SCK-GPIO4, WS-GPIO5, SD-GPIO6, L/R-GND
-//     Module thẻ: VCC-5V, GND-GND, CS-GPIO15, MOSI-GPIO16, SCK-GPIO17, MISO-GPIO18 (trước 12/11 là 10–13)
+//     Module thẻ: VCC-3V3 (KHÔNG dùng chân 5Vin), GND-GND, CS-GPIO15, MOSI-GPIO16, SCK-GPIO17, MISO-GPIO18
 //   ESP32 thường (ESP32 Dev Module, mạch dự phòng ESP-WROOM-32, chân in G25, G26...):
 //     INMP441: VDD-3V3, GND-GND, SCK-G26, WS-G25, SD-G33, L/R-GND
 //     Module thẻ: VCC-5V (chân V5), GND-GND, CS-G5, MOSI-G23, SCK-G18, MISO-G19
@@ -31,6 +31,7 @@ const int PIN_SD_MOSI = 16;
 const int PIN_SD_SCK = 17;
 const int PIN_SD_MISO = 18;
 #define SPI_THE FSPI
+#define VCC_THE "3V3 (khong dung 5Vin)"
 #else  // ESP32 thường (ESP-WROOM-32)
 const int PIN_MIC_SCK = 26;
 const int PIN_MIC_WS = 25;
@@ -40,6 +41,7 @@ const int PIN_SD_MOSI = 23;
 const int PIN_SD_SCK = 18;
 const int PIN_SD_MISO = 19;
 #define SPI_THE VSPI
+#define VCC_THE "V5"
 #endif
 
 // Nếu micro luôn báo "TOAN SO 0" dù đã nối đúng: đổi LEFT thành RIGHT rồi nạp lại.
@@ -203,7 +205,7 @@ bool kiemTraThe() {
       if (!duoc) SD.end();
     }
     if (!duoc) {
-      Serial.printf("-> THE NHO: LOI khong nhan the. Kiem tra: the da cam; VCC module noi 5V; CS-%d, MOSI-%d, SCK-%d, MISO-%d; the FAT32.\n",
+      Serial.printf("-> THE NHO: LOI khong nhan the. Kiem tra: the da cam; VCC module noi " VCC_THE "; CS-%d, MOSI-%d, SCK-%d, MISO-%d; the FAT32.\n",
                     PIN_SD_CS, PIN_SD_MOSI, PIN_SD_SCK, PIN_SD_MISO);
       return false;
     }

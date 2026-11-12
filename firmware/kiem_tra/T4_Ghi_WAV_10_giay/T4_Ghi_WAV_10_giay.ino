@@ -49,7 +49,7 @@ void setup() {
   Serial.println();
   Serial.println("=== T4: ghi WAV 10 giay ===");
   spiThe.begin(PIN_SD_SCK, PIN_SD_MISO, PIN_SD_MOSI, PIN_SD_CS);
-  if (!SD.begin(PIN_SD_CS, spiThe, 20000000)) baoLoi("LOI: khong nhan the - chay lai T3");
+  if (!SD.begin(PIN_SD_CS, spiThe, 4000000)) baoLoi("LOI: khong nhan the - chay lai T3");
   i2s_chan_config_t cc = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
   ESP_ERROR_CHECK(i2s_new_channel(&cc, NULL, &rx));
   i2s_std_config_t cfg = {
