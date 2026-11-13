@@ -5,7 +5,7 @@
 
 // ---------- Thiết bị ----------
 #define TEN_THIET_BI "TC-01"
-#define PHIEN_BAN_FW "van-hanh-1.0"
+#define PHIEN_BAN_FW "van-hanh-1.1"
 
 // ---------- Mô hình ----------
 // Thiết bị chấm MỌI cửa sổ bằng CẢ HAI mô hình (v1 = Impulse #2, v2 = Impulse #3 tăng cường) và ghi điểm của cả hai

@@ -86,7 +86,7 @@ static volatile int ntpLechMs = 0;            // độ lệch đo được ở l
 static volatile time_t ntpLanCuoi = 0;
 static volatile uint32_t soLanNtp = 0;
 static volatile char nguonDongBo = '-';
-static volatile bool wifiDangBat = false;      // Wi-Fi chỉ bật trong khung đồng bộ giờ       // 'N' = NTP qua Internet, 'D' = điện thoại qua Wi-Fi của mạch
+static volatile bool wifiDangBat = false; static bool chanWifiSauDongBo = false; static uint32_t hetWifiLuc = 0;      // Wi-Fi chỉ bật trong khung đồng bộ giờ       // 'N' = NTP qua Internet, 'D' = điện thoại qua Wi-Fi của mạch
 
 // gói 10 phút
 static uint32_t suKien10p = 0;
@@ -183,6 +183,11 @@ static void xaHangCho() {
   lay.swap(cho);
   xSemaphoreGive(khoaGhi);
   if (lay.empty()) return;
+  // Wi-Fi phát làm sụt nguồn 3V3, thẻ dễ lỗi khi đang ghi (12–13/11): giữ dòng trong hàng chờ, ghi sau khi Wi-Fi tắt.
+  if (wifiDangBat && lay.size() < 12000) {
+    xSemaphoreTake(khoaGhi, portMAX_DELAY); cho.insert(cho.begin(), lay.begin(), lay.end()); xSemaphoreGive(khoaGhi);
+    return;
+  }
   if (!theSanSang) { theSanSang = moThe(); if (!theSanSang) { loiThe++; xSemaphoreTake(khoaGhi, portMAX_DELAY); cho.insert(cho.begin(), lay.begin(), lay.end()); if (cho.size() > 20000) cho.erase(cho.begin(), cho.begin() + (cho.size() - 20000)); xSemaphoreGive(khoaGhi); return; } }
   size_t i = 0;
   while (i < lay.size()) {
@@ -192,6 +197,7 @@ static void xaHangCho() {
              (unsigned long)(ngay / 100 % 100), (unsigned long)(ngay % 100), DUOI[loai]);
     bool moi = !SD.exists(ten);
     File f = SD.open(ten, moi ? FILE_WRITE : FILE_APPEND);
+    if (!f && moThe()) { moi = !SD.exists(ten); f = SD.open(ten, moi ? FILE_WRITE : FILE_APPEND); }   // thử lại một lần
     if (!f) { Serial.printf("THE: khong mo duoc %s de ghi (moi=%d)\n", ten, moi); loiThe++; theSanSang = false; SD.end(); break; }
     if (moi) f.println(DAU_COT[loai]);
     while (i < lay.size() && lay[i].ngay == ngay && lay[i].loai == loai) { f.println(lay[i].noiDung); i++; }
@@ -518,6 +524,7 @@ static void khoiDongTrang() {
     struct timeval tv = {(time_t)(thuc / 1000.0), (suseconds_t)(fmod(thuc, 1000.0) * 1000)};
     settimeofday(&tv, nullptr);
     neoGio(thuc, 'D', rtt);
+    chanWifiSauDongBo = true; hetWifiLuc = millis() + 90000;            // tắt Wi-Fi sau 90 giây để thẻ ghi an toàn
     may.send(200, "text/plain; charset=utf-8", String("Lech do duoc: ") + ntpLechMs + " ms");
   });
   may.on("/trang_thai", []() {
@@ -560,6 +567,8 @@ static void dieuKhienWifi() {
     int phut = g.tm_hour * 60 + g.tm_min;
     if (phut >= 16 * 60 + 50 && phut < 17 * 60 + 20) can = true;
   }
+  if (!can) chanWifiSauDongBo = false;                                   // hết khung: lần sau lại cho bật
+  else if (chanWifiSauDongBo && (int32_t)(millis() - hetWifiLuc) >= 0) can = false;
   if (can) batWifi(); else tatWifi();
 }
 
