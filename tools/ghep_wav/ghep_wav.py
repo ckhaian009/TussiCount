@@ -9,6 +9,7 @@ màn hình; hai tệp chồng nhau thì dừng. Ghi kèm tệp .json: giờ mẫ
 ví dụ ~/TussiCount_KTX. Không tải lên dịch vụ trực tuyến.
 
   python3 tools/ghep_wav/ghep_wav.py ~/TussiCount_KTX/the_GHI_2026-11-16 de_sua ~/TussiCount_KTX/phan_de_sua.wav
+  python3 tools/ghep_wav/ghep_wav.py <thu_muc> am_hoc,de_sua <tep_ra.wav>   # ghép hai phiên liền nhau (16.22)
   python3 tools/ghep_wav/ghep_wav.py --thu      # phép thử trên dữ liệu tổng hợp
 """
 import csv
@@ -41,7 +42,8 @@ def ghep(thu_muc, phien, ra):
     bang = os.path.join(thu_muc, "TC-01_ghi.csv")
     if not os.path.exists(bang):
         sys.exit(f"LOI: khong thay {bang}")
-    dong = [d for d in csv.DictReader(open(bang, encoding="utf-8")) if d["phien"] == phien]
+    cac_phien = set(phien.split(","))          # nhiều phiên liền nhau: "am_hoc,de_sua"
+    dong = [d for d in csv.DictReader(open(bang, encoding="utf-8")) if d["phien"] in cac_phien]
     if not dong:
         sys.exit(f"LOI: khong co tep nao cua phien '{phien}' trong TC-01_ghi.csv")
     dong.sort(key=lambda d: float(d["t_mau_dau_epoch"]))
@@ -90,13 +92,16 @@ def thu():
                 w.writeframes(bytes(random.Random(i).getrandbits(8) for _ in range(n * 2)))
             rows.append([ten, "de_sua", "TC-01", f"{t:.3f}", "", n, n / TAN_SO, 0, 0])
             t += n / TAN_SO
+        rows[0][1] = "am_hoc"
         rows.append(["THU_x.wav", "ghi_thu", "TC-01", "1794700000.000", "", 10, 0, 0, 0])
         with open(os.path.join(d, "TC-01_ghi.csv"), "w", newline="") as f:
             c = csv.writer(f)
             c.writerow("tep,phien,thiet_bi,t_mau_dau_epoch,t_mau_dau_gio_vn,so_mau,thoi_luong_s,mau_thieu_chen_0,"
                        "mau_cham_dinh".split(","))
             c.writerows(rows)
-        m = ghep(d, "de_sua", os.path.join(d, "ra", "phan_de_sua.wav"))
+        m1 = ghep(d, "de_sua", os.path.join(d, "ra", "chi_de_sua.wav"))
+        assert m1["so_mau"] == TAN_SO * 5 + int(1.5 * TAN_SO) + TAN_SO * 2, m1["so_mau"]
+        m = ghep(d, "am_hoc,de_sua", os.path.join(d, "ra", "phan_de_sua.wav"))
         assert m["so_mau"] == TAN_SO * 12 + int(1.5 * TAN_SO), m["so_mau"]
         assert len(m["khe_ho"]) == 1 and abs(m["khe_ho"][0]["giay"] - 1.5) < 1e-6
         with wave.open(os.path.join(d, "ra", "phan_de_sua.wav")) as w:
