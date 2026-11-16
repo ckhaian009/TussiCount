@@ -336,9 +336,9 @@ Ghi ngày 16/11/2026, trước khi ghi phần để sửa và phần để chấ
 
 | Phiên | Thời gian | Ghi chú |
 | --- | --- | --- |
-| Ghi thử | 16/11, ≤ 10 phút trước 20:40 | Kiểm tra firmware trên mạch; tệp `THU_…` xoá cùng các tệp khác |
-| Âm học (16.9) | 16/11 20:40–20:55 | Thay 18:15–18:30 ngày 13/11 (không làm được) |
-| Phần để sửa | 16/11 20:55–23:00 (khoảng 2,08 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30; không ghi quá 23:00 đã thông báo |
+| Ghi thử | 16/11, ≤ 10 phút trước 20:55 | Kiểm tra firmware trên mạch; tệp `THU_…` xoá cùng các tệp khác |
+| Âm học (16.9) | 16/11 20:55–21:05 | Thay 18:15–18:30 ngày 13/11 (không làm được) |
+| Phần để sửa | 16/11 21:05–23:00 (khoảng 1,92 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30, về KTX khoảng 20:45; không ghi quá 23:00 đã thông báo |
 | Phần để chấm | 17/11 17:00–20:20 và 22:20–23:30 (4,5 giờ) | Giữ đủ 4,5 giờ cho tiêu chí phát hiện sai mỗi giờ |
 
 Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
