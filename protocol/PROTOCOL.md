@@ -341,7 +341,7 @@ Ghi ngày 16/11/2026, trước khi ghi phần để sửa và phần để chấ
 | Phần để sửa | 16/11 21:05–23:00 (khoảng 1,92 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30, về KTX khoảng 20:45; không ghi quá 23:00 đã thông báo |
 | Phần để chấm | 17/11 17:00–20:20 và 22:20–23:30 (4,5 giờ) | Giữ đủ 4,5 giờ cho tiêu chí phát hiện sai mỗi giờ |
 
-Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
+Nếu tối 16/11 mạch chỉ sẵn sàng sau 21:00 thì bỏ đo âm học; khi đó tệp của khung `am_hoc` chỉ chứa âm thanh sinh hoạt bình thường và được ghép vào đầu phần để sửa. Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
 
 **Đóng băng** dời sang 17/11 11:30–12:40, sau phần để sửa và trước phần để chấm. Tầng 1 buổi 1 và yên tĩnh buổi 2 (15/11) thu trước khi đóng băng; như đêm 13 (16.15), sự kiện của chúng được tính lại sau đóng băng từ tệp điểm bằng mô hình, ngưỡng và bộ lọc đã đóng băng.
 
