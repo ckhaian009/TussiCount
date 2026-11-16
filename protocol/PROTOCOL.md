@@ -337,11 +337,11 @@ Ghi ngày 16/11/2026, trước khi ghi phần để sửa và phần để chấ
 | Phiên | Thời gian | Ghi chú |
 | --- | --- | --- |
 | Ghi thử | 16/11, ≤ 10 phút trước 20:55 | Kiểm tra firmware trên mạch; tệp `THU_…` xoá cùng các tệp khác |
-| Âm học (16.9) | 16/11 20:55–21:05 | Thay 18:15–18:30 ngày 13/11 (không làm được) |
-| Phần để sửa | 16/11 21:05–23:00 (khoảng 1,92 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30, về KTX khoảng 20:45; không ghi quá 23:00 đã thông báo |
+| Âm học (16.9) | 16/11 20:55–21:05, hoặc ngay khi mạch sẵn sàng nếu muộn hơn (bắt đầu trước 21:15) | Thay 18:15–18:30 ngày 13/11 (không làm được) |
+| Phần để sửa | 16/11, từ 30 giây sau tiếng đập cuối của đo âm học đến 23:00 (dự kiến 21:05–23:00, khoảng 1,92 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30, về KTX khoảng 20:45; không ghi quá 23:00 đã thông báo |
 | Phần để chấm | 17/11 17:00–20:20 và 22:20–23:30 (4,5 giờ) | Giữ đủ 4,5 giờ cho tiêu chí phát hiện sai mỗi giờ |
 
-Nếu tối 16/11 mạch chỉ sẵn sàng sau 21:00 thì bỏ đo âm học; khi đó tệp của khung `am_hoc` chỉ chứa âm thanh sinh hoạt bình thường và được ghép vào đầu phần để sửa. Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
+Hai khung `am_hoc` và `de_sua` ghi liền nhau nên được xử lý như một bản ghi. Đo âm học làm ngay khi mạch sẵn sàng, kể cả khi muộn hơn 20:55, miễn là bắt đầu trước 21:15 (sau giờ này học sinh đã vào phòng; không đo nữa). Giờ từng lần phát nhiễu hồng và từng tiếng đập được ghi trong nhật ký đo. Phần để sửa là toàn bộ âm thanh từ 30 giây sau tiếng đập cuối cùng đến 23:00; nếu không đo âm học thì là toàn bộ bản ghi đến 23:00. Phần trước mốc đó chỉ dùng cho 16.9. Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
 
 **Đóng băng** dời sang 17/11 11:30–12:40, sau phần để sửa và trước phần để chấm. Tầng 1 buổi 1 và yên tĩnh buổi 2 (15/11) thu trước khi đóng băng; như đêm 13 (16.15), sự kiện của chúng được tính lại sau đóng băng từ tệp điểm bằng mô hình, ngưỡng và bộ lọc đã đóng băng.
 

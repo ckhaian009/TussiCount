@@ -10,6 +10,7 @@ ví dụ ~/TussiCount_KTX. Không tải lên dịch vụ trực tuyến.
 
   python3 tools/ghep_wav/ghep_wav.py ~/TussiCount_KTX/the_GHI_2026-11-16 de_sua ~/TussiCount_KTX/phan_de_sua.wav
   python3 tools/ghep_wav/ghep_wav.py <thu_muc> am_hoc,de_sua <tep_ra.wav>   # ghép hai phiên liền nhau (16.22)
+  python3 tools/ghep_wav/ghep_wav.py <thu_muc> am_hoc,de_sua <tep_ra.wav> --tu 21:07:30   # bỏ phần trước giờ đó (đo âm học)
   python3 tools/ghep_wav/ghep_wav.py --thu      # phép thử trên dữ liệu tổng hợp
 """
 import csv
@@ -36,6 +37,27 @@ def doc_wav(p):
         if w.getframerate() != TAN_SO or w.getnchannels() != 1 or w.getsampwidth() != 2:
             sys.exit(f"LOI: {p} khong phai WAV 16 kHz, 16 bit, mot kenh")
         return w.getnframes(), w.readframes(w.getnframes())
+
+
+def cat_dau(ra, meta, tu_hms):
+    """Bỏ phần trước giờ tu_hms (giờ Việt Nam, cùng ngày với mẫu đầu) khỏi tệp đã ghép; cập nhật .json."""
+    import datetime as dt
+    vn = dt.timezone(dt.timedelta(hours=7))
+    d0 = dt.datetime.fromtimestamp(meta["t_mau_dau_epoch"], vn)
+    h, m, sec = (int(x) for x in tu_hms.split(":"))
+    t_cat = d0.replace(hour=h, minute=m, second=sec, microsecond=0).timestamp()
+    bo = int(round((t_cat - meta["t_mau_dau_epoch"]) * TAN_SO))
+    if bo < 0 or bo >= meta["so_mau"]:
+        sys.exit(f"LOI: gio cat {tu_hms} nam ngoai tep")
+    with wave.open(ra, "rb") as w:
+        w.setpos(bo); du_lieu = w.readframes(meta["so_mau"] - bo)
+    with wave.open(ra, "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(TAN_SO); w.writeframes(du_lieu)
+    meta.update({"bo_dau_truoc": tu_hms, "so_mau_bo_dau": bo, "t_mau_dau_epoch": meta["t_mau_dau_epoch"] + bo / TAN_SO,
+                 "so_mau": meta["so_mau"] - bo, "thoi_luong_s": (meta["so_mau"] - bo) / TAN_SO})
+    json.dump(meta, open(os.path.splitext(ra)[0] + ".json", "w"), ensure_ascii=False, indent=1)
+    print(f"Da bo {bo / TAN_SO:.1f} s dau (truoc {tu_hms}); con {meta['thoi_luong_s'] / 3600:.3f} gio")
+    return meta
 
 
 def ghep(thu_muc, phien, ra):
@@ -106,6 +128,12 @@ def thu():
         assert len(m["khe_ho"]) == 1 and abs(m["khe_ho"][0]["giay"] - 1.5) < 1e-6
         with wave.open(os.path.join(d, "ra", "phan_de_sua.wav")) as w:
             assert w.getnframes() == m["so_mau"]
+        import datetime as dt
+        t_cat = dt.datetime.fromtimestamp(m["t_mau_dau_epoch"] + 3, dt.timezone(dt.timedelta(hours=7))).strftime("%H:%M:%S")
+        n0 = m["so_mau"]; m2 = cat_dau(os.path.join(d, "ra", "phan_de_sua.wav"), m, t_cat)
+        assert m2["so_mau"] == n0 - 3 * TAN_SO, (m2["so_mau"], n0)
+        with wave.open(os.path.join(d, "ra", "phan_de_sua.wav")) as w:
+            assert w.getnframes() == m2["so_mau"]
         print("PHEP THU: DAT")
 
 
@@ -114,6 +142,8 @@ if __name__ == "__main__":
         thu()
     elif len(sys.argv) == 4:
         ghep(*sys.argv[1:])
+    elif len(sys.argv) == 6 and sys.argv[4] == "--tu":
+        cat_dau(sys.argv[3], ghep(*sys.argv[1:4]), sys.argv[5])
     else:
         print(__doc__)
         sys.exit(2)
