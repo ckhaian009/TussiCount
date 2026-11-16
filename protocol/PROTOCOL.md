@@ -207,6 +207,7 @@ Các thay đổi 16.1–16.12 được đăng ký ngày 08/11/2026, trước khi
 | 16.19 | 12/11/2026 | Ngày xoá tệp ghi âm kiểm định dời đến chậm nhất 17/11/2026 | Phần để chấm ghi tối 16/11 |
 | 16.20 | 12/11/2026 | TC-02 không lắp LED báo ghi âm; trạng thái ghi báo bằng biển 2 | Đơn giản hoá phần cứng; biển 2 đã thông báo việc ghi âm |
 | 16.21 | 12/11/2026 | Tệp phát của phép thử tải: tiếng nói Common Voice trộn âm thanh môi trường ESC-50 thay cho “nhạc và tiếng nói” | Máy không có bộ nhạc dữ liệu mở |
+| 16.22 | 16/11/2026 | Một thiết bị (TC-01) luân phiên đếm và ghi âm; lịch thu dữ liệu 15–18/11; mức phát tầng 1 thấp hơn thiết kế; chọn khối gán nhãn | Phép thử 24 giờ lần 1 không đạt; TC-02 không dùng; loa tối đa 76 dB(A) ở 1 m; thành viên ở trường 19:00–20:30 |
 
 ### 16.1. Sai số số đếm và F1
 
@@ -322,3 +323,42 @@ Mục 2 (thiết bị) ghi mỗi bộ có LED báo ghi âm; 16.17 đã bỏ LED 
 ### 16.21. Tệp phát của phép thử tải
 
 Phép thử tải ở 16.5 dùng tệp 60 phút tạo bằng `tools/tai_nhieu/tao_tep_tai.py` (seed 7575): 814 đoạn tiếng nói Common Voice tiếng Việt nối liên tục, chuẩn hoá cùng mức, trộn với 720 đoạn ESC-50 thấp hơn 8 dB, bỏ các lớp giống tiếng người (ho, hắt hơi, thở, ngáy, cười, trẻ khóc); không có nhạc vì máy không có bộ nhạc dữ liệu mở. Mức phát, cách đo (75 dB(A) cách loa 1 m) và tiêu chí đạt giữ nguyên.
+
+### 16.22. Một thiết bị, lịch thu dữ liệu 15–18/11 và các sai lệch khi thực hiện
+
+Ghi ngày 16/11/2026, trước khi ghi phần để sửa và phần để chấm, trước khi đóng băng và trước khi chấm bất kỳ dữ liệu nào.
+
+**Phép thử 24 giờ và firmware vận hành 1.2.** Lần 1 bắt đầu 14/11 16:10 không đạt: nhật ký mỗi phút dừng lúc 07:46:23 (chưa rõ nguyên nhân) và 16:49:57 ngày 15/11 (đúng đầu khung Wi-Fi 16:50), trong khi mạch vẫn có điện; tức là mạch khởi động lại hoặc treo rồi chờ đồng bộ giờ. Firmware vận hành 1.2 (15/11): bỏ khung Wi-Fi 16:50–17:20; Wi-Fi chỉ bật 15 phút đầu sau khởi động hoặc khi chưa có giờ, tắt 90 giây sau khi đồng bộ; sau khởi động lại mềm, nếu đồng hồ RTC còn hợp lệ thì neo lại giờ từ RTC (nguồn đồng bộ ghi là `rtc_khoi_dong_lai`); ghi mỗi lần khởi động vào `/TC-01_khoi_dong.csv`. Lần 2 bắt đầu 15/11 19:19 tại vị trí lắp và kết thúc khi chuyển sang chế độ ghi tối 16/11. Các đêm trước 15/11 chỉ dùng những khoảng nhật ký mỗi phút liên tục và có giờ hợp lệ; khoảng trống được báo cáo là thiếu, không nội suy (mục 13).
+
+**Một thiết bị.** TC-02 không dùng. TC-01 luân phiên hai chế độ bằng cách nạp lại firmware và đổi thẻ nhớ: firmware vận hành (đếm, không ghi âm, thẻ đếm) và firmware ghi âm kiểm định `TC01_Ghi_kiem_dinh` (chỉ ghi trong các khung đã thông báo, thẻ ghi riêng, cùng cách quy đổi mẫu như firmware vận hành, 16.8). Hệ quả: (1) bỏ phép so sánh hai thiết bị sau khi tháo gỡ (mục 7.6, kappa) và cân bằng khuếch đại giữa hai thiết bị (16.8); (2) trong các giờ ghi âm, thiết bị không đếm; số đếm của những giờ này tính từ tệp WAV bằng bộ chạy mô hình trên máy tính với mô hình, ngưỡng và bộ lọc đã đóng băng, dựa trên phép thử đồng nhất 7.6 (16.17); (3) mọi lần chuyển chế độ được ghi giờ, khoảng giữa hai chế độ báo cáo là thiếu.
+
+**Lịch ghi âm** (tổng không quá 8 giờ):
+
+| Phiên | Thời gian | Ghi chú |
+| --- | --- | --- |
+| Ghi thử | 16/11, ≤ 10 phút trước 20:40 | Kiểm tra firmware trên mạch; tệp `THU_…` xoá cùng các tệp khác |
+| Âm học (16.9) | 16/11 20:40–20:55 | Thay 18:15–18:30 ngày 13/11 (không làm được) |
+| Phần để sửa | 16/11 20:55–23:00 (khoảng 2,08 giờ thay cho 3 giờ) | Thành viên ở trường 19:00–20:30; không ghi quá 23:00 đã thông báo |
+| Phần để chấm | 17/11 17:00–20:20 và 22:20–23:30 (4,5 giờ) | Giữ đủ 4,5 giờ cho tiêu chí phát hiện sai mỗi giờ |
+
+Firmware ghi âm cắt mỗi tệp tối đa 1 giờ; các tệp của một phiên được ghép thành một tệp liền bằng `tools/ghep_wav/ghep_wav.py` theo `TC-01_ghi.csv`, khe hở được chèn 0 và báo cáo.
+
+**Đóng băng** dời sang 17/11 11:30–12:40, sau phần để sửa và trước phần để chấm. Tầng 1 buổi 1 và yên tĩnh buổi 2 (15/11) thu trước khi đóng băng; như đêm 13 (16.15), sự kiện của chúng được tính lại sau đóng băng từ tệp điểm bằng mô hình, ngưỡng và bộ lọc đã đóng băng.
+
+**Xoá tệp ghi âm** chậm nhất 12:40 ngày 18/11/2026, có biên bản; thay 16.19. Đã nhắn giáo viên hướng dẫn về hạn này ngày 15/11; thông báo gửi học sinh và biển 2 ghi cùng hạn.
+
+**Tầng 1.**
+- Mức “vừa”: 83,5 dB(A) ở 1 m (20 tiếng ho nhẹ của hai thành viên, độ lệch chuẩn 2,8, KTC 95% 82,1–84,8; đo 15/11 19:48–19:53). Bộ đo 19:40–19:48 bị loại vì máy đo không được đặt lại chế độ MAX giữa các tiếng ho.
+- Mức phát: ở âm lượng tối đa, loa chỉ cho 76 dB(A) ở 1 m với tệp hiệu chuẩn. Buổi phát giữ âm lượng tối đa cố định; mọi mức (lớn, vừa, nhỏ) thấp hơn thiết kế khoảng 7,5 dB, chênh lệch giữa ba mức giữ nguyên 10 dB. Mức tại micro của từng tiếng ho vẫn tính như mục 7.1 từ mức đo của tệp hiệu chuẩn. Ngày 15/11, mức đo tệp hiệu chuẩn ở hành lang (máy đo đặt sát lưới micro TC-01 theo hướng dẫn) không giảm theo khoảng cách: khoảng 75 dB(A) ở 1 m, 75–76 ở 3 m, 72–79 ở 5 m, trong khi suy giảm theo khoảng cách dự kiến 6–10 dB từ 1 m đến 3 m. Chưa xác định được nguyên nhân. Vì vậy phân tích H1 dùng khoảng cách danh định (1, 3, 5 m); mức đo hiệu chuẩn chỉ được báo cáo mô tả, không dùng làm biến. Buổi 17/11 kiểm tra lại vị trí loa và máy đo trước mỗi khối.
+- Khung giờ: sinh hoạt ồn 20:30–21:10; yên tĩnh từ 21:20 (học sinh vào phòng 21:15).
+- Buổi: 15/11 buổi 1 (ồn và yên tĩnh) và yên tĩnh buổi 2; 17/11 ồn buổi 2 và yên tĩnh buổi 3. Bỏ ồn buổi 3, nên các ô sinh hoạt ồn có khoảng 16–18 tiếng ho mỗi ô, dưới mức tối thiểu 20 của mục 7.1; các ô này được báo cáo kèm n và KTC. Hai ô chính (yên tĩnh) giữ n = 100.
+
+**Tầng 2** thực hiện 16/11 17:00, cùng vị trí và cách làm; không có buổi phát lại cùng tối nên bù độ trễ bằng giá trị của buổi phát lại 15/11 (16.6).
+
+**Đối chứng âm** (16.18): 13/11 không thực hiện được. Thay bằng 16/11 và 17/11 (08:00–11:00, 13:30–16:00) và 18/11 08:00–11:00, khoảng 14 giờ.
+
+**Hiệu chuẩn mức âm** (7.5) dời sang 18/11 11:35–12:00, sau khi tháo thiết bị.
+
+**Đo âm học** (16.9) dùng chính TC-01 ở vị trí lắp. Nguồn xung cho thời gian vang đổi từ bóng bay sang túi giấy thổi phồng đập vỡ, hoặc hai quyển sách bìa cứng đập vào nhau nếu không có túi; loại nguồn dùng cho từng xung được ghi trong nhật ký đo. Thời gian vang vẫn chỉ báo cáo ở các dải octave 500 Hz–4 kHz, nơi hai nguồn này đủ năng lượng. Xung trong phòng B2.103 được đo khi cửa mở, qua micro ở hành lang.
+
+**Chọn bốn khối gán nhãn đầy đủ** (7.3) theo đúng cách của `tools/gan_nhan/gan_nhan.py chon-doan` (viết 10/11): khối 30 phút tính từ đầu mỗi tệp ghi liền (17:00–20:20 cho 6 khối, 22:20–23:30 cho 2 khối, phần lẻ không thành khối), `sorted(random.Random(2026).sample(range(8), 4))` = khối 1, 2, 4, 5, tức 17:30, 18:00, 19:00, 19:30; khối 17:30–18:00 do hai người gán độc lập. Bốn khối còn lại (17:00, 18:30, 22:20, 22:50) cùng các phần lẻ thuộc xác minh mù. Bản chọn ngày 15/11 bằng một bộ sinh số ngẫu nhiên khác (numpy) bị thay vì không theo công cụ đã viết trước; cả hai lần chọn đều trước khi có bản ghi. Danh sách: `results/doan_gan_nhan_chon_truoc.csv`.
