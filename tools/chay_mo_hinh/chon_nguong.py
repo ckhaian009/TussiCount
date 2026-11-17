@@ -19,6 +19,12 @@ Dòng lệnh:
       --luong-diem diem_luong_sach.csv --luong-chuan results/luong_kiem_tra_sach.csv \
       [--sua-diem diem_sua_1.csv ... --sua-nhan nhan_ung_vien.csv] [--ra results/chon_nguong_v1.json]
 Không có phần để sửa (chạy thử, hoặc trường hợp Protocol mục 8 cuối): bỏ --sua-*, công cụ chỉ in độ nhạy.
+
+Protocol mục 8, câu cuối (không có phần để sửa, 16.23): thay phát hiện sai trên phần để sửa bằng số liệu đối chứng âm
+(mục 7.4). --doi-chung-diem nhận tệp điểm của thiết bị đã tách theo mô hình (tach_diem_thiet_bi.py, chỉ gồm các khung
+đối chứng âm); MỌI sự kiện trong đó tính là phát hiện sai (cận trên, mục 7.4). Số giờ = số cửa sổ × 0,5 s.
+  python3 tools/chay_mo_hinh/chon_nguong.py --ten v1 --luong-diem ... --luong-chuan ... \
+      --doi-chung-diem dc_v1_sang.csv dc_v1_chieu.csv --ra results/chon_nguong_v1.json
 """
 import argparse
 import csv
@@ -71,11 +77,15 @@ def main():
     ap.add_argument("--luong-chuan", required=True)
     ap.add_argument("--sua-diem", nargs="*", default=[])
     ap.add_argument("--sua-nhan")
+    ap.add_argument("--doi-chung-diem", nargs="*", default=[])
     ap.add_argument("--ra")
     a = ap.parse_args()
     t, p = doc_diem(a.luong_diem)
     chuan = [float(r["t_chuan"]) for r in csv.DictReader(open(a.luong_chuan, encoding="utf-8"))]
     sua = {os.path.basename(f): doc_diem(f) for f in a.sua_diem}
+    dc = [doc_diem(f) for f in a.doi_chung_diem]
+    if sua and dc:
+        sys.exit("Chi dung mot trong hai: --sua-diem (phan de sua) hoac --doi-chung-diem (muc 8, cau cuoi)")
     nhan = {}
     if a.sua_nhan:
         for r in csv.DictReader(open(a.sua_nhan, encoding="utf-8")):
@@ -89,20 +99,32 @@ def main():
                 if sua:
                     so_sai, kc, gio = sai_phan_de_sua(sua, nhan, th, k, g)
                     row.update(sai_moi_gio_phan_de_sua=so_sai / gio, so_sai=so_sai, so_khong_chac=kc, gio_phan_de_sua=gio)
+                if dc:
+                    so_dc = sum(len(gop(pp, th, k, g, t0=tt)) for tt, pp in dc)
+                    gio_dc = sum(len(pp) for _, pp in dc) * 0.5 / 3600
+                    row.update(sai_moi_gio_doi_chung=so_dc / gio_dc, so_su_kien_doi_chung=so_dc, gio_doi_chung=gio_dc)
                 duong.append(row)
     chon = None
+    if dc:
+        hop_le = [r for r in duong if r["sai_moi_gio_doi_chung"] <= TOI_DA_SAI]
+        if hop_le:
+            chon = sorted(hop_le, key=lambda r: (-r["do_nhay_luong"], r["sai_moi_gio_doi_chung"], -r["nguong"], -r["k"], -r["g"]))[0]
     if sua:
         hop_le = [r for r in duong if r["sai_moi_gio_phan_de_sua"] <= TOI_DA_SAI]
         if hop_le:
             chon = sorted(hop_le, key=lambda r: (-r["do_nhay_luong"], r["sai_moi_gio_phan_de_sua"], -r["nguong"], -r["k"], -r["g"]))[0]
     kq = {"mo_hinh": a.ten, "luong": os.path.basename(a.luong_chuan), "duong_cong": duong, "chon": chon,
-          "quy_tac": "do nhay cao nhat trong cac to hop co phat hien sai <= 4/gio tren phan de sua"}
+          "quy_tac": ("do nhay cao nhat trong cac to hop co su kien <= 4/gio tren doi chung am (muc 8 cau cuoi, 16.23)" if dc
+                      else "do nhay cao nhat trong cac to hop co phat hien sai <= 4/gio tren phan de sua"),
+          "doi_chung_diem": [os.path.basename(f) for f in a.doi_chung_diem]}
     if a.ra:
         json.dump(kq, open(a.ra, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"Mo hinh {a.ten}: {len(duong)} to hop")
     for r in duong:
         if r["k"] == 1 and r["g"] == 0.0:
             extra = f", sai/gio phan de sua {r['sai_moi_gio_phan_de_sua']:.2f}" if sua else ""
+            if dc:
+                extra = f", su kien/gio doi chung am {r['sai_moi_gio_doi_chung']:.2f} ({r['so_su_kien_doi_chung']}/{r['gio_doi_chung']:.2f} gio)"
             print(f"  nguong {r['nguong']:.2f}: do nhay {r['do_nhay_luong'] * 100:5.1f}% ({r['tp']}/{r['n']}){extra}")
     print("Chon:", chon)
 

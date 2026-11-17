@@ -43,6 +43,11 @@ def do_nhay_luong(t, p, chuan, c):
             "su_kien_khong_ghep_moi_gio": (len(ev) - kq["tp"]) / gio}
 
 
+def sai_gio(c):
+    """Phát hiện sai mỗi giờ của tổ hợp đã chọn: trên phần để sửa, hoặc trên đối chứng âm (mục 8 câu cuối, 16.23)."""
+    return c["sai_moi_gio_phan_de_sua"] if "sai_moi_gio_phan_de_sua" in c else c["sai_moi_gio_doi_chung"]
+
+
 def chon_mo_hinh(kq):
     """kq: {ten: {"chon": tổ hợp hoặc None, "luong_tc": {...}}}. Trả về (ten, ly_do)."""
     hop_le = [m for m in TEN if kq[m]["chon"] is not None]
@@ -54,7 +59,7 @@ def chon_mo_hinh(kq):
     if a != b:
         m = TEN[0] if a > b else TEN[1]
         return m, "do nhay cao hon tren luong tang cuong"
-    fa, fb = (kq[m]["chon"]["sai_moi_gio_phan_de_sua"] for m in TEN)
+    fa, fb = (sai_gio(kq[m]["chon"]) for m in TEN)
     if fa != fb:
         m = TEN[0] if fa < fb else TEN[1]
         return m, "bang do nhay; phat hien sai tren phan de sua thap hon"
@@ -92,6 +97,7 @@ def chay(chon_json, luong_tc, chuan, ngan=None, nhom_ben=None):
         if c:
             mot["luong_sach"] = {"do_nhay": c["do_nhay_luong"], "tp": c["tp"], "n": c["n"]}
             mot["phan_de_sua"] = {k: c.get(k) for k in ("sai_moi_gio_phan_de_sua", "so_sai", "so_khong_chac", "gio_phan_de_sua")}
+            mot["doi_chung_am"] = {k: c.get(k) for k in ("sai_moi_gio_doi_chung", "so_su_kien_doi_chung", "gio_doi_chung")}
             if ngan:
                 mot["theo_doan"] = theo_doan(ngan[i], c["nguong"], nhom_ben or {})
         kq[m] = mot
@@ -173,7 +179,7 @@ def main():
         if x["chon"]:
             c = x["chon"]
             print(f"{m}: θ {c['nguong']}, k {c['k']}, g {c['g']} | luong sach {c['do_nhay_luong']:.1%} | "
-                  f"luong tang cuong {x['luong_tc']['do_nhay']:.1%} | sai/gio phan de sua {c['sai_moi_gio_phan_de_sua']:.2f}")
+                  f"luong tang cuong {x['luong_tc']['do_nhay']:.1%} | sai/gio (de sua hoac doi chung am) {sai_gio(c):.2f}")
         else:
             print(f"{m}: khong co to hop hop le")
     print(f"CHON: {kq['chon']} ({kq['ly_do']}). Da ghi {a.ra}")
