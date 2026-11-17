@@ -1,0 +1,415 @@
+{
+ "quy_tac": "nhat ky 10/11 19:20 (16.7)",
+ "chon": "v2",
+ "ly_do": "do nhay cao hon tren luong tang cuong",
+ "mo_hinh": {
+  "v1": {
+   "chon": {
+    "nguong": 0.5,
+    "k": 1,
+    "g": 0.0,
+    "do_nhay_luong": 0.9542319749216301,
+    "tp": 1522,
+    "n": 1595,
+    "sai_moi_gio_luong_mo": 127.24137931034484,
+    "sai_moi_gio_doi_chung": 0.0,
+    "so_su_kien_doi_chung": 0,
+    "gio_doi_chung": 5.5
+   },
+   "duong_cong_luong_sach": [
+    {
+     "nguong": 0.5,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9542319749216301,
+     "tp": 1522,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 127.24137931034484,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.55,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9460815047021943,
+     "tp": 1509,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 104.10658307210032,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.6,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9398119122257054,
+     "tp": 1499,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 93.66771159874608,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.65,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9347962382445141,
+     "tp": 1491,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 89.71786833855799,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.7,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9253918495297806,
+     "tp": 1476,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 73.35423197492163,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.75,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9084639498432602,
+     "tp": 1449,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 55.01567398119123,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.8,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8909090909090909,
+     "tp": 1421,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 45.98746081504702,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.85,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8714733542319749,
+     "tp": 1390,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 31.598746081504704,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.9,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8344827586206897,
+     "tp": 1331,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 25.673981191222573,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.95,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.774294670846395,
+     "tp": 1235,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 13.542319749216302,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.97,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.7266457680250784,
+     "tp": 1159,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 10.72100313479624,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.99,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.6300940438871473,
+     "tp": 1005,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 4.7962382445141065,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    }
+   ],
+   "luong_tc": {
+    "do_nhay": 0.4200626959247649,
+    "tp": 670,
+    "n": 1595,
+    "su_kien_khong_ghep_moi_gio": 56.426332288401255
+   },
+   "luong_sach": {
+    "do_nhay": 0.9542319749216301,
+    "tp": 1522,
+    "n": 1595
+   },
+   "phan_de_sua": {
+    "sai_moi_gio_phan_de_sua": null,
+    "so_sai": null,
+    "so_khong_chac": null,
+    "gio_phan_de_sua": null
+   },
+   "doi_chung_am": {
+    "sai_moi_gio_doi_chung": 0.0,
+    "so_su_kien_doi_chung": 0,
+    "gio_doi_chung": 5.5
+   },
+   "theo_doan": {
+    "ben|0|do_nhay": {
+     "gia_tri": 0.268,
+     "n": 500
+    },
+    "ben|10|do_nhay": {
+     "gia_tri": 0.508,
+     "n": 500
+    },
+    "ben|20|do_nhay": {
+     "gia_tri": 0.758,
+     "n": 500
+    },
+    "sach|tat_ca|do_nhay": {
+     "gia_tri": 0.9467,
+     "n": 1595
+    },
+    "sach|tat_ca|do_dac_hieu": {
+     "gia_tri": 0.9684,
+     "n": 1870
+    }
+   }
+  },
+  "v2": {
+   "chon": {
+    "nguong": 0.5,
+    "k": 1,
+    "g": 0.0,
+    "do_nhay_luong": 0.9736677115987461,
+    "tp": 1553,
+    "n": 1595,
+    "sai_moi_gio_luong_mo": 281.8495297805643,
+    "sai_moi_gio_doi_chung": 0.5454545454545454,
+    "so_su_kien_doi_chung": 3,
+    "gio_doi_chung": 5.5
+   },
+   "duong_cong_luong_sach": [
+    {
+     "nguong": 0.5,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9736677115987461,
+     "tp": 1553,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 281.8495297805643,
+     "sai_moi_gio_doi_chung": 0.5454545454545454,
+     "so_su_kien_doi_chung": 3,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.55,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9699059561128527,
+     "tp": 1547,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 240.65830721003135,
+     "sai_moi_gio_doi_chung": 0.5454545454545454,
+     "so_su_kien_doi_chung": 3,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.6,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9598746081504702,
+     "tp": 1531,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 198.3385579937304,
+     "sai_moi_gio_doi_chung": 0.5454545454545454,
+     "so_su_kien_doi_chung": 3,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.65,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9542319749216301,
+     "tp": 1522,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 177.74294670846396,
+     "sai_moi_gio_doi_chung": 0.5454545454545454,
+     "so_su_kien_doi_chung": 3,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.7,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.941692789968652,
+     "tp": 1502,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 132.03761755485894,
+     "sai_moi_gio_doi_chung": 0.18181818181818182,
+     "so_su_kien_doi_chung": 1,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.75,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.935423197492163,
+     "tp": 1492,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 108.05642633228841,
+     "sai_moi_gio_doi_chung": 0.18181818181818182,
+     "so_su_kien_doi_chung": 1,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.8,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9203761755485893,
+     "tp": 1468,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 92.53918495297806,
+     "sai_moi_gio_doi_chung": 0.18181818181818182,
+     "so_su_kien_doi_chung": 1,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.85,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.9109717868338558,
+     "tp": 1453,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 80.40752351097179,
+     "sai_moi_gio_doi_chung": 0.18181818181818182,
+     "so_su_kien_doi_chung": 1,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.9,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8915360501567398,
+     "tp": 1422,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 64.60815047021944,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.95,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8614420062695924,
+     "tp": 1374,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 38.36990595611285,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.97,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.8363636363636363,
+     "tp": 1334,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 26.802507836990596,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    },
+    {
+     "nguong": 0.99,
+     "k": 1,
+     "g": 0.0,
+     "do_nhay_luong": 0.7617554858934169,
+     "tp": 1215,
+     "n": 1595,
+     "sai_moi_gio_luong_mo": 15.517241379310345,
+     "sai_moi_gio_doi_chung": 0.0,
+     "so_su_kien_doi_chung": 0,
+     "gio_doi_chung": 5.5
+    }
+   ],
+   "luong_tc": {
+    "do_nhay": 0.8313479623824451,
+    "tp": 1326,
+    "n": 1595,
+    "su_kien_khong_ghep_moi_gio": 207.64890282131663
+   },
+   "luong_sach": {
+    "do_nhay": 0.9736677115987461,
+    "tp": 1553,
+    "n": 1595
+   },
+   "phan_de_sua": {
+    "sai_moi_gio_phan_de_sua": null,
+    "so_sai": null,
+    "so_khong_chac": null,
+    "gio_phan_de_sua": null
+   },
+   "doi_chung_am": {
+    "sai_moi_gio_doi_chung": 0.5454545454545454,
+    "so_su_kien_doi_chung": 3,
+    "gio_doi_chung": 5.5
+   },
+   "theo_doan": {
+    "ben|0|do_nhay": {
+     "gia_tri": 0.644,
+     "n": 500
+    },
+    "ben|10|do_nhay": {
+     "gia_tri": 0.846,
+     "n": 500
+    },
+    "ben|20|do_nhay": {
+     "gia_tri": 0.91,
+     "n": 500
+    },
+    "sach|tat_ca|do_nhay": {
+     "gia_tri": 0.9624,
+     "n": 1595
+    },
+    "sach|tat_ca|do_dac_hieu": {
+     "gia_tri": 0.9283,
+     "n": 1870
+    }
+   }
+  }
+ }
+}
