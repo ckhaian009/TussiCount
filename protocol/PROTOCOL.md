@@ -142,12 +142,12 @@ Mọi kết quả, kể cả không đạt tiêu chí hoặc bác bỏ giả thu
 
 | Mục | Giá trị |
 | --- | --- |
-| Mức “vừa” (dB(A) đỉnh ở 1 m) | |
-| Ngày, giờ đóng băng | |
-| Firmware bản vận hành (tên tệp, SHA-256) | |
-| Mô hình (phiên bản Edge Impulse) | |
-| Ngưỡng · bộ lọc sau phân loại | |
-| Commit ghi nhận | |
+| Mức “vừa” (dB(A) đỉnh ở 1 m) | 83,5 (KTC 95% 82,1–84,8; đo 15/11, 16.22) |
+| Ngày, giờ đóng băng | 17/11/2026, giờ của commit ghi nhận bên dưới (trong khung 11:30–12:40, trước phần để chấm 17:00) |
+| Firmware bản vận hành (tên tệp, SHA-256) | `TC01_Van_hanh.ino` (van-hanh-1.2) `aa70a1a518c76ae12e81bb45453e913bbf55ff6f6d2fd662dfebd304bfed37c8`; `tham_so.h` `899f3243a7862d8619d64d618e2c8912c7851b38cedba3a6f3eaac76c8606bdc`; `tham_chieu_dong_nhat.h` `ee18218e473db4d260e49d0ba4be176aba472fa3e72f936ef10cef100a6a953a` |
+| Mô hình (phiên bản Edge Impulse) | v2: Impulse #3 (tăng cường vang), deployment version 2, int8 EON; thư viện C++ SHA-256 `d2dbd1855800d4037f6b96e33d439862b9eff04854ce98eb1f6e8849d7e5c802` |
+| Ngưỡng · bộ lọc sau phân loại | θ = 0,50 · k = 1 · g = 0 s; chọn theo 16.23 trên đối chứng âm 16/11 (`results/chon_nguong_v1.json`, `results/chon_nguong_v2.json`, `results/chon_mo_hinh_16_7.json`) |
+| Commit ghi nhận | Commit “Đóng băng: v2, θ 0,50, k 1, g 0” chứa bảng này; bổ sung 16.23 ghi trước khi chọn ngưỡng ở commit `50a5939` |
 
 ## 13. Dữ liệu thiếu và loại trừ
 
@@ -270,9 +270,9 @@ Người gán nhãn chỉ quyết định có hay không có tiếng ho và đá
 
 | Mục | Giá trị |
 | --- | --- |
-| Hệ số khuếch đại số TC-01 · TC-02 | |
-| Phiên bản mô hình (có / không tăng cường vang) | |
-| Tham số tăng cường (thời gian vang, khoảng SNR) | |
+| Hệ số khuếch đại số TC-01 · TC-02 | ×8, tức (raw × 8) >> 16 · TC-02 không dùng (16.22) |
+| Phiên bản mô hình (có / không tăng cường vang) | Có tăng cường vang (v2, Impulse #3); chọn theo 16.7, tiêu chí phụ thay bằng đối chứng âm (16.23) |
+| Tham số tăng cường (thời gian vang, khoảng SNR) | Thời gian vang 0,3–1,2 s; SNR 0–20 dB; mức −35 đến −3 dBFS; seed 2026 (`results/ei_tang_cuong_tom_tat.json`) |
 
 ### 16.14. Lịch thu dữ liệu sau khi hỏng thiết bị
 
@@ -375,3 +375,5 @@ Ghi ngày 17/11/2026, trước khi chọn ngưỡng, trước khi đóng băng v
 **Đối chứng âm báo cáo (mục 10, phân tích 9).** Vì dữ liệu 16/11 đã dùng để chọn ngưỡng, phát hiện sai khi vắng người chỉ báo cáo trên 17/11 (08:00–11:00, 13:30–16:00) và 18/11 (08:00–11:00), khoảng 8,5 giờ. Số liệu 16/11 báo cáo riêng và ghi rõ là dữ liệu dùng để chọn ngưỡng.
 
 **Thẻ nhớ tối 17/11.** Không có thẻ thay thế. Firmware ghi âm dùng chính thẻ đếm (tên tệp của hai firmware không trùng nhau). Trước khi đặt máy, ghi thử ít nhất 1 phút trên bàn và nghe lại; tệp ghi thử xoá cùng các tệp khác.
+
+**Ghi thử trước khi đặt máy (ghi ngày 17/11, sau khi chọn ngưỡng).** Thẻ đếm, firmware ghi âm: ghi thử 17/11 11:07:42, 64,9 giây, 0 mẫu thiếu, nghe rõ; mạch trở về chế độ đếm và đồng bộ lúc 11:16:50. Khi đồng bộ giờ ở chế độ ghi (Wi-Fi đang phát), mạch không mở được `/TC-01_dong_bo.csv` để ghi; tệp WAV và `TC-01_ghi.csv` (ghi khi Wi-Fi đã tắt) ghi bình thường. Ở chế độ ghi, mỗi lần nạp firmware mạch neo lại giờ từ đầu (độ lệch 0) và giờ mẫu đầu của từng tệp nằm trong `TC-01_ghi.csv`, nên giờ đồng bộ, độ lệch và thời gian khứ hồi của các lần đồng bộ ở chế độ ghi được chép tay vào phiếu ghi ngày 17/11.
