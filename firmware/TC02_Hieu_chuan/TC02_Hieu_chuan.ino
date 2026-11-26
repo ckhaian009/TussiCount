@@ -10,7 +10,7 @@
   Điều khiển bằng nút BOOT (GPIO0):
     - Bấm ngắn khi đang chờ  : mở tệp mới GHI_xxxx.wav và bắt đầu ghi.
     - Bấm ngắn khi đang ghi  : đóng tệp hiện tại, mở ngay tệp kế tiếp (một lần bấm = một vị trí đo).
-    - Giữ ≥ 2 giây           : đóng tệp, dừng ghi. Lúc này rút thẻ hoặc rút nguồn an toàn.
+    - Giữ ≥ 1,2 giây         : đóng tệp, dừng ghi (Serial báo "Đã dừng"). Lúc này rút thẻ hoặc rút nguồn an toàn.
   Đèn RGB trên bo (nếu có):
     trắng nhấp nháy chậm = đang chờ · xanh lá nhấp nháy = đang ghi · vàng = vừa có mẫu bị cắt đỉnh
     xanh dương chớp = vừa mở tệp mới · đỏ sáng liên tục = lỗi thẻ.
@@ -36,7 +36,7 @@
 
 static const uint32_t TAN_SO_MAU = 16000;
 static const int32_t HE_SO_KHUECH_DAI = 4;
-static const char *PHIEN_BAN = "hieu-chuan-1.2";
+static const char *PHIEN_BAN = "hieu-chuan-1.3";
 
 static i2s_chan_handle_t rx = NULL;
 static volatile uint32_t tranBoDem = 0;
@@ -132,8 +132,8 @@ static bool moTep() {
 
 static void khoiI2S() {
   i2s_chan_config_t cc = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
-  cc.dma_desc_num = 16;
-  cc.dma_frame_num = 512;                       // 16 × 512 mẫu ≈ 0,5 s đệm khi thẻ ghi chậm
+  cc.dma_desc_num = 32;
+  cc.dma_frame_num = 1000;                      // 1.3: 32 × 1000 mẫu = 2 s đệm (1.2 chỉ 0,5 s: sáng 26/11 tràn 7154 lần khi thẻ ghi chậm)
   i2s_new_channel(&cc, NULL, &rx);
   i2s_std_config_t sc = {
     .clk_cfg = I2S_STD_CLK_DEFAULT_CONFIG(TAN_SO_MAU),
@@ -197,21 +197,34 @@ void loop() {
     if (now - msCapNhatDau > 5000) { capNhatDau(); msCapNhatDau = now; }   // rút nguồn đột ngột vẫn đọc được tệp
   }
 
-  // nút BOOT: bấm ngắn / giữ 2 s
+  // nút BOOT: bấm ngắn / giữ 1,2 s
   static bool truoc = HIGH;
   static uint32_t msNhan = 0;
   static bool daXuLyGiu = false;
+  // 1.3: bấm ngắn (40–600 ms) = mở tệp mới; giữ từ 1,2 s = dừng (dừng ngay khi đủ 1,2 s, nhả ra không làm gì);
+  // nhấn 0,6–1,2 s = bỏ qua. Bản 1.2 dùng ngưỡng 2 s: giữ chưa đủ 2 s thì bị hiểu là bấm ngắn và mở tệp mới.
   bool nut = digitalRead(NUT);
   if (truoc == HIGH && nut == LOW) { msNhan = now; daXuLyGiu = false; }
-  if (nut == LOW && !daXuLyGiu && now - msNhan > 2000) {
+  if (nut == LOW && !daXuLyGiu && now - msNhan >= 1200) {
     daXuLyGiu = true;
+    bool coGhi = dangGhi;
     dongTep();
-    Serial.println("Đã dừng. Có thể rút thẻ hoặc rút nguồn.");
+    Serial.println(coGhi ? "Đã dừng. Có thể rút thẻ hoặc rút nguồn." : "Đang không ghi, không làm gì.");
   }
-  if (truoc == LOW && nut == HIGH && !daXuLyGiu && now - msNhan > 40) {
-    if (!loiThe) { dongTep(); moTep(); }
+  if (truoc == LOW && nut == HIGH && !daXuLyGiu) {
+    uint32_t d = now - msNhan;
+    if (d >= 40 && d <= 600) { if (!loiThe) { dongTep(); moTep(); } }
+    else if (d > 600) Serial.println("Nhấn 0,6–1,2 s: bỏ qua. Bấm nhanh để ghi tệp mới, giữ trên 1,2 s để dừng.");
   }
   truoc = nut;
+
+  // khi đang ghi: báo tiến độ mỗi 30 s (chỉ khi có máy tính nối cổng USB)
+  static uint32_t msBaoGhi = 0;
+  if (dangGhi && now - msBaoGhi > 30000 && Serial) {
+    msBaoGhi = now;
+    Serial.printf("Đang ghi GHI_%04lu.wav: %lu s, cắt đỉnh %lu, tràn %lu\n", (unsigned long)soTep,
+                  (unsigned long)(soMau / TAN_SO_MAU), (unsigned long)catDinh, (unsigned long)(tranBoDem - tranLucMo));
+  }
 
   // khi chưa ghi: in trạng thái mỗi 5 s (Serial Monitor mở muộn vẫn thấy)
   static uint32_t msTrangThai = 0;
